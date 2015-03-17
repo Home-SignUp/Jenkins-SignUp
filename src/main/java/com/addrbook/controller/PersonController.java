@@ -49,7 +49,7 @@ public class PersonController {
 	@ResponseBody
 //    @RequestMapping(value = "/person/{id}")
 //    @ResponseBody
-//    public PersonDto getPersonByIdFromParam(@Pas Integer id) {
+//    public PersonDto getPersonByIdFromParam(@PassParams id Integer id) {
 	public PersonDto getPersonByIdFromParam(@RequestParam Integer id) {
 		return personDtoFactory.createPerson(personService.getPersonById(id));
 	}
