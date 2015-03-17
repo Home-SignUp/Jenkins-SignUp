@@ -1,4 +1,4 @@
-package com.trey.addrbook.e2e.fixture;
+package com.addrbook.dao.fixture;
 
 import com.addrbook.domain.Person;
 
@@ -7,7 +7,7 @@ import com.addrbook.domain.Person;
  * 
  * @author Trey
  */
-public class EndToEndTestFixture {
+public class DaoImplTestFixture {
 
 	/**
 	 * Creates a Person with id=1, userName=thoward333, firstName=Trey, lastName=Howard

@@ -7,10 +7,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
-import com.trey.addrbook.service.PersonService;
+import com.addrbook.service.PersonService;
 
 @Configuration
-@ComponentScan(basePackages = { "com.trey.addrbook.util" })
+@ComponentScan(basePackages = {"com.addrbook.util"})
 public class ControllerTestConfig {
 
 	@Bean

@@ -1,10 +1,8 @@
-package com.trey.addrbook.springconfig;
+package com.addrbook.bootstrap;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-
-import com.addrbook.bootstrap.DatabaseConfig;
 
 /**
  * Bootstrap for service layer.
@@ -13,7 +11,7 @@ import com.addrbook.bootstrap.DatabaseConfig;
  */
 @Configuration
 @Import(DatabaseConfig.class)
-@ComponentScan(basePackages = {"com.addrbook.dao"})
-public class DaoTestConfig {
+@ComponentScan(basePackages = {"com.addrbook.service", "com.addrbook.dao", "com.addrbook.util"})
+public class RootConfig {
 
 }

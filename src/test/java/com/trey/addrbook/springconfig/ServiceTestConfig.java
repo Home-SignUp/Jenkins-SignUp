@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import com.trey.addrbook.dao.PersonDao;
+import com.addrbook.dao.PersonDao;
 
 /**
  * Bootstrap for service layer.
@@ -13,7 +13,7 @@ import com.trey.addrbook.dao.PersonDao;
  * @author Trey
  */
 @Configuration
-@ComponentScan(basePackages = { "com.trey.addrbook.service" })
+@ComponentScan(basePackages = {"com.addrbook.service"})
 public class ServiceTestConfig {
 
 	@Bean
