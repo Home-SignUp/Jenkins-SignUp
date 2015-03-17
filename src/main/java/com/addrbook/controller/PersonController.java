@@ -1,12 +1,11 @@
 package com.addrbook.controller;
 
 import com.addrbook.domain.Person;
-import com.addrbook.dto.PersonDto;
-import com.addrbook.dto.save.SavePersonRequest;
+import com.addrbook.data.PersonData;
+import com.addrbook.data.save.SavePersonRequest;
 import com.addrbook.exception.PersonNotFoundException;
 import com.addrbook.service.PersonService;
-import com.addrbook.service.PersonServiceImpl;
-import com.addrbook.util.DtoFactory;
+import com.addrbook.util.DataFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -21,37 +20,22 @@ import org.springframework.web.bind.annotation.*;
 public class PersonController {
 
 	private PersonService personService;
-	private DtoFactory personDtoFactory;
-    private PersonServiceImpl personServiceImp;
+	private DataFactory personDataFactory;
 
 	@Autowired
-	public PersonController(PersonService personService, DtoFactory personDtoFactory) {
+	public PersonController(PersonService personService, DataFactory personDataFactory) {
 		this.personService = personService;
-		this.personDtoFactory = personDtoFactory;
+		this.personDataFactory = personDataFactory;
 	}
 
 	/**
 	 * @param id
 	 * @return Returns the person with the given id.
 	 */
-	@RequestMapping("person/{id}")
+	@RequestMapping(value = "/person/{id}", method = RequestMethod.GET)
 	@ResponseBody
-	public PersonDto getPersonById(@PathVariable Integer id) {
-		return personDtoFactory.createPerson(personService.getPersonById(id));
-	}
-
-	/**
-	 * Same as above method, just showing different URL mapping
-	 * @param id
-	 * @return Returns the person with the given id.
-	 */
-	@RequestMapping(value = "person", params = "id")
-	@ResponseBody
-//    @RequestMapping(value = "/person/{id}")
-//    @ResponseBody
-//    public PersonDto getPersonByIdFromParam(@PassParams id Integer id) {
-	public PersonDto getPersonByIdFromParam(@RequestParam Integer id) {
-		return personDtoFactory.createPerson(personService.getPersonById(id));
+	public PersonData getPersonById(@PathVariable Integer id) {
+		return personDataFactory.createPerson(personService.getPersonById(id));
 	}
 
 	/**
@@ -59,7 +43,7 @@ public class PersonController {
 	 * @param request
 	 * @return Returns the id for the new person.
 	 */
-	@RequestMapping(value = "person", method = RequestMethod.POST)
+	@RequestMapping(value = "/person", method = RequestMethod.POST)
 	@ResponseBody
 	public Integer createPerson(@RequestBody SavePersonRequest request) {
 		Person person = new Person();
@@ -70,11 +54,11 @@ public class PersonController {
 		return person.getId();
 	}
 
-//    @RequestMapping(value = "/persons")
-//    @ResponseBody
-//    public List<PersonDto> getPersonsList(){
-//        return personServiceImp.getPersonsList();
-//    }
+    @RequestMapping(value = "/persons", method = RequestMethod.GET)
+    @ResponseBody
+    public PersonData getPersonsList(){
+        return personDataFactory.createPerson(personService.getPersonsList());
+    }
 	
 	// --- Error handlers
 	

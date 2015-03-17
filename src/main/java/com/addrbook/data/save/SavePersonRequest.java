@@ -1,4 +1,4 @@
-package com.addrbook.dto.save;
+package com.addrbook.data.save;
 
 /**
  * Person data for creating a new person.

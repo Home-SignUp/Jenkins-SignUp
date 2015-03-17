@@ -20,11 +20,11 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.addrbook.controller.fixture.ControllerTestFixture;
 import com.addrbook.domain.Person;
-import com.addrbook.dto.save.SavePersonRequest;
+import com.addrbook.data.save.SavePersonRequest;
 import com.addrbook.exception.PersonNotFoundException;
 import com.addrbook.service.PersonService;
 import com.trey.addrbook.springconfig.ControllerTestConfig;
-import com.addrbook.util.DtoFactory;
+import com.addrbook.util.DataFactory;
 
 /**
  * Unit tests the controller, including JSON serialization.
@@ -36,7 +36,7 @@ import com.addrbook.util.DtoFactory;
 public class TestPersonController {
 
 	@Autowired private PersonService mockPersonService;
-	@Autowired private DtoFactory dtoFactory;
+	@Autowired private DataFactory dtoFactory;
 
 	private MockMvc mockMvc;
 

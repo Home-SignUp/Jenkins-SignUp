@@ -19,16 +19,16 @@ import com.addrbook.controller.PersonController;
 import com.addrbook.controller.TestUtil;
 import com.addrbook.controller.fixture.ControllerTestFixture;
 import com.addrbook.domain.Person;
-import com.addrbook.dto.save.SavePersonRequest;
+import com.addrbook.data.save.SavePersonRequest;
 import com.addrbook.service.PersonService;
-import com.addrbook.util.DtoFactory;
+import com.addrbook.util.DataFactory;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { RootConfig.class })
 public class TestEndToEnd {
 
 	@Autowired private PersonService personService;
-	@Autowired private DtoFactory dtoFactory;
+	@Autowired private DataFactory dtoFactory;
 	
 	private MockMvc mockMvc;
 
