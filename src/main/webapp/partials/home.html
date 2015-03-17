@@ -1,16 +1,34 @@
-<form ng-submit="createPerson()" class="form-horizontal" role="form">
-	<p>Create a new user:</p>
-	<p>
-		Username: <input ng-model="userName" />
-	</p>
-	<p>
-		First Name: <input ng-model="firstName" />
-	</p>
-	<p>
-		Last Name: <input ng-model="lastName" />
-	</p>
-	<input type="submit" />
-	
+<form class="form-horizontal" role="form" ng-submit="createPerson()">
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Create a new user:</label>
+    </div>
+    <div class="form-group">
+        <label for="userName" class="col-sm-2 control-label">Name</label>
+        <div class="col-sm-4">
+            <input class="form-control" id="userName" placeholder="Name" ng-model="userName" ng-required="true">
+            <!--<span ng-show="userRequired">{{userRequired}}</span>-->
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="firstName" class="col-sm-2 control-label">First Name</label>
+        <div class="col-sm-4">
+            <input class="form-control" id="firstName" placeholder="First Name" ng-model="firstName">
+            <span ng-show="firstRequired">{{firstRequired}}</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="lastName" class="col-sm-2 control-label">First Name</label>
+        <div class="col-sm-4">
+            <input class="form-control" id="lastName" placeholder="First Name" ng-model="lastName">
+            <span ng-show="lastRequired">{{lastRequired}}</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <input type="submit" class="btn btn-success" />
+        </div>
+    </div>
+
 	<p ng-show="newUserId">
 		User created with id: {{newUserId}}
 	</p>
@@ -19,9 +37,16 @@
 <hr />
 
 <div>
-	<p>Find a user by id:</p>
-	<form ng-submit="searchPerson()">
-		<input ng-model="searchPersonId" />
+	<form class="form-horizontal" role="form" ng-submit="searchPerson()">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Find a user:</label>
+        </div>
+        <div class="form-group">
+            <label for="userId" class="col-sm-2 control-label">by Id</label>
+            <div class="col-sm-4">
+                <input class="form-control" id="userId" placeholder="Id" ng-model="searchPersonId" ng-required="true" />
+            </div>
+        </div>
 	</form>
 
 	<div class="searchOutput">{{person | json}}</div>

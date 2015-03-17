@@ -1,13 +1,7 @@
 package com.addrbook.dao;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.sql.DataSource;
-
+import com.addrbook.domain.Person;
+import com.addrbook.exception.PersonNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +13,12 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.WebApplicationInitializer;
 
-import com.addrbook.domain.Person;
-import com.addrbook.exception.PersonNotFoundException;
+import javax.sql.DataSource;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Repository
 public class PersonDaoImpl implements PersonDao {
@@ -45,6 +43,19 @@ public class PersonDaoImpl implements PersonDao {
 			return list.get(0);
 		}
 	}
+
+    /**
+     *
+     * @return List<Person>
+     */
+    public List<Person> getPersons(){
+        List<Person> list = jdbcTemplate.query("select * from person", new PersonRowMapper());
+        if (list.isEmpty()) {
+            throw new PersonNotFoundException("No person found");
+        } else {
+            return list;
+        }
+    }
 
 	public void insert(Person person) {
 		KeyHolder keyHolder = new GeneratedKeyHolder();

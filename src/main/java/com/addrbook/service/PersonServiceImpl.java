@@ -1,5 +1,6 @@
 package com.addrbook.service;
 
+import com.addrbook.dao.PersonDaoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -7,10 +8,13 @@ import org.springframework.transaction.annotation.Transactional;
 import com.addrbook.dao.PersonDao;
 import com.addrbook.domain.Person;
 
+import java.util.List;
+
 @Service
 public class PersonServiceImpl implements PersonService {
 
 	private PersonDao personDao;
+    private PersonDaoImpl personDaoImpl;
 
 	@Autowired
 	public PersonServiceImpl(PersonDao personDao) {
@@ -21,6 +25,10 @@ public class PersonServiceImpl implements PersonService {
 	public Person getPersonById(Integer id) {
 		return personDao.findById(id);
 	}
+
+    public List<Person> getPersonsList(){
+        return personDaoImpl.getPersons();
+    }
 
 	@Transactional
 	public void savePerson(Person person) {

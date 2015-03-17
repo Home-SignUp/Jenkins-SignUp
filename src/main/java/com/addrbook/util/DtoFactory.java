@@ -1,9 +1,8 @@
 package com.addrbook.util;
 
-import org.springframework.stereotype.Component;
-
 import com.addrbook.domain.Person;
 import com.addrbook.dto.PersonDto;
+import org.springframework.stereotype.Component;
 
 /**
  * Factory methods for creating DTOs.
@@ -26,4 +25,11 @@ public class DtoFactory {
 		return dto;
 	}
 
+//    public PersonDto createPerson(List<Person> domain) {
+//        // TODO convert to dozer
+//        PersonDto dto = new PersonDto();
+//        dto.setId(domain.getId());
+//        dto.setFullname(domain.getFirstName() + " " + domain.getLastName());
+//        return dto;
+//    }
 }

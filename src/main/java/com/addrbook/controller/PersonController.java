@@ -1,23 +1,16 @@
 package com.addrbook.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-
 import com.addrbook.domain.Person;
 import com.addrbook.dto.PersonDto;
 import com.addrbook.dto.save.SavePersonRequest;
 import com.addrbook.exception.PersonNotFoundException;
 import com.addrbook.service.PersonService;
+import com.addrbook.service.PersonServiceImpl;
 import com.addrbook.util.DtoFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * REST layer for managing people.
@@ -29,6 +22,7 @@ public class PersonController {
 
 	private PersonService personService;
 	private DtoFactory personDtoFactory;
+    private PersonServiceImpl personServiceImp;
 
 	@Autowired
 	public PersonController(PersonService personService, DtoFactory personDtoFactory) {
@@ -53,6 +47,9 @@ public class PersonController {
 	 */
 	@RequestMapping(value = "person", params = "id")
 	@ResponseBody
+//    @RequestMapping(value = "/person/{id}")
+//    @ResponseBody
+//    public PersonDto getPersonByIdFromParam(@Pas Integer id) {
 	public PersonDto getPersonByIdFromParam(@RequestParam Integer id) {
 		return personDtoFactory.createPerson(personService.getPersonById(id));
 	}
@@ -73,8 +70,11 @@ public class PersonController {
 		return person.getId();
 	}
 
-//    @RequestMapping(value = "persons")
+//    @RequestMapping(value = "/persons")
 //    @ResponseBody
+//    public List<PersonDto> getPersonsList(){
+//        return personServiceImp.getPersonsList();
+//    }
 	
 	// --- Error handlers
 	

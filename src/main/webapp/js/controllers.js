@@ -8,7 +8,17 @@ addressbookControllers.controller('HomeCtrl', ['$rootScope', '$scope', '$routePa
 	function($rootScope, $scope, $routeParams, $http) {
 		$scope.createPerson = function() {
 			console.log('BEGIN createPerson');
-			
+
+            if(!$scope.userName){
+                $scope.userRequired = 'Name Required';
+            }
+            if(!$scope.firstName){
+                $scope.firstRequired = 'First Name Required';
+            }
+            if(!$scope.lastName){
+                $scope.lastRequired = 'Last Name Required';
+            }
+
 			$http.post('api/person', {
 					"userName": $scope.userName
 					,"firstName": $scope.firstName
