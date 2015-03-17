@@ -30,3 +30,24 @@ Additionally, this project contains no XML. Spring config is fully annotation dr
 1.  [GET] http://localhost:8080/AddressBook-2/#/home
 2. [POST] http://localhost:8080/AddressBook%2D2/api/person
           "{"userName":"admin-2","firstName":"adminfirst-2","lastName":"adminlast-2"}"
+
+
+###@requestmapping passing parameters
+
+* http://www.codejava.net/frameworks/spring/14-tips-for-writing-spring-mvc-controller
+http://www.mkyong.com/spring-mvc/spring-3-rest-hello-world-example/
+http://gotoanswer.stanford.edu/?q=Passing+multiple+parameters+from+view+to+controller+in+spring+mvc
+http://www.leveluplunch.com/java/tutorials/014-post-json-to-spring-rest-webservice/
+http://www.javabeat.net/multiple-parameters-spring-mvc-controller/
+* http://www.captaindebug.com/2011/07/accessing-request-parameters-using.html#.VQiLNOFGRmE
+http://www.journaldev.com/3358/spring-mvc-requestmapping-annotation-example-with-controller-methods-headers-params-requestparam-pathvariable
+
+
+###Разворачиваем локальный сервер на Windows
+
+- http://habrahabr.ru/post/150972/
+
+
+###генератор схем баз данных & базы данных повер дизайнер
+
+- http://lib.kstu.kz:8300/tb/books/Proektirovanie_baz_dann@ih/teory/10_1.htm
