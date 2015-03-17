@@ -1,8 +1,9 @@
 package com.trey.addrbook.service;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
-
+import com.trey.addrbook.dao.PersonDao;
+import com.trey.addrbook.domain.Person;
+import com.trey.addrbook.service.fixture.ServiceTestFixture;
+import com.trey.addrbook.springconfig.ServiceTestConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.invocation.InvocationOnMock;
@@ -11,10 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.trey.addrbook.dao.PersonDao;
-import com.trey.addrbook.domain.Person;
-import com.trey.addrbook.service.fixture.ServiceTestFixture;
-import com.trey.addrbook.springconfig.ServiceTestConfig;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { ServiceTestConfig.class })
