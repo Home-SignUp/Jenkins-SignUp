@@ -1,8 +1,9 @@
 package com.addrbook.controller;
 
+import com.addrbook.json.PersonJson;
+import com.addrbook.json.PersonJsonList;
+import com.addrbook.json.save.SavePersonRequest;
 import com.addrbook.domain.Person;
-import com.addrbook.data.PersonData;
-import com.addrbook.data.save.SavePersonRequest;
 import com.addrbook.exception.PersonNotFoundException;
 import com.addrbook.service.PersonService;
 import com.addrbook.util.DataFactory;
@@ -34,7 +35,7 @@ public class PersonController {
 	 */
 	@RequestMapping(value = "/person/{id}", method = RequestMethod.GET)
 	@ResponseBody
-	public PersonData getPersonById(@PathVariable Integer id) {
+	public PersonJson getPersonById(@PathVariable Integer id) {
 		return personDataFactory.createPerson(personService.getPersonById(id));
 	}
 
@@ -56,8 +57,8 @@ public class PersonController {
 
     @RequestMapping(value = "/persons", method = RequestMethod.GET)
     @ResponseBody
-    public PersonData getPersonsList(){
-        return personDataFactory.createPerson(personService.getPersonsList());
+    public PersonJsonList getAllPersons(){
+        return personDataFactory.createPerson(personService.getAllPersons());
     }
 	
 	// --- Error handlers

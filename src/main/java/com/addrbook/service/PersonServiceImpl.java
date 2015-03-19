@@ -2,7 +2,6 @@ package com.addrbook.service;
 
 import com.addrbook.dao.PersonDao;
 import com.addrbook.dao.PersonDaoImpl;
-import com.addrbook.data.PersonData;
 import com.addrbook.domain.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,8 +25,8 @@ public class PersonServiceImpl implements PersonService {
 		return personDao.findById(id);
 	}
 
-    public List<PersonData> getPersonsList(){
-        return personDaoImpl.getPersons();
+    public List<Person> getAllPersons(){
+        return personDao.getAllPersons();
     }
 
 	@Transactional

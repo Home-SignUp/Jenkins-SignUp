@@ -19,7 +19,7 @@ import com.addrbook.controller.PersonController;
 import com.addrbook.controller.TestUtil;
 import com.addrbook.controller.fixture.ControllerTestFixture;
 import com.addrbook.domain.Person;
-import com.addrbook.data.save.SavePersonRequest;
+import com.addrbook.json.save.SavePersonRequest;
 import com.addrbook.service.PersonService;
 import com.addrbook.util.DataFactory;
 

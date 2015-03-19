@@ -2,6 +2,8 @@ package com.addrbook.dao;
 
 import com.addrbook.domain.Person;
 
+import java.util.List;
+
 /**
  * DAO for person database table.
  * 
@@ -15,6 +17,8 @@ public interface PersonDao {
 	 * @return Returns the Person for the given id. Returns null if none found.
 	 */
 	Person findById(Integer id);
+
+    List<Person> getAllPersons();
 
 	/**
 	 * Inserts a person record using the non-id properties.

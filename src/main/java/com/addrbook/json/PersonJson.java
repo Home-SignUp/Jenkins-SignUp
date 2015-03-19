@@ -1,14 +1,14 @@
-package com.addrbook.data;
+package com.addrbook.json;
 
 /**
  * Specialized person data for REST layer.
  * 
  * @author Trey
  */
-public class PersonData {
+public class PersonJson {
 
 	private Integer id;
-	private String fullname;
+	private String  fullname;
 
 
 	public Integer getId() {

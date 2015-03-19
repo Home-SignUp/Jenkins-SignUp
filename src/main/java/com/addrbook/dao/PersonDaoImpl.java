@@ -48,7 +48,7 @@ public class PersonDaoImpl implements PersonDao {
      *
      * @return List<Person>
      */
-    public List<Person> getPersons(){
+    public List<Person> getAllPersons(){
         List<Person> list = jdbcTemplate.query("select * from person", new PersonRowMapper());
         if (list.isEmpty()) {
             throw new PersonNotFoundException("No person found");

@@ -1,4 +1,4 @@
-package com.addrbook.data.save;
+package com.addrbook.json.save;
 
 /**
  * Person data for creating a new person.

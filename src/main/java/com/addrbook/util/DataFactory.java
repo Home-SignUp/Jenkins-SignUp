@@ -1,10 +1,12 @@
 package com.addrbook.util;
 
-import com.addrbook.data.PersonData;
-import com.addrbook.data.PersonDataList;
+import com.addrbook.json.PersonJson;
+import com.addrbook.json.PersonJsonList;
 import com.addrbook.domain.Person;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -20,16 +22,27 @@ public class DataFactory {
 	 * @param domain
 	 * @return
 	 */
-	public PersonData createPerson(Person domain) {
-		PersonData data = new PersonData();
-        data.setId(domain.getId());
-        data.setFullname(domain.getFirstName() + " " + domain.getLastName());
-		return data;
+	public PersonJson createPerson(Person domain) {
+		PersonJson json = new PersonJson();
+        json.setId(domain.getId());
+        json.setFullname(domain.getFirstName() + " " + domain.getLastName());
+		return json;
 	}
 
-    public PersonDataList createPerson(List<PersonData> domain) {
-        PersonDataList data = new PersonDataList();
-        data.setPersonData(domain);
-        return data;
+    public PersonJsonList createPerson(List<Person> domains) {
+        PersonJson        json = new PersonJson();
+        List<PersonJson> jsons = new ArrayList<PersonJson>();
+        Iterator      iDomains = domains.iterator();
+
+        while( iDomains.hasNext() ){
+            Person domain = (Person)iDomains.next();
+            json.setId(domain.getId());
+            json.setFullname(domain.getFirstName() + " " + domain.getLastName());
+            jsons.add(json);
+        }
+
+        PersonJsonList lJson = new PersonJsonList();
+        lJson.setPersonJson(jsons);
+        return lJson;
     }
 }
