@@ -35,7 +35,7 @@ public class PersonController {
 	 */
 	@RequestMapping(value = "/person/{id}", method = RequestMethod.GET)
 	@ResponseBody
-	public PersonJson getPersonById(@PathVariable Integer id) {
+	public PersonJson getPersonById(@PathVariable("id") Integer id) {
 		return personDataFactory.createPerson(personService.getPersonById(id));
 	}
 
@@ -55,10 +55,30 @@ public class PersonController {
 		return person.getId();
 	}
 
-    @RequestMapping(value = "/persons", method = RequestMethod.GET)
+    class Ma{
+        private int a =10;
+        private String b = ":adfasdf";
+
+        public int getA() {
+            return a;
+        }
+
+        public String getB() {
+            return b;
+        }
+    }
+
+    @RequestMapping(value = "/persons", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public PersonJsonList getAllPersons(){
         return personDataFactory.createPerson(personService.getAllPersons());
+    }
+
+    @RequestMapping(value = "/test", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public Ma getTest(){
+        Ma ma =new Ma();
+     return ma;
     }
 	
 	// --- Error handlers

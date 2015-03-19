@@ -2,12 +2,10 @@
 
 /* App Module */
 
-var addressbookApp = angular.module('addressbookApp', [
-	'ngRoute',
-	'addressbookControllers'
-]);
+angular.module('app',
+    ['ngRoute'])
 
-addressbookApp.config(['$routeProvider',
+.config(['$routeProvider',
 	function($routeProvider) {
 		$routeProvider.
 			when('/home', {

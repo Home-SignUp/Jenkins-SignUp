@@ -10,4 +10,4 @@ insert into person (user_name, first_name, last_name) values ('thoward333', 'Tre
 insert into person (user_name, first_name, last_name) values ('joeherbers', 'Joe', 'Herbers');
 insert into person (user_name, first_name, last_name) values ('jdoe', 'John', 'Doe');
 
-select * from person;
+-- select * from person;

@@ -1,20 +1,22 @@
 <!doctype html>
-<html lang="en" ng-app="addressbookApp">
+<html lang="en" >
 <head>
 	<meta charset="utf-8">
 	<title>Address Book</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/app.css">
-	<script src="lib/angular/angular.js"></script>
-	<script src="lib/angular/angular-route.js"></script>
-	<script src="js/app.js"></script>
-	<script src="js/controllers.js"></script>
-    <script src="lib/common/jquery.min.js"></script>
-    <script src="lib/common/bootstrap.min.js"></script>
+
 </head>
-<body>
+<body ng-app="app">
 
 	<div ng-view></div>
 
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular/angular-route.js"></script>
+
+    <script src="lib/common/jquery.min.js"></script>
+    <script src="lib/common/bootstrap.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
 </body>
 </html>

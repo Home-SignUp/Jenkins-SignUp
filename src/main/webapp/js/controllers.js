@@ -2,45 +2,47 @@
 
 /* Controllers */
 
-var addressbookControllers = angular.module('addressbookControllers', []);
+angular.module('app')
 
-addressbookControllers.controller('HomeCtrl', ['$rootScope', '$scope', '$routeParams', '$http',
+.controller('HomeCtrl', ['$rootScope', '$scope', '$routeParams', '$http',
 	function($rootScope, $scope, $routeParams, $http) {
-		$scope.createPerson = function() {
+        var that = this;
+
+        that.createPerson = function() {
 			console.log('BEGIN createPerson');
 
-            if(!$scope.userName){
-                $scope.userRequired = 'Name Required';
+            if(!that.userName){
+                that.userRequired = 'Name Required';
             }
-            if(!$scope.firstName){
-                $scope.firstRequired = 'First Name Required';
+            if(!that.firstName){
+                that.firstRequired = 'First Name Required';
             }
-            if(!$scope.lastName){
-                $scope.lastRequired = 'Last Name Required';
+            if(!that.lastName){
+                that.lastRequired = 'Last Name Required';
             }
 
 			$http.post('api/person', {
-					"userName": $scope.userName
-					,"firstName": $scope.firstName
-					,"lastName": $scope.lastName
+					"userName": that.userName
+					,"firstName": that.firstName
+					,"lastName": that.lastName
 			})
 			.success(function(data, status, headers, config) {
 				console.log('data = ' , data);
-				$scope.userName = '';
-				$scope.firstName = '';
-				$scope.lastName = '';
-				$scope.newUserId = data;
+                    that.userName = '';
+                    that.firstName = '';
+                    that.lastName = '';
+                    that.newUserId = data;
 			})
 			.error(function(data, status, headers, config) {
 				console.log('error: data = ' , data);
 			});
 		};
-		
-		$scope.searchPerson = function() {
-			$http.get('api/person/' + $scope.searchPersonId)
+
+        that.searchPerson = function() {
+			$http.get('api/person/' + that.searchPersonId)
 			.success(function(data, status, headers, config) {
 				console.log('data = ' , data);
-				$scope.person = data;
+                    that.person = data;
 			})
 			.error(function(data, status, headers, config) {
 				console.log('error: data = ' , data);
