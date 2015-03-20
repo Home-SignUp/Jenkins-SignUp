@@ -51,3 +51,24 @@ http://www.journaldev.com/3358/spring-mvc-requestmapping-annotation-example-with
 ###генератор схем баз данных & базы данных повер дизайнер
 
 - http://lib.kstu.kz:8300/tb/books/Proektirovanie_baz_dann@ih/teory/10_1.htm
+
+
+###Git Merge branch
+
+* > git branch
+*   master
+*   release
+* > git checkout master
+*   Switched to branch 'master'
+*   Your branch is up-to-date with 'origin/master'.
+* > git merge release
+*
+* > git branch
+* * master
+*   release
+* > git push origin master
+* Username for 'https://github.com': sashakmets
+* Password for 'https://sashakmets@github.com':
+* Total 0 (delta 0), reused 0 (delta 0)
+* To https://github.com/Home-Spring/AddressBook-2
+*   b489247..0f1ef2d  master -> master
