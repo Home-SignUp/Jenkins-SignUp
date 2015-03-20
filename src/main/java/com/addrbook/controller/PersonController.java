@@ -74,12 +74,12 @@ public class PersonController {
         return personDataFactory.createPerson(personService.getAllPersons());
     }
 
-    @RequestMapping(value = "/test", method = RequestMethod.GET, produces = "application/json")
-    @ResponseBody
-    public Ma getTest(){
-        Ma ma =new Ma();
-     return ma;
-    }
+//    @RequestMapping(value = "/test", method = RequestMethod.GET, produces = "application/json")
+//    @ResponseBody
+//    public Ma getTest(){
+//        Ma ma =new Ma();
+//     return ma;
+//    }
 	
 	// --- Error handlers
 	

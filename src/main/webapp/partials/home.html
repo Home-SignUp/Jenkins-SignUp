@@ -38,18 +38,18 @@
     <hr />
 
     <div>
-        <form class="form-horizontal" role="form" ng-submit="searchPerson()">
+        <form class="form-horizontal" role="form" ng-submit="home.searchPerson()">
             <div class="form-group">
                 <label class="col-sm-2 control-label">Find a user:</label>
             </div>
             <div class="form-group">
-                <label for="userId" class="col-sm-2 control-label">by Id</label>
+                <label for="searchPersonId" class="col-sm-2 control-label">by Id</label>
                 <div class="col-sm-4">
-                    <input class="form-control" id="userId" placeholder="Id" ng-model="home.searchPersonId" ng-required="true" />
+                    <input class="form-control" id="searchPersonId" placeholder="Id" ng-model="home.searchPersonId" ng-required="true" />
                 </div>
             </div>
         </form>
 
-        <div class="searchOutput">{{person | json}}</div>
+        <div class="searchOutput">{{home.person | json}}</div>
     </div>
 </div>
