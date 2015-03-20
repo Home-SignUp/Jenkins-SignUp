@@ -72,3 +72,12 @@ http://www.journaldev.com/3358/spring-mvc-requestmapping-annotation-example-with
 * Total 0 (delta 0), reused 0 (delta 0)
 * To https://github.com/Home-Spring/AddressBook-2
 *   b489247..0f1ef2d  master -> master
+
+
+###REST
+
+* http://10.13.70.25/my_test/angular/Jenkins-SignUp-Client/src/web/ajax/getCustomers.php
+* http://localhost:8080/api/customers
+* http://localhost:8080/api/customer
+* http://localhost:8080/api/persons
+* http://localhost:8080/api/person/1

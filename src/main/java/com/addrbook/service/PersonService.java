@@ -1,5 +1,6 @@
 package com.addrbook.service;
 
+import com.addrbook.domain.Customer;
 import com.addrbook.domain.Person;
 
 import java.util.List;
@@ -18,6 +19,10 @@ public interface PersonService {
 	public Person getPersonById(Integer id);
 
     public List<Person> getAllPersons();
+
+    public Customer getCustomer();
+
+    public List<Customer> getAllCustomers();
 
 	/**
 	 * Creates a new Person and populates the <code>id</code> property with the generated id.

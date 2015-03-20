@@ -1,10 +1,12 @@
 package com.addrbook.controller;
 
+import com.addrbook.domain.Customer;
+import com.addrbook.domain.Person;
+import com.addrbook.exception.PersonNotFoundException;
+import com.addrbook.json.CustomerJsonList;
 import com.addrbook.json.PersonJson;
 import com.addrbook.json.PersonJsonList;
 import com.addrbook.json.save.SavePersonRequest;
-import com.addrbook.domain.Person;
-import com.addrbook.exception.PersonNotFoundException;
 import com.addrbook.service.PersonService;
 import com.addrbook.util.DataFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,6 +74,18 @@ public class PersonController {
     @ResponseBody
     public PersonJsonList getAllPersons(){
         return personDataFactory.createPerson(personService.getAllPersons());
+    }
+
+    @RequestMapping(value = "/customer", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public Customer getCustomer(){
+        return personService.getCustomer();
+    }
+
+    @RequestMapping(value = "/customers", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public CustomerJsonList getAllCustomers(){
+        return personDataFactory.createCustomer(personService.getAllCustomers());
     }
 
 //    @RequestMapping(value = "/test", method = RequestMethod.GET, produces = "application/json")

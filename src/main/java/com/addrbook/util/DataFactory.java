@@ -1,8 +1,10 @@
 package com.addrbook.util;
 
+import com.addrbook.domain.Customer;
+import com.addrbook.domain.Person;
+import com.addrbook.json.CustomerJsonList;
 import com.addrbook.json.PersonJson;
 import com.addrbook.json.PersonJsonList;
-import com.addrbook.domain.Person;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -43,6 +45,33 @@ public class DataFactory {
 
         PersonJsonList lJson = new PersonJsonList();
         lJson.setPersonJson(jsons);
+        return lJson;
+    }
+
+    public CustomerJsonList createCustomer(List<Customer> domains) {
+        Customer        json = new Customer();
+        List<Customer> jsons = new ArrayList<Customer>();
+        Iterator      iDomains = domains.iterator();
+
+        while( iDomains.hasNext() ){
+            Customer domain = (Customer)iDomains.next();
+            json.setCustomerNumber(domain.getCustomerNumber());
+            json.setCustomerName(domain.getCustomerName());
+            json.setContactLastName(domain.getContactLastName());
+            json.setContactFirstName(domain.getContactFirstName());
+            json.setAddressLine1(domain.getAddressLine1());
+            json.setAddressLine2(domain.getAddressLine2());
+            json.setCity(domain.getCity());
+            json.setState(domain.getState());
+            json.setPostalCode(domain.getPostalCode());
+            json.setCountry(domain.getCountry());
+            json.setSalesRepEmployeeNumber(domain.getSalesRepEmployeeNumber());
+            json.setCreditLimit(domain.getCreditLimit());
+            jsons.add(json);
+        }
+
+        CustomerJsonList lJson = new CustomerJsonList();
+        lJson.setCustomerJson(jsons);
         return lJson;
     }
 }

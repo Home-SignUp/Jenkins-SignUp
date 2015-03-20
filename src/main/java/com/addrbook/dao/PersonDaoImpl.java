@@ -1,5 +1,6 @@
 package com.addrbook.dao;
 
+import com.addrbook.domain.Customer;
 import com.addrbook.domain.Person;
 import com.addrbook.exception.PersonNotFoundException;
 import org.slf4j.Logger;
@@ -57,6 +58,23 @@ public class PersonDaoImpl implements PersonDao {
         }
     }
 
+    public Customer getCustomer(){
+        List<Customer> list = jdbcTemplate.query("select * from customers where customerNumber = 112", new CustomerRowMapper());
+        if (list.isEmpty()) {
+            throw new PersonNotFoundException("No person found for id: 112");
+        } else {
+            return list.get(0);
+        }
+    }
+    public List<Customer> getAllCustomers(){
+        List<Customer> list = jdbcTemplate.query("select * from customers", new CustomerRowMapper());
+        if (list.isEmpty()) {
+            throw new PersonNotFoundException("No person found");
+        } else {
+            return list;
+        }
+    }
+
 	public void insert(Person person) {
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 
@@ -91,5 +109,24 @@ public class PersonDaoImpl implements PersonDao {
 			return p;
 		}
 	}
+
+    private static class CustomerRowMapper implements RowMapper<Customer> {
+        public Customer mapRow(ResultSet res, int rowNum) throws SQLException {
+            Customer c = new Customer();
+            c.setCustomerNumber(res.getInt("customerNumber"));
+            c.setCustomerName(res.getString("customerName"));
+            c.setContactLastName(res.getString("contactLastName"));
+            c.setContactFirstName(res.getString("contactFirstName"));
+            c.setAddressLine1(res.getString("addressLine1"));
+            c.setAddressLine2(res.getString("addressLine2"));
+            c.setCity(res.getString("city"));
+            c.setState(res.getString("state"));
+            c.setPostalCode(res.getString("postalCode"));
+            c.setCountry(res.getString("country"));
+            c.setSalesRepEmployeeNumber(res.getInt("salesRepEmployeeNumber"));
+            c.setCreditLimit(res.getDouble("creditLimit"));
+            return c;
+        }
+    }
 
 }

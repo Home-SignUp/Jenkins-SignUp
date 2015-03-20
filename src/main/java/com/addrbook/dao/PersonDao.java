@@ -1,5 +1,6 @@
 package com.addrbook.dao;
 
+import com.addrbook.domain.Customer;
 import com.addrbook.domain.Person;
 
 import java.util.List;
@@ -19,6 +20,10 @@ public interface PersonDao {
 	Person findById(Integer id);
 
     List<Person> getAllPersons();
+
+    public Customer getCustomer();
+
+    public List<Customer> getAllCustomers();
 
 	/**
 	 * Inserts a person record using the non-id properties.
