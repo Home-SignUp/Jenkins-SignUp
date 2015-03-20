@@ -1,4 +1,4 @@
-package com.trey.addrbook.e2e.fixture;
+package com.addrbook.e2e.fixture;
 
 import com.addrbook.domain.Person;
 

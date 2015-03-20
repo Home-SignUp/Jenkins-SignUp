@@ -1,4 +1,4 @@
-package com.trey.addrbook.springconfig;
+package com.addrbook.springconfig;
 
 import org.mockito.Mockito;
 import org.springframework.context.annotation.Bean;

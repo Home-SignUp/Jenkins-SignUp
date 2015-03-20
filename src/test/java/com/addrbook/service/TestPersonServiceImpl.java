@@ -3,7 +3,7 @@ package com.addrbook.service;
 import com.addrbook.dao.PersonDao;
 import com.addrbook.domain.Person;
 import com.addrbook.service.fixture.ServiceTestFixture;
-import com.trey.addrbook.springconfig.ServiceTestConfig;
+import com.addrbook.springconfig.ServiceTestConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.invocation.InvocationOnMock;

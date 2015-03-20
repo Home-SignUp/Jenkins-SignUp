@@ -1,11 +1,12 @@
 package com.addrbook.controller;
 
-import static org.mockito.Matchers.*;
-import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.hamcrest.Matchers.*;
-
+import com.addrbook.controller.fixture.ControllerTestFixture;
+import com.addrbook.domain.Person;
+import com.addrbook.exception.PersonNotFoundException;
+import com.addrbook.json.save.SavePersonRequest;
+import com.addrbook.service.PersonService;
+import com.addrbook.springconfig.ControllerTestConfig;
+import com.addrbook.util.DataFactory;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,13 +19,14 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import com.addrbook.controller.fixture.ControllerTestFixture;
-import com.addrbook.domain.Person;
-import com.addrbook.json.save.SavePersonRequest;
-import com.addrbook.exception.PersonNotFoundException;
-import com.addrbook.service.PersonService;
-import com.trey.addrbook.springconfig.ControllerTestConfig;
-import com.addrbook.util.DataFactory;
+import static org.hamcrest.Matchers.is;
+import static org.mockito.Matchers.anyInt;
+import static org.mockito.Matchers.anyObject;
+import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
  * Unit tests the controller, including JSON serialization.
@@ -83,7 +85,8 @@ public class TestPersonController {
 		Person person = f.createTrey();
 		when(mockPersonService.getPersonById(anyInt())).thenReturn(person);
 
-		mockMvc.perform(get("/person?id={id}", 1)
+//        mockMvc.perform(get("/person?id={id}", 1)
+		mockMvc.perform(get("/person/{id}", 1)
 				.accept(TestUtil.APPLICATION_JSON_UTF8)
 				)
 				.andExpect(status().isOk())

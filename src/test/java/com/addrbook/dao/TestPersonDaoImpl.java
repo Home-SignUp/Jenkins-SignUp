@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.addrbook.dao.fixture.DaoImplTestFixture;
 import com.addrbook.domain.Person;
 import com.addrbook.exception.PersonNotFoundException;
-import com.trey.addrbook.springconfig.DaoTestConfig;
+import com.addrbook.springconfig.DaoTestConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { DaoTestConfig.class })
