@@ -14,6 +14,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * REST layer for managing people.
  * 
@@ -57,16 +60,31 @@ public class PersonController {
 		return person.getId();
 	}
 
-    class Ma{
-        private int a =10;
-        private String b = ":adfasdf";
+    class Test{
+        public Test(){}
+        public Test(int a, String b){
+            this.a = a;
+            this.b = b;
+        }
+
+        private int a = 10;
+        private String b = "MyTest";
 
         public int getA() {
             return a;
         }
-
         public String getB() {
             return b;
+        }
+    }
+    class Tests{
+        private List<Test> tests;
+
+        public void setTests(List<Test> tests){
+            this.tests = tests;
+        }
+        public List<Test> getTests(){
+            return tests;
         }
     }
 
@@ -88,12 +106,19 @@ public class PersonController {
         return personDataFactory.createCustomer(personService.getAllCustomers());
     }
 
-//    @RequestMapping(value = "/test", method = RequestMethod.GET, produces = "application/json")
-//    @ResponseBody
-//    public Ma getTest(){
-//        Ma ma =new Ma();
-//     return ma;
-//    }
+    @RequestMapping(value = "/tests", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public Tests getTest(){
+        List<Test> tests = new ArrayList<Test>();
+        tests.add(new Test(1, "MyTest1"));
+        tests.add(new Test(2, "MyTest2"));
+        tests.add(new Test(3, "MyTest3"));
+
+        Tests testsJson = new Tests();
+        testsJson.setTests(tests);
+
+     return testsJson;
+    }
 	
 	// --- Error handlers
 	
