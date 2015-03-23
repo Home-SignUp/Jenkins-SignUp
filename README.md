@@ -83,6 +83,20 @@ http://www.journaldev.com/3358/spring-mvc-requestmapping-annotation-example-with
 * http://localhost:8080/api/person/1
 
 
+###java web patterns & mediator pattern
+
+> Design Patterns web based applications
+>> http://stackoverflow.com/questions/3541077/design-patterns-web-based-applications
+>
+> Web MVC framework
+>> http://docs.spring.io/spring/docs/3.0.x/spring-framework-reference/html/mvc.html
+>
+> Посередник (шаблон проектування)
+>> http://uk.m.wikipedia.org/wiki/Посередник_(шаблон_проектування)
+>>
+>> http://www.uml.org.cn/c++/pdf/DesignPatterns.pdf
+
+
 ###Description
 
 > Разработка Web-приложения (в частности и на Java) это прежде всего коммандная работа. Ее структуру можно представить из звеньевых цеопчек.
@@ -111,5 +125,19 @@ http://www.journaldev.com/3358/spring-mvc-requestmapping-annotation-example-with
 > И на этом уровне тоже применяются шаболоны-проектирования для повышения качества и надежности...
 
 
+###NamedParameterJdbcTemplate & hsql команды
+> http://www.dineshonjava.com/2012/12/using-namedparameterjdbctemplate-in.html#.VQ-2_Z_7t0x
+>
+> http://donklass.net/eclipse/94-servlet-jsp-jpa.html
+>
+> http://rtfm.co.ua/teamcity-migraciya-bazy-dannyx-s-hsqldb-na-mysql/
+>
+> http://www.spring-source.ru/articles.php?type=manual&theme=articles&docs=article_01
+>
+> http://anteastra.blogspot.com/2013/04/hsqldb.html
+>
+> http://habrahabr.ru/sandbox/23199/
+>
+> http://hsqldb.org/
 
 
