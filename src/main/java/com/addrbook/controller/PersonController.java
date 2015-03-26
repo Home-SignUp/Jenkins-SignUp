@@ -3,7 +3,6 @@ package com.addrbook.controller;
 import com.addrbook.domain.Customer;
 import com.addrbook.domain.Person;
 import com.addrbook.exception.PersonNotFoundException;
-import com.addrbook.json.CustomerJsonList;
 import com.addrbook.json.PersonJson;
 import com.addrbook.json.PersonJsonList;
 import com.addrbook.json.save.SavePersonRequest;
@@ -102,23 +101,34 @@ public class PersonController {
 
     @RequestMapping(value = "/customers", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public CustomerJsonList getAllCustomers(){
-        return personDataFactory.createCustomer(personService.getAllCustomers());
+    public List<Customer> getAllCustomers(){
+        return personService.getAllCustomers();
     }
+//    public CustomerJsonList getAllCustomers(){
+//        return personDataFactory.createCustomer(personService.getAllCustomers());
+//    }
 
     @RequestMapping(value = "/tests", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public Tests getTest(){
+    public List<Test> getTest(){
         List<Test> tests = new ArrayList<Test>();
         tests.add(new Test(1, "MyTest1"));
         tests.add(new Test(2, "MyTest2"));
         tests.add(new Test(3, "MyTest3"));
 
-        Tests testsJson = new Tests();
-        testsJson.setTests(tests);
-
-     return testsJson;
+        return tests;
     }
+//    public Tests getTest(){
+//        List<Test> tests = new ArrayList<Test>();
+//        tests.add(new Test(1, "MyTest1"));
+//        tests.add(new Test(2, "MyTest2"));
+//        tests.add(new Test(3, "MyTest3"));
+//
+//        Tests testsJson = new Tests();
+//        testsJson.setTests(tests);
+//
+//     return testsJson;
+//    }
 	
 	// --- Error handlers
 	
