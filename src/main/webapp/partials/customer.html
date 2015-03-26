@@ -25,17 +25,16 @@
             <div class="col-md-12" ng-show="customer.filteredItems > 0">
                 <table class="table table-striped table-bordered">
                 <thead>
-                <th>Customer Name&nbsp;<a ng-click="sort_by('customerName');"><i class="glyphicon glyphicon-sort"></i></a></th>
-                <th>Address&nbsp;<a ng-click="sort_by('addressLine1');"><i class="glyphicon glyphicon-sort"></i></a></th>
-                <th>City&nbsp;<a ng-click="sort_by('city');"><i class="glyphicon glyphicon-sort"></i></a></th>
-                <th>State&nbsp;<a ng-click="sort_by('state');"><i class="glyphicon glyphicon-sort"></i></a></th>
-                <th>Postal Code&nbsp;<a ng-click="sort_by('postalCode');"><i class="glyphicon glyphicon-sort"></i></a></th>
-                <th>Country&nbsp;<a ng-click="sort_by('country');"><i class="glyphicon glyphicon-sort"></i></a></th>
-                <th>Credit Limit&nbsp;<a ng-click="sort_by('creditLimit');"><i class="glyphicon glyphicon-sort"></i></a></th>
+                <th>Customer Name&nbsp;<a ng-click="customer.sort_by('customer.customerName');"><i class="glyphicon glyphicon-sort"></i></a></th>
+                <th>Address&nbsp;<a ng-click="customer.sort_by('customer.addressLine1');"><i class="glyphicon glyphicon-sort"></i></a></th>
+                <th>City&nbsp;<a ng-click="customer.sort_by('customer.city');"><i class="glyphicon glyphicon-sort"></i></a></th>
+                <th>State&nbsp;<a ng-click="customer.sort_by('customer.state');"><i class="glyphicon glyphicon-sort"></i></a></th>
+                <th>Postal Code&nbsp;<a ng-click="customer.sort_by('customer.postalCode');"><i class="glyphicon glyphicon-sort"></i></a></th>
+                <th>Country&nbsp;<a ng-click="customer.sort_by('customer.country');"><i class="glyphicon glyphicon-sort"></i></a></th>
+                <th>Credit Limit&nbsp;<a ng-click="customer.sort_by('customer.creditLimit');"><i class="glyphicon glyphicon-sort"></i></a></th>
                 </thead>
                 <tbody>
-                    <!--<tr ng-repeat="data in filtered = (list | filter:customer.search | orderBy : predicate :reverse) | startFrom:(currentPage-1) * entryLimit | limitTo:entryLimit">-->
-                    <tr ng-repeat="data in customer.list | filter:customer.search">
+                    <tr ng-repeat="data in customer.filtered = (customer.list | filter:customer.search | orderBy : customer.predicate :reverse) | startFrom:(customer.currentPage-1) * customer.entryLimit | limitTo:customer.entryLimit">
                         <td>{{data.customerName}}</td>
                         <td>{{data.addressLine1}}</td>
                         <td>{{data.city}}</td>
