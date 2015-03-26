@@ -104,9 +104,6 @@ public class PersonController {
     public List<Customer> getAllCustomers(){
         return personService.getAllCustomers();
     }
-//    public CustomerJsonList getAllCustomers(){
-//        return personDataFactory.createCustomer(personService.getAllCustomers());
-//    }
 
     @RequestMapping(value = "/tests", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
