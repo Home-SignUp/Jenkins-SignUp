@@ -1,4 +1,9 @@
 
+###Intellij Idea - deploy 2-artifact(s) on 1-AppServer (Tomcat)
+
+> Во вкладке 'Deployment' нужно указать 2-артифакта (в строгом порядке: клиент+сервер) и под разным контекстными путями
+
+
 ###Как реализовать Security в Java EE
 
 > http://devcolibri.com/4575

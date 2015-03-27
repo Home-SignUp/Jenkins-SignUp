@@ -21,7 +21,8 @@ angular.module('app')
                 that.lastRequired = 'Last Name Required';
             }
 
-			$http.post('api/person', {
+			//$http.post('server/api/person', {
+            $http.post('http://localhost:8080/server/api/person', {
 					"userName": that.userName
 					,"firstName": that.firstName
 					,"lastName": that.lastName
@@ -39,7 +40,8 @@ angular.module('app')
 		};
 
         that.searchPerson = function() {
-			$http.get('api/person/' + that.searchPersonId)
+			//$http.get('server/api/person/' + that.searchPersonId)
+            $http.get('http://localhost:8080/server/api/person/' + that.searchPersonId)
 			.success(function(data, status, headers, config) {
 				console.log('data = ' , data);
                     that.person = data;
