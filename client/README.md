@@ -84,15 +84,15 @@
 
 > http://www.dokwork.ru/2012/02/http-java-http.html
 >
-> juravskiy.ru/?p=585
+> http://juravskiy.ru/?p=585
 >
-> scriptsite.ru/article/show/5/
+> http://scriptsite.ru/article/show/5/
 >
-> habrahabr.ru/post/215117/
+> http://habrahabr.ru/post/215117/
 >
-> phpblog.su/php-uroven-2/zapros-head-v-php/
+> http://phpblog.su/php-uroven-2/zapros-head-v-php/
 >
-> www.xiper.net/learn/also-need-to-know/how-does-a-browser-HTTP-request.html
+> http://www.xiper.net/learn/also-need-to-know/how-does-a-browser-HTTP-request.html
 
 
 ###Introduction to Spring Web MVC framework
