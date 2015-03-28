@@ -9,7 +9,7 @@ angular.module('app')
         var that = this;
 
         //$http.get('server/api/customers').success(function(data){
-        $http.get('http://localhost:8080/server/api/customers').success(function(data){
+        $http.get('http://localhost:8081/server/api/customers').success(function(data){
             that.list          = data;
             that.currentPage   = 1;                // current page
             that.entryLimit    = 5;                // max no of items to display in a page
