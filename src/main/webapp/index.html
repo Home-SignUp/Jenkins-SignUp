@@ -1,42 +1,46 @@
-<!doctype html>
-<html lang="en" >
-    <head>
-        <meta charset="utf-8">
-        <title>Jenkins/SignUp</title>
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/app.css">
-        <style type="text/css">
-            ul>li, a{cursor: pointer;}
-        </style>
-    </head>
-    <body ng-app="app">
-        <div class="navbar navbar-default" id="navbar">
-            <div class="container" id="navbar-container">
-                <div class="navbar-header">
-                    <a href="http://jenkins.nc.pb.ua/jenkins" class="navbar-brand"><small><i class="glyphicon glyphicon-log-out"></i>Jenkins</small></a>
-                    <a href="#/customer" class="btn btn-sm btn-danger nav-button-margin"> <i class="glyphicon glyphicon-list-alt"></i>&nbsp;Customer</a>
-                    <a href="#/home" class="btn btn-sm btn-danger nav-button-margin"> <i class="glyphicon glyphicon-home"></i>&nbsp;Home</a>
-                </div>
-                <div class="navbar-header pull-right" role="navigation">
-                    <a href="http://jenkins.nc.pb.ua/jenkins-singup" class="btn btn-sm btn-danger nav-button-margin"> <i class="glyphicon glyphicon-book"></i>&nbsp;SingUp</a>
-                    <a href="https://github.com/Home-SignUp/Jenkins-SignUp-Client" class="btn btn-sm btn-warning nav-button-margin"> <i class="glyphicon glyphicon-download"></i>&nbsp;Download Project</a>
-                    <a href="http://www.tutorialspoint.com/bootstrap/bootstrap_glyph_icons.htm" class="btn btn-sm btn-warning nav-button-margin"> <i class="glyphicon glyphicon-cog"></i>&nbsp;Bootstrap Glyph Icons</a>
-                </div>
-            </div>
-        </div>
+<!DOCTYPE html>
+<html ng-app="myApp">
+<body ng-cloak="">
+  <title>Product Manager Web Application</title>
+  <meta name="Description" content="Product Manager Web Application created with AngularJS and PHP">
+  <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item active" href="#">Inventory</a>
+          <a class="blog-nav-item pull-right" href="http://www.angularcode.com/product-inventory-management-using-angularjs-mysql-and-php-restful-api">Tutorial</a>
+          <a class="blog-nav-item pull-right" href="http://www.angularcode.com/download-link/?url=https://app.box.com/s/pqr0wo3osvoahyh7qtsa">Download</a>
+        </nav>
+      </div>
+    </div>
 
-        <div ng-view></div>
-        <!--<div ng-view="home"></div>-->
+<div class="container">
+    <div class="page-content">
+      <div ng-view="" id="ng-view"></div>
+    </div>
+</div>
 
-        <script src="lib/angular/angular.js"></script>
-        <script src="lib/angular/angular-route.js"></script>
+<!-- Libraries -->
+<script src="js/angular.min.js"></script>
+<script src="js/ui-bootstrap-tpls-0.11.2.min.js"></script>
+<script src="js/angular-route.min.js"></script>
+<script src="js/angular-animate.min.js"></script>
 
-        <script src="lib/common/jquery.min.js"></script>
-        <script src="lib/common/bootstrap.min.js"></script>
-        <script src="lib/common/ui-bootstrap-tpls-0.10.0.min.js"></script>
-        <script src="js/app.js"></script>
-        <script src="js/filter.js"></script>
-        <script src="js/controller-home.js"></script>
-        <script src="js/controller-customer.js"></script>
-    </body>
+<!-- AngularJS custom codes -->
+<script src="app/app.js"></script>
+<script src="app/data.js"></script>
+<script src="app/directives.js"></script>
+<script src="app/productsCtrl.js"></script>
+
+<!-- Some Bootstrap Helper Libraries -->
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/underscore.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="js/ie10-viewport-bug-workaround.js"></script>
+</body>
 </html>
