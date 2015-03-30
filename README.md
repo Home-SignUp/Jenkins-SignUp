@@ -141,3 +141,14 @@ http://www.journaldev.com/3358/spring-mvc-requestmapping-annotation-example-with
 > http://hsqldb.org/
 
 
+###CORS Demo with Angular JS
+
+> * http://draptik.github.io/blog/2013/08/19/angularjs-and-cors/
+>>  https://github.com/draptik/angulardemorestful
+> http://localhost:8081/ngdemo/web/users
+> http://localhost/angularjs/angulardemorestful/frontend/
+>> bower_components angular
+>> https://thinkster.io/egghead/intro-to-bower
+>> https://learn.jquery.com/jquery-ui/environments/bower/
+>> http://bower.io/#installing-bower
+>> http://bower.io/search/
