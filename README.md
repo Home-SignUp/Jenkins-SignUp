@@ -152,3 +152,14 @@ http://www.journaldev.com/3358/spring-mvc-requestmapping-annotation-example-with
 >> https://learn.jquery.com/jquery-ui/environments/bower/
 >> http://bower.io/#installing-bower
 >> http://bower.io/search/
+>>
+>>> cd D:\server\apache-tomcat-7.0.42\bin
+>>> startup
+>>>
+>>> cd D:\server\www\angularjs\angulardemorestful\frontend
+>>> bower install
+>>> bower install jquery
+>>> bower install jquery-ui
+>>> bower install angular
+>>> bower install boostrap
+>>> bower install underscore
