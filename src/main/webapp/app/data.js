@@ -2,7 +2,8 @@ app.factory("Data", ['$http', '$location',
     function ($http, $q, $location) {
 
         //var serviceBase = 'api/v1/';
-        var serviceBase = 'http://localhost/angularjs/product-manager/api/v1/';
+        //var serviceBase = 'http://localhost/angularjs/product-manager/api/v1/';
+        var serviceBase = 'http://10.13.70.25/my_test/angular/product/api/v1/';
 
         var obj = {};
 

@@ -2,6 +2,7 @@
 
 var app = angular.module('myApp', ['ngRoute', 'ui.bootstrap', 'ngAnimate']);
 
+// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 // (angularjs ajax json
 //   https://www.youtube.com/watch?v=kHV7gOHvNdk)
 //   http://blog.hfarazm.com/angularjs-service/
@@ -21,6 +22,19 @@ var app = angular.module('myApp', ['ngRoute', 'ui.bootstrap', 'ngAnimate']);
 // * (AngularJS and CORS) http://draptik.github.io/blog/2013/08/19/angularjs-and-cors/
 //                        https://github.com/draptik/angulardemorestful
 //   http://georgi-naumov.blogspot.com/2014/02/angularjs-http-cors-and-http.html
+// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//   (php cors header json)
+// * (In PHP, you can use the below code to set the headers) http://hayageek.com/cross-domain-ajax-request-jquery/
+//                                                           http://jeffmcmahan.info/blog/sometimes-apache-just-doesnt-like-cors-requests/
+//                                                           http://stackoverflow.com/questions/26417734/set-access-control-allow-origin-without-server-side-scripting
+//   (cors angular)
+// * (How to enable CORS in AngularJs) http://stackoverflow.com/questions/23823010/how-to-enable-cors-in-angularjs
+//
+//   (Enabling Cross Origin Requests for a RESTful Web Service) https://spring.io/guides/gs/rest-service-cors/
+//                                                 (Using CORS) http://www.html5rocks.com/en/tutorials/cors/
+// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 app.config(['$routeProvider', '$httpProvider',
     function($routeProvider, $httpProvider) {
@@ -33,19 +47,6 @@ app.config(['$routeProvider', '$httpProvider',
         .otherwise({
             redirectTo: '/'
             });
-        $httpProvider.defaults.withCredentials = true;
-        delete $httpProvider.defaults.headers.common["X-Requested-With"];
-        //$httpProvider.defaults.headers.get["Content-Type"] = "application/x-www-form-urlencoded";
+        $httpProvider.defaults.useXDomain = true;
+        delete $httpProvider.defaults.headers.common['X-Requested-With'];
     }]);
-//.config(['$httpProvider',
-//    function ($httpProvider) {
-//    //$httpProvider.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
-//    $httpProvider.defaults.headers.get["Content-Type"] = "application/x-www-form-urlencoded";
-//    $httpProvider.defaults.transformRequest = function(data){
-//        if (data === undefined) {
-//            return data;
-//        }
-//        return $.param(data);
-//    }
-//}]);
-    
