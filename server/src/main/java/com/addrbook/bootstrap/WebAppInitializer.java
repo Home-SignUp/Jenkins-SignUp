@@ -1,17 +1,18 @@
 package com.addrbook.bootstrap;
 
-import java.util.Set;
-
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRegistration;
-
+import com.addrbook.service.CORSFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
+
+import javax.servlet.FilterRegistration;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRegistration;
+import java.util.Set;
 
 /**
  * This is the main bootstrap. Note the special interface, which is called on startup.
@@ -39,7 +40,10 @@ public class WebAppInitializer implements WebApplicationInitializer {
 		AnnotationConfigWebApplicationContext mvcContext = new AnnotationConfigWebApplicationContext();
 		mvcContext.register(MvcConfig.class);
 
-		// The main Spring MVC servlet.
+        FilterRegistration.Dynamic corsFilter = servletContext.addFilter("corsFilter", CORSFilter.class);
+        corsFilter.addMappingForUrlPatterns(null, false, "/*");
+
+        // The main Spring MVC servlet.
 		ServletRegistration.Dynamic dispatcher = servletContext.addServlet("dispatcher", new DispatcherServlet(
 				mvcContext));
 		dispatcher.setLoadOnStartup(1);
