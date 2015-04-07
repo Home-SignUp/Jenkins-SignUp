@@ -1,10 +1,10 @@
-<h4 class="blog-post-title">Products</h4>
+<h4 class="blog-post-title">Users</h4>
 <hr/>
-<button type="button" class="btn btn-danger fa fa-plus" ng-click="open(product);">&nbsp;Add New Product</button>
+<button type="button" class="btn btn-danger fa fa-plus" ng-click="open(product);">&nbsp;Add New User</button>
 
 <div class="table-responsive">
 <div class="panel panel-primary">
-  <div class="panel-heading">List of products
+  <div class="panel-heading">List of users
       <div class="sw-search" >
             <div class="nav-search" id="nav-search">
                     Filter: <span class="input-icon">
