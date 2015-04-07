@@ -163,3 +163,54 @@ http://www.journaldev.com/3358/spring-mvc-requestmapping-annotation-example-with
 >>> bower install angular
 >>> bower install boostrap
 >>> bower install underscore
+
+
+###Ссылки на последние статьи (Запрос из постороннего источника заблокирован: Политика одного источника запрещает чтение удаленного ресурса)
+
+> http://hashcode.ru/questions/388036/javascript-помогите-побороть-cors-в-angularjs
+> 
+> http://overcram.com/questions/?qid=585886
+> 
+> https://toster.ru/q/159325
+> 
+> http://habrahabr.ru/post/120336/
+> 
+> http://angular-tips.com/blog/2014/08/tip-accessing-filtered-array-outside-ng-repeat/
+> 
+> https://toster.ru/q/159325
+> 
+> https://toster.ru/q/114947
+> 
+> http://habrahabr.ru/post/120336/
+>
+> (AngularJS CORS detection) http://embed.plnkr.co/1E8ot9e1eVs23IrjzqKr/preview
+>
+> (сервер)  http://localhost:8080/client/#/
+>
+> (клиент) http://10.13.70.25/my_test/angular/product/#/
+>
+> (release-1.1) https://github.com/Home-SignUp/Jenkins-SignUp/tree/release-1.1/src/main/webapp/app
+>
+> http://stackoverflow.com/questions/10640596/header-set-access-control-allow-origin-in-htaccess-doesnt-work
+>
+> http://blog.revolunet.com/blog/2013/10/03/universal-CORS-htaccess/
+>
+> http://embed.plnkr.co/1E8ot9e1eVs23IrjzqKr/preview
+>
+> cors angular проблема post put)
+>
+> * http://fastcodenote.blogspot.com/2014/02/cors-get-post-delete-etc.html
+>
+> https://htet101.wordpress.com/2014/01/22/cors-with-angularjs-and-spring-rest/
+>
+> * http://overcram.com/questions/?qid=875596
+>
+> http://oleg.so/2013/08/05/cors-angularjs-node-js/
+>
+> * http://www.slideshare.net/yandex/ajax-28034161
+>
+> * http://spring-projects.ru/guides/rest-service-cors/
+>
+> (JS модуль для Java разработчиков) http://habrahabr.ru/post/165085/
+>
+> (Web-сервисы и спецификация SOAP) http://www.ccc.ru/magazine/depot/03_01/read.html?0204.htm
