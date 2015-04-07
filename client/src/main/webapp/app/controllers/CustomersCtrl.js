@@ -1,10 +1,10 @@
 'use strict';
 
-/* Controller-Customer */
+/* CustomersCrtl */
 
 angular.module('app')
 
-.controller('customersCrtl', ['$scope', '$http', '$timeout',
+.controller('CustomersCrtl', ['$scope', '$http', '$timeout',
     function ($scope, $http, $timeout) {
         var that = this;
 

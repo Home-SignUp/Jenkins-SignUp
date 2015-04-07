@@ -13,11 +13,11 @@ app.config(['$routeProvider', '$httpProvider',
 			})
             .when('/customer', {
                 templateUrl: 'partials/customer.tpl',
-                controller: 'customersCrtl'
+                controller: 'CustomersCrtl'
             })
             .when('/products', {
                 templateUrl: 'partials/products.tpl',
-                controller: 'productsCtrl'
+                controller: 'ProductsCtrl'
             })
             .otherwise({
 				redirectTo: '/products'

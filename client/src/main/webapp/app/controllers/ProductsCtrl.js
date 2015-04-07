@@ -1,4 +1,10 @@
-app.controller('productsCtrl', function ($scope, $modal, $filter, Data) {
+'use strict';
+
+/* ProductsCtrl */
+
+angular.module('app')
+
+.controller('ProductsCtrl', function ($scope, $modal, $filter, Data) {
     $scope.product = {};
     Data.get('products').then(function(data){
         $scope.products = data.data;
@@ -49,10 +55,10 @@ app.controller('productsCtrl', function ($scope, $modal, $filter, Data) {
                     {text:"Action",predicate:"",sortable:false}
                 ];
 
-});
+})
 
 
-app.controller('productEditCtrl', function ($scope, $modalInstance, item, Data) {
+.controller('productEditCtrl', function ($scope, $modalInstance, item, Data) {
 
   $scope.product = angular.copy(item);
         

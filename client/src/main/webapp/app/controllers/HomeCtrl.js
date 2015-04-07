@@ -1,6 +1,6 @@
 'use strict';
 
-/* Controller-Home */
+/* HomeCtrl */
 
 angular.module('app')
 

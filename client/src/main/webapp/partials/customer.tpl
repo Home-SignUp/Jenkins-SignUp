@@ -1,4 +1,4 @@
-<div ng-controller="customersCrtl as customer">
+<div ng-controller="CustomersCrtl as customer">
     <div class="container">
     <br/>
     <blockquote><h4><a href="http://jsfiddle.net/mjaric/pJ5BR/">List all users:</a></h4></blockquote>
