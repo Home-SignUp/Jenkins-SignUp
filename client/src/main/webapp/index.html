@@ -18,14 +18,18 @@
         <div class="blog-masthead">
             <div class="container">
                 <nav class="blog-nav">
-                    <a class="blog-nav-item" href="#/customer" ng-hide="isLoggedIn" ng-class="{active: isActive('/customer')}">Customer</a>
                     <a class="blog-nav-item" href="#/products" ng-class="{active: isActive('/products')}">Users</a>
+                    <a class="blog-nav-item" href="#/customer" ng-class="{active: isActive('/customer')}">Customer</a>
                     <a class="btn btn-sm btn-danger nav-button-margin pull-right" href="#/home"> <i class="glyphicon glyphicon-book"></i>&nbsp;SingUp</a>
                 </nav>
             </div>
         </div>
 
-        <div ng-view></div>
+        <div class="container">
+            <div class="page-content">
+                <div ng-view></div>
+            </div>
+        </div>
 
 
         <!-- Libraries -->
@@ -36,7 +40,8 @@
         <!-- Some Bootstrap Helper Libraries -->
         <script src="lib/jquery.min.js"></script>
         <script src="lib/bootstrap.min.js"></script>
-        <script src="lib/ui-bootstrap-tpls-0.11.2.min.js"></script>
+        <!--<script src="lib/ui-bootstrap-tpls-0.11.2.min.js"></script>-->
+        <script src="lib/common/ui-bootstrap-tpls-0.10.0.min.js"></script>
         <script src="lib/underscore.min.js"></script>
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
         <script src="lib/ie10-viewport-bug-workaround.js"></script>

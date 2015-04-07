@@ -1,4 +1,3 @@
-<h4 class="blog-post-title">Users</h4>
 <hr/>
 <button type="button" class="btn btn-danger fa fa-plus" ng-click="open(product);">&nbsp;Add New User</button>
 

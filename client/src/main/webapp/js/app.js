@@ -8,11 +8,11 @@ app.config(['$routeProvider', '$httpProvider',
 	function($routeProvider, $httpProvider) {
 		$routeProvider
             .when('/home', {
-				templateUrl: 'partials/home.html',
+				templateUrl: 'partials/home.tpl',
 				controller: 'HomeCtrl'
 			})
             .when('/customer', {
-                templateUrl: 'partials/customer.html',
+                templateUrl: 'partials/customer.tpl',
                 controller: 'customersCrtl'
             })
             .when('/products', {
@@ -20,7 +20,7 @@ app.config(['$routeProvider', '$httpProvider',
                 controller: 'productsCtrl'
             })
             .otherwise({
-				redirectTo: '/customer'
+				redirectTo: '/products'
 			});
         $httpProvider.defaults.useXDomain = true;
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
