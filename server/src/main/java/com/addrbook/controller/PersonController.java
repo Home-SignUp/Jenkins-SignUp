@@ -111,9 +111,19 @@ public class PersonController {
     public ProductJson getAllProducts(){
         return personDataFactory.createProduct("success", "Data selected from database", personService.getAllProducts());
     }
-//    public List<Product> getAllProducts(){
-//        return personService.getAllProducts();
+
+    // (spring @requestmapping request body)
+    // http://www.leveluplunch.com/java/tutorials/014-post-json-to-spring-rest-webservice/
+    // http://stackoverflow.com/questions/19468572/spring-mvc-why-not-able-to-use-requestbody-and-requestparam-together
+    // http://stackoverflow.com/questions/20400233/spring-mvc-requestmapping-from-json
+    // http://blog.zenika.com/index.php?post/2013/07/11/Documenting-a-REST-API-with-Swagger-and-Spring-MVC
+//    @RequestMapping(value = "/products/{id}", method = RequestMethod.PUT, produces = "application/json")
+//    @ResponseStatus(HttpStatus.ACCEPTED)
+//    @ResponseBody
+//    public String getActive(@PathVariable Integer id, @RequestBody String body, @RequestParam String name, Model model) {
+////        return indexController.indexData(endpoint, type, id, body,  getSecurityContextProvider(request));
 //    }
+
 
     @RequestMapping(value = "/tests", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
