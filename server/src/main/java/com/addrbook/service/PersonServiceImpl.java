@@ -4,6 +4,7 @@ import com.addrbook.dao.PersonDao;
 import com.addrbook.dao.PersonDaoImpl;
 import com.addrbook.domain.Customer;
 import com.addrbook.domain.Person;
+import com.addrbook.domain.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,6 +37,10 @@ public class PersonServiceImpl implements PersonService {
 
     public List<Customer> getAllCustomers() {
         return personDao.getAllCustomers();
+    }
+
+    public List<Product> getAllProducts() {
+        return personDao.getAllProducts();
     }
 
 	@Transactional

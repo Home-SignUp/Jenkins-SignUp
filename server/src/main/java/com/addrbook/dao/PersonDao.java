@@ -2,6 +2,7 @@ package com.addrbook.dao;
 
 import com.addrbook.domain.Customer;
 import com.addrbook.domain.Person;
+import com.addrbook.domain.Product;
 
 import java.util.List;
 
@@ -24,6 +25,8 @@ public interface PersonDao {
     public Customer getCustomer();
 
     public List<Customer> getAllCustomers();
+
+    public List<Product> getAllProducts();
 
 	/**
 	 * Inserts a person record using the non-id properties.

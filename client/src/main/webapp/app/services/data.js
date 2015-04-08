@@ -3,7 +3,8 @@ app.factory("Data", ['$http', '$location',
 
         //var serviceBase = 'api/v1/';
         //var serviceBase = 'http://127.0.0.1/angularjs/lesson-products/api/v1/';
-        var serviceBase = 'http://10.13.70.25/my_test/angular/product/api/v1/';
+        var serviceBase = 'http://localhost:8081/server/api/';
+        //var serviceBase = 'http://10.13.70.25/my_test/angular/product/api/v1/';
 
         var obj = {};
 

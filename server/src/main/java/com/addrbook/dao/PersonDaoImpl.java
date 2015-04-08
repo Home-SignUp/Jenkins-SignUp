@@ -2,6 +2,7 @@ package com.addrbook.dao;
 
 import com.addrbook.domain.Customer;
 import com.addrbook.domain.Person;
+import com.addrbook.domain.Product;
 import com.addrbook.exception.PersonNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -75,6 +76,15 @@ public class PersonDaoImpl implements PersonDao {
         }
     }
 
+    public List<Product> getAllProducts(){
+        List<Product> list = jdbcTemplate.query("select * from products", new ProductRowMapper());
+        if (list.isEmpty()) {
+            throw new PersonNotFoundException("No product found");
+        } else {
+            return list;
+        }
+    }
+
 	public void insert(Person person) {
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 
@@ -126,6 +136,24 @@ public class PersonDaoImpl implements PersonDao {
             c.setSalesRepEmployeeNumber(res.getInt("salesRepEmployeeNumber"));
             c.setCreditLimit(res.getDouble("creditLimit"));
             return c;
+        }
+    }
+
+    private static class ProductRowMapper implements RowMapper<Product> {
+        public Product mapRow(ResultSet res, int rowNum) throws SQLException {
+            Product p = new Product();
+            p.setId(res.getInt("id"));
+            p.setSku(res.getInt("sku"));
+            p.setName(res.getString("name"));
+            p.setPrice(res.getDouble("price"));
+            p.setMrp(res.getDouble("mrp"));
+            p.setDescription(res.getString("description"));
+            p.setPacking(res.getString("packing"));
+            p.setImage(res.getString("image"));
+            p.setCategory(res.getInt("category"));
+            p.setStock(res.getInt("stock"));
+            p.setStatus(res.getString("status"));
+            return  p;
         }
     }
 

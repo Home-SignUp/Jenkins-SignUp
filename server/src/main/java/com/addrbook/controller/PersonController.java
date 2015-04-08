@@ -5,6 +5,7 @@ import com.addrbook.domain.Person;
 import com.addrbook.exception.PersonNotFoundException;
 import com.addrbook.json.PersonJson;
 import com.addrbook.json.PersonJsonList;
+import com.addrbook.json.ProductJson;
 import com.addrbook.json.save.SavePersonRequest;
 import com.addrbook.service.PersonService;
 import com.addrbook.util.DataFactory;
@@ -104,6 +105,15 @@ public class PersonController {
     public List<Customer> getAllCustomers(){
         return personService.getAllCustomers();
     }
+
+    @RequestMapping(value = "/products", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public ProductJson getAllProducts(){
+        return personDataFactory.createProduct("success", "Data selected from database", personService.getAllProducts());
+    }
+//    public List<Product> getAllProducts(){
+//        return personService.getAllProducts();
+//    }
 
     @RequestMapping(value = "/tests", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody

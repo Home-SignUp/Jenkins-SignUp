@@ -2,9 +2,11 @@ package com.addrbook.util;
 
 import com.addrbook.domain.Customer;
 import com.addrbook.domain.Person;
+import com.addrbook.domain.Product;
 import com.addrbook.json.CustomerJsonList;
 import com.addrbook.json.PersonJson;
 import com.addrbook.json.PersonJsonList;
+import com.addrbook.json.ProductJson;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -72,6 +74,14 @@ public class DataFactory {
 
         CustomerJsonList lJson = new CustomerJsonList();
         lJson.setCustomerJson(jsons);
+        return lJson;
+    }
+
+    public ProductJson createProduct(String status, String message, List<Product> domains) {
+        ProductJson lJson = new ProductJson();
+        lJson.setStatus(status);
+        lJson.setMessage(message);
+        lJson.setData(domains);
         return lJson;
     }
 }

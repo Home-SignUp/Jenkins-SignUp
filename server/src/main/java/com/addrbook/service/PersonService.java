@@ -2,6 +2,7 @@ package com.addrbook.service;
 
 import com.addrbook.domain.Customer;
 import com.addrbook.domain.Person;
+import com.addrbook.domain.Product;
 
 import java.util.List;
 
@@ -23,6 +24,8 @@ public interface PersonService {
     public Customer getCustomer();
 
     public List<Customer> getAllCustomers();
+
+    public List<Product> getAllProducts();
 
 	/**
 	 * Creates a new Person and populates the <code>id</code> property with the generated id.
