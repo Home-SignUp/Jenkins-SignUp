@@ -39,6 +39,10 @@ public class PersonServiceImpl implements PersonService {
         return personDao.getAllCustomers();
     }
 
+    public Product getProductById(Integer id) {
+        return personDao.findProductById(id);
+    }
+
     public List<Product> getAllProducts() {
         return personDao.getAllProducts();
     }
@@ -48,8 +52,11 @@ public class PersonServiceImpl implements PersonService {
 		personDao.insert(person);
 	}
 
-//	public void updatePerson(Person p) {
-//		personDao.update(p);
-//	}
+	public void updatePerson(Person p) {
+		personDao.update(p);
+	}
 
+    public void updateProduct(Product p) {
+        personDao.update(p);
+    }
 }

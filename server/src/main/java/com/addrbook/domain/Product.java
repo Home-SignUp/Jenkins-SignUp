@@ -16,6 +16,21 @@ public class Product {
     private Integer stock;
     private String status;
 
+    public Product(){}
+    public Product(Product product){
+        this.id = product.id;
+        this.sku = product.sku;
+        this.name = product.name;
+        this.price = product.price;
+        this.mrp = product.mrp;
+        this.description = product.description;
+        this.packing = product.packing;
+        this.image = product.image;
+        this.category = product.category;
+        this.stock = product.stock;
+        this.status = product.status;
+    }
+
     public Integer getId(){
         return id;
     }

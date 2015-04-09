@@ -25,6 +25,8 @@ public interface PersonService {
 
     public List<Customer> getAllCustomers();
 
+    public Product getProductById(Integer id);
+
     public List<Product> getAllProducts();
 
 	/**
@@ -36,6 +38,8 @@ public interface PersonService {
 //	/**
 //	 * @param person The person to be updated.
 //	 */
-//	public void updatePerson(Person person);
+	public void updatePerson(Person person);
+
+    public void updateProduct(Product person);
 
 }

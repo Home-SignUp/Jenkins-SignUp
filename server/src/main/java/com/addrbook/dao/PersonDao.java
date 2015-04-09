@@ -26,7 +26,11 @@ public interface PersonDao {
 
     public List<Customer> getAllCustomers();
 
+    Product findProductById(Integer id);
+
     public List<Product> getAllProducts();
+
+    void update(Product p);
 
 	/**
 	 * Inserts a person record using the non-id properties.

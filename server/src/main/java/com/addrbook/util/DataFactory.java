@@ -77,6 +77,10 @@ public class DataFactory {
         return lJson;
     }
 
+    public Product createProduct(Product domain) {
+        return new Product(domain);
+    }
+
     public ProductJson createProduct(String status, String message, List<Product> domains) {
         ProductJson lJson = new ProductJson();
         lJson.setStatus(status);

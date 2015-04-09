@@ -76,12 +76,34 @@ public class PersonDaoImpl implements PersonDao {
         }
     }
 
+    public Product findProductById(Integer id) {
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("id", id);
+
+        List<Product> list = jdbcTemplate.query("select * from products where id = :id", params, new ProductRowMapper());
+        if (list.isEmpty()) {
+            throw new PersonNotFoundException("No product found for id: " + id);
+        } else {
+            return list.get(0);
+        }
+    }
+
     public List<Product> getAllProducts(){
         List<Product> list = jdbcTemplate.query("select * from products", new ProductRowMapper());
         if (list.isEmpty()) {
             throw new PersonNotFoundException("No product found");
         } else {
             return list;
+        }
+    }
+
+    public void update(Product product) {
+        int numRowsAffected = jdbcTemplate.update(
+                "update products set status = :status, name = :name, description = :description, price = :price, stock = :stock, packing = :packing where id = :id",
+                new BeanPropertySqlParameterSource(product));
+
+        if (numRowsAffected == 0) {
+            throw new PersonNotFoundException("No product found for id: " + product.getId());
         }
     }
 

@@ -2,6 +2,7 @@ package com.addrbook.controller;
 
 import com.addrbook.domain.Customer;
 import com.addrbook.domain.Person;
+import com.addrbook.domain.Product;
 import com.addrbook.exception.PersonNotFoundException;
 import com.addrbook.json.PersonJson;
 import com.addrbook.json.PersonJsonList;
@@ -112,17 +113,54 @@ public class PersonController {
         return personDataFactory.createProduct("success", "Data selected from database", personService.getAllProducts());
     }
 
+    // (mvn -P=systest test) http://habrahabr.ru/post/146984/
     // (spring @requestmapping request body)
     // http://www.leveluplunch.com/java/tutorials/014-post-json-to-spring-rest-webservice/
     // http://stackoverflow.com/questions/19468572/spring-mvc-why-not-able-to-use-requestbody-and-requestparam-together
     // http://stackoverflow.com/questions/20400233/spring-mvc-requestmapping-from-json
     // http://blog.zenika.com/index.php?post/2013/07/11/Documenting-a-REST-API-with-Swagger-and-Spring-MVC
-//    @RequestMapping(value = "/products/{id}", method = RequestMethod.PUT, produces = "application/json")
-//    @ResponseStatus(HttpStatus.ACCEPTED)
-//    @ResponseBody
-//    public String getActive(@PathVariable Integer id, @RequestBody String body, @RequestParam String name, Model model) {
-////        return indexController.indexData(endpoint, type, id, body,  getSecurityContextProvider(request));
-//    }
+    // * http://ryanjbaxter.com/2014/12/17/building-rest-apis-with-spring-boot/
+    @RequestMapping(value = "/products/{id}", method = RequestMethod.PUT, produces = "application/json")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public ProductActive getProductActiveId(@PathVariable("id") Integer id, @RequestBody Product product) {
+        Product updateProduct = personDataFactory.createProduct(personService.getProductById(id));
+        updateProduct.setCategory(product.getCategory());
+        updateProduct.setDescription(product.getDescription());
+        updateProduct.setImage(product.getImage());
+        updateProduct.setMrp(product.getMrp());
+        updateProduct.setName(product.getName());
+        updateProduct.setPacking(product.getPacking());
+        updateProduct.setPrice(product.getPrice());
+        updateProduct.setSku(product.getSku());
+        updateProduct.setStatus(product.getStatus());
+        updateProduct.setStock(product.getStock());
+        personService.updateProduct(updateProduct);
+
+        ProductActive active = new ProductActive();
+        active.setStatus("success");
+        active.setMessage("Product information updated successfully.");
+
+        return active;
+    }
+
+    class ProductActive{
+        private String status;
+        private String message;
+
+        public String getStatus(){
+            return status;
+        }
+        public String getMessage(){
+            return message;
+        }
+        public void setStatus(String status){
+            this.status = status;
+        }
+        public void setMessage(String message){
+            this.message = message;
+        }
+    }
 
 
     @RequestMapping(value = "/tests", method = RequestMethod.GET, produces = "application/json")
