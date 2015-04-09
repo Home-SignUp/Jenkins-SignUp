@@ -124,25 +124,65 @@ public class PersonController {
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public ProductActive getProductActiveId(@PathVariable("id") Integer id, @RequestBody Product product) {
+        ProductActive  active = new ProductActive();
         Product updateProduct = personDataFactory.createProduct(personService.getProductById(id));
-        updateProduct.setCategory(product.getCategory());
-        updateProduct.setDescription(product.getDescription());
-        updateProduct.setImage(product.getImage());
-        updateProduct.setMrp(product.getMrp());
-        updateProduct.setName(product.getName());
-        updateProduct.setPacking(product.getPacking());
-        updateProduct.setPrice(product.getPrice());
-        updateProduct.setSku(product.getSku());
-        updateProduct.setStatus(product.getStatus());
-        updateProduct.setStock(product.getStock());
-        personService.updateProduct(updateProduct);
 
-        ProductActive active = new ProductActive();
-        active.setStatus("success");
-        active.setMessage("Product information updated successfully.");
+        updateProduct.setStatus(product.getStatus());
+        personService.updateProduct(updateProduct);
+        try {
+            updateProduct.setCategory(product.getCategory());
+            updateProduct.setDescription(product.getDescription());
+            updateProduct.setImage(product.getImage());
+            updateProduct.setMrp(product.getMrp());
+            updateProduct.setName(product.getName());
+            updateProduct.setPacking(product.getPacking());
+            updateProduct.setPrice(product.getPrice());
+            updateProduct.setSku(product.getSku());
+            updateProduct.setStatus(product.getStatus());
+            updateProduct.setStock(product.getStock());
+            personService.updateProduct(updateProduct);
+            active.setStatus("success");
+            active.setMessage("Product information Full-Updated Successfully.");
+        } catch (Exception e){
+            active.setStatus("success");
+            active.setMessage("Product information Status-Updated Successfully.");
+        } finally {}
 
         return active;
     }
+
+//    public ProductActive getProductActiveId(@PathVariable("id") Integer id, @RequestBody @Valid Product product, BindingResult bindingResult) {
+//        ProductActive  active = new ProductActive();
+//        Product updateProduct = personDataFactory.createProduct(personService.getProductById(id));
+//
+//        System.out.println( "getErrorCount="+bindingResult.getErrorCount() );
+//        try {
+//            System.out.println( "product-length="+product.getClass().getField("category").toString() );
+//        } catch (NoSuchFieldException e) {
+//        }
+//
+//        if( bindingResult.hasErrors() ) {
+//            active.setStatus("error");
+//            active.setMessage("Not valid passed params.");
+//        } else {
+////            Product updateProduct = personDataFactory.createProduct(personService.getProductById(id));
+////            updateProduct.setCategory(product.getCategory());
+////            updateProduct.setDescription(product.getDescription());
+////            updateProduct.setImage(product.getImage());
+////            updateProduct.setMrp(product.getMrp());
+////            updateProduct.setName(product.getName());
+////            updateProduct.setPacking(product.getPacking());
+////            updateProduct.setPrice(product.getPrice());
+////            updateProduct.setSku(product.getSku());
+////            updateProduct.setStatus(product.getStatus());
+////            updateProduct.setStock(product.getStock());
+////
+////            personService.updateProduct(updateProduct);
+//            active.setStatus("success");
+//            active.setMessage("Product information updated successfully.");
+//        }
+//        return active;
+//    }
 
     class ProductActive{
         private String status;
