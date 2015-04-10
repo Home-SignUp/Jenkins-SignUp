@@ -1,22 +1,52 @@
 package com.addrbook.domain;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 /**
  * Created by alexandr on 08.04.15.
  */
 public class Product {
     private Integer id;
     private Integer sku;
+    @Size(max = 64)
+    @NotNull(message = "Message name must not be blank!")
     private String name;
+    @Size(max = 64)
+    @NotNull(message = "Message price must not be blank!")
     private Double price;
     private Double mrp;
+    @Size(max = 64)
+    @NotNull(message = "Message description must not be blank!")
     private String description;
+    @Size(max = 64)
+    @NotNull(message = "Message packing must not be blank!")
     private String packing;
     private String image;
+    @Size(max = 64)
+    @NotNull(message = "Message category must not be blank!")
     private Integer category;
+    @Size(max = 64)
+    @NotNull(message = "Message stock must not be blank!")
     private Integer stock;
+    @Size(max = 64)
+    @NotNull(message = "Message status must not be blank!")
     private String status;
 
     public Product(){}
+    public Product(Integer id, Integer sku, String name, Double price, Double mrp, String description, String packing, String image, Integer category, Integer stock, String status){
+        this.id = id;
+        this.sku = sku;
+        this.name = name;
+        this.price = price;
+        this.mrp = mrp;
+        this.description = description;
+        this.packing = packing;
+        this.image = image;
+        this.category = category;
+        this.stock = stock;
+        this.status = status;
+    }
     public Product(Product product){
         this.id = product.id;
         this.sku = product.sku;
@@ -97,5 +127,23 @@ public class Product {
     }
     public void setStatus(String status){
         this.status = status;
+    }
+
+    // https://plugins.jetbrains.com/plugin/7244?pr=
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", sku=" + sku +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", mrp=" + mrp +
+                ", description='" + description + '\'' +
+                ", packing='" + packing + '\'' +
+                ", image='" + image + '\'' +
+                ", category=" + category +
+                ", stock=" + stock +
+                ", status='" + status + '\'' +
+                '}';
     }
 }

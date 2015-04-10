@@ -12,9 +12,17 @@ import com.addrbook.service.PersonService;
 import com.addrbook.util.DataFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +32,8 @@ import java.util.List;
  * @author Adapted from http://codetutr.com/2013/04/09/spring-mvc-easy-rest-based-json-services-with-responsebody/
  */
 @Controller
+//@RestController
+@Validated
 public class PersonController {
 
 	private PersonService personService;
@@ -123,13 +133,28 @@ public class PersonController {
     @RequestMapping(value = "/products/{id}", method = RequestMethod.PUT, produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
-    public ProductActive getProductActiveId(@PathVariable("id") Integer id, @RequestBody Product product) {
+    public ProductActive getProductActiveId(@PathVariable("id") Integer id, @RequestBody @NotNull @Valid final Product product, BindingResult bindingResult) {
+
+//        if(product.getCategory() != null) System.out.println(product.getCategory());
+//        if(product.getDescription() != null) System.out.println(product.getDescription());
+//        if(product.getImage() != null) System.out.println(product.getImage());
+//        if(product.getMrp() != null) System.out.println(product.getMrp());
+//        if(product.getName() != null) System.out.println(product.getName());
+//        if(product.getPacking() != null) System.out.println(product.getPacking());
+//        if(product.getPrice() != null) System.out.println(product.getPrice());
+//        if(product.getSku() != null) System.out.println(product.getSku());
+//        if(product.getStatus() != null) System.out.println(product.getStatus());
+//        if(product.getStock() != null) System.out.println(product.getStock());
+
         ProductActive  active = new ProductActive();
         Product updateProduct = personDataFactory.createProduct(personService.getProductById(id));
-
-        updateProduct.setStatus(product.getStatus());
-        personService.updateProduct(updateProduct);
-        try {
+        if( product.getName() != null
+                && product.getPrice() != null
+                && product.getDescription() != null
+                && product.getPacking() != null
+                && product.getCategory() != null
+                && product.getStock() != null
+                && product.getStatus() != null ){
             updateProduct.setCategory(product.getCategory());
             updateProduct.setDescription(product.getDescription());
             updateProduct.setImage(product.getImage());
@@ -140,49 +165,53 @@ public class PersonController {
             updateProduct.setSku(product.getSku());
             updateProduct.setStatus(product.getStatus());
             updateProduct.setStock(product.getStock());
-            personService.updateProduct(updateProduct);
             active.setStatus("success");
             active.setMessage("Product information Full-Updated Successfully.");
-        } catch (Exception e){
+        } else {
+            updateProduct.setStatus(product.getStatus());
             active.setStatus("success");
             active.setMessage("Product information Status-Updated Successfully.");
-        } finally {}
+        }
+        personService.updateProduct(updateProduct);
 
         return active;
+
+//        updateProduct.setStatus(product.getStatus());
+//        personService.updateProduct(updateProduct);
+//        try {
+//            updateProduct.setCategory(product.getCategory());
+//            updateProduct.setDescription(product.getDescription());
+//            updateProduct.setImage(product.getImage());
+//            updateProduct.setMrp(product.getMrp());
+//            updateProduct.setName(product.getName());
+//            updateProduct.setPacking(product.getPacking());
+//            updateProduct.setPrice(product.getPrice());
+//            updateProduct.setSku(product.getSku());
+//            updateProduct.setStatus(product.getStatus());
+//            updateProduct.setStock(product.getStock());
+//            personService.updateProduct(updateProduct);
+//            active.setStatus("success");
+//            active.setMessage("Product information Full-Updated Successfully.");
+//        } catch (Exception e){
+//            active.setStatus("success");
+//            active.setMessage("Product information Status-Updated Successfully.");
+//        } finally {}
     }
 
-//    public ProductActive getProductActiveId(@PathVariable("id") Integer id, @RequestBody @Valid Product product, BindingResult bindingResult) {
-//        ProductActive  active = new ProductActive();
-//        Product updateProduct = personDataFactory.createProduct(personService.getProductById(id));
-//
-//        System.out.println( "getErrorCount="+bindingResult.getErrorCount() );
-//        try {
-//            System.out.println( "product-length="+product.getClass().getField("category").toString() );
-//        } catch (NoSuchFieldException e) {
-//        }
-//
-//        if( bindingResult.hasErrors() ) {
-//            active.setStatus("error");
-//            active.setMessage("Not valid passed params.");
-//        } else {
-////            Product updateProduct = personDataFactory.createProduct(personService.getProductById(id));
-////            updateProduct.setCategory(product.getCategory());
-////            updateProduct.setDescription(product.getDescription());
-////            updateProduct.setImage(product.getImage());
-////            updateProduct.setMrp(product.getMrp());
-////            updateProduct.setName(product.getName());
-////            updateProduct.setPacking(product.getPacking());
-////            updateProduct.setPrice(product.getPrice());
-////            updateProduct.setSku(product.getSku());
-////            updateProduct.setStatus(product.getStatus());
-////            updateProduct.setStock(product.getStock());
-////
-////            personService.updateProduct(updateProduct);
-//            active.setStatus("success");
-//            active.setMessage("Product information updated successfully.");
-//        }
-//        return active;
-//    }
+    // http://elleinfonotes.blogspot.com/2013/01/spring-30-validation-and-errorhandling.html
+    // http://blog.goyello.com/2011/12/16/enhancements-spring-mvc31/
+    // http://www.infoq.com/articles/boot-microservices
+    /// http://ryanjbaxter.com/2014/12/17/building-rest-apis-with-spring-boot/
+    // http://langmnm.iteye.com/blog/2078439
+    // http://www.codesandnotes.be/2014/12/18/validating-spring-rest-controllers-beans-using-the-bean-validation-api-and-writing-the-tests-for-it/
+    // http://www.petrikainulainen.net/programming/spring-framework/spring-from-the-trenches-adding-validation-to-a-rest-api/
+    // http://www.petrikainulainen.net/programming/jooq/using-jooq-with-spring-crud/
+    // http://www.captechconsulting.com/blogs/versioned-validated-and-secured-rest-services-with-spring-40
+    // http://www.petrikainulainen.net/programming/spring-framework/creating-a-rest-api-with-spring-boot-and-mongodb/
+    /// http://fruzenshtein.com/spring-rest-exception-handling-3/
+    // http://stackoverflow.com/questions/18613027/validator-for-methodargumentnotvalidexception-only-handles-constraint-of-same-ty
+    // http://elleinfonotes.blogspot.com/2013/01/spring-30-validation-and-errorhandling.html
+    // http://www.jayway.com/2012/09/23/improve-your-spring-rest-api-part-ii/
 
     class ProductActive{
         private String status;
@@ -226,7 +255,7 @@ public class PersonController {
 //    }
 	
 	// --- Error handlers
-	
+
 	@ExceptionHandler(PersonNotFoundException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	@ResponseBody
@@ -234,4 +263,52 @@ public class PersonController {
 		return e.getMessage();
 	}
 
+//    // valid exception
+//    @ExceptionHandler(MethodArgumentNotValidException.class)
+//    @ResponseStatus(HttpStatus.BAD_REQUEST)
+//    @ResponseBody
+//    public String handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
+//        BindingResult bindingResult = ex.getBindingResult();
+//        String errorMesssage = "Invalid Request:";
+//
+//        for (FieldError fieldError : bindingResult.getFieldErrors()) {
+//            errorMesssage += fieldError.getDefaultMessage() + ", ";
+//        }
+//        return "Invalid Request:";
+//    }
+
+    // JSON convert exception
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public String handleHttpMessageNotReadableException(HttpMessageNotReadableException ex) {
+        return "json convert failure!";
+    }
+
+    // JSON convert exception
+    @ExceptionHandler(NullPointerException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public String handleHttpMessageNotReadableException(NullPointerException ex) {
+        return "json NullPointerException!";
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public String handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
+        BindingResult bindingResult = ex.getBindingResult();
+        List<FieldError> errors = bindingResult.getFieldErrors();
+        StringBuffer customMessage = new StringBuffer();
+        for (FieldError error : errors ) {
+            customMessage.append(error.getObjectName() +"." + error.getField() +" "+ error.getDefaultMessage()+"\n");
+        }
+        return customMessage.toString();
+    }
+
+    @ExceptionHandler(IOException.class)
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    public String handleIOException(MethodArgumentNotValidException ex) {
+        return "MethodArgumentNotValidException";
+    }
 }
