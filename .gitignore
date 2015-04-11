@@ -1,8 +1,10 @@
 # Created by .ignore support plugin (hsz.mobi)
 .idea
 signup.iml
-server/signup-server.iml
-client/signup-client.iml
+frontend/frontend.iml
+backend/backend.iml
+gui/gui.iml
 target
-server/target
-client/target
+frontend/target
+backend/target
+gui/target
