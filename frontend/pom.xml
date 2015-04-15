@@ -15,6 +15,7 @@
     <artifactId>frontend</artifactId>
     <version>${version}</version>
 
+    <!--[ #1 Говорим что нужно собирать WAR-приложения (для деплоя/разворачивания на сервере приложений 'Tomcat') ]-->
     <packaging>war</packaging>
 
     <properties>
@@ -24,11 +25,10 @@
     </properties>
 
     <!--[ http://overcram.com/questions/?qid=1051370 ]-->
-    <!--[ http://habrahabr.ru/post/244531/ ]-->
     <!--( http://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-build-systems.html )-->
     <dependencyManagement>
         <dependencies>
-            <!-- Inherit defaults from Spring Boot -->
+            <!-- *** Inherit defaults from Spring Boot **** -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-parent</artifactId>
@@ -38,7 +38,8 @@
     </dependencyManagement>
 
     <dependencies>
-        <!-- Spring Boot -->
+        <!--[ http://habrahabr.ru/post/244531/ ]-->
+        <!-- ******* Spring Boot ******** -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -60,13 +61,13 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
             <version>${spring.version}</version>
         </dependency>
-        <!-- Hibernate validator -->
+        <!-- *** Hibernate validator **** -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
-        <!-- Guava -->
+        <!-- *********** Guava ********** -->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
@@ -76,7 +77,7 @@
 
     <build>
         <plugins>
-            <!-- Spring Boot Maven -->
+            <!-- ***** Spring Boot Maven **** -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

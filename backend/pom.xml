@@ -15,7 +15,9 @@
     <artifactId>backend</artifactId>
     <version>${version}</version>
 
-	<packaging>war</packaging>
+    <!--[ #1 Говорим что нужно собирать JAR-приложения (для API) ]-->
+	<!--<packaging>war</packaging>-->
+    <packaging>jar</packaging>
 
 	<url>http://maven.apache.org</url>
 
@@ -27,6 +29,7 @@
 	</properties>
 
 	<dependencies>
+        <!--[ http://habrahabr.ru/post/244531/ ]-->
         <!-- ********** Spring ********** -->
         <dependency>
             <groupId>org.springframework</groupId>
