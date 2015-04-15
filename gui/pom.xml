@@ -17,50 +17,6 @@
 
     <!--[ #1 Говорим что нужно собирать WAR-приложения (для деплоя/разворачивания на сервере приложений 'Tomcat') ]-->
     <packaging>war</packaging>
+
     <url>http://maven.apache.org</url>
-    <!--[ #2 Говорим какими инструменами (и версией) будем собирать WAR-приложение ]-->
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
-                </configuration>
-            </plugin>
-            <!--[ плагин отвечает за зборку war архива, который мы потом деплоим на сервер приложений ]-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>2.1.1</version>
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml> <!--[ добавляем свойство которое делает не обязательным деплоить на сервер приложений ]-->
-                </configuration>
-            </plugin>
-            <!--[ Чтобы WAR-приложение нормально работало на сервере приложений 'Tomcat-7' подключаем специальный плагин ]-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.3</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>copy</goal>
-                        </goals>
-                        <configuration>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>com.github.jsimone</groupId>
-                                    <artifactId>webapp-runner</artifactId>
-                                    <version>7.0.57.2</version>
-                                    <destFileName>webapp-runner.jar</destFileName>
-                                </artifactItem>
-                            </artifactItems>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
 </project>
