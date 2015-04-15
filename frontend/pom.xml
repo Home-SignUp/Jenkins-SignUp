@@ -17,6 +17,12 @@
 
     <packaging>war</packaging>
 
+    <properties>
+        <spring.version>1.0.1.RELEASE</spring.version>
+        <hibernate.version>5.0.3.Final</hibernate.version>
+        <guava.version>16.0.1</guava.version>
+    </properties>
+
     <dependencies>
         <!-- Spring Boot -->
         <dependency>
@@ -44,26 +50,13 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>5.0.3.Final</version>
-        </dependency>
-        <!-- HSQLDB -->
-        <dependency>
-            <groupId>org.hsqldb</groupId>
-            <artifactId>hsqldb</artifactId>
-            <version>2.3.2</version>
-            <scope>runtime</scope>
+            <version>${hibernate.version}</version>
         </dependency>
         <!-- Guava -->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
-        </dependency>
-        <!-- Java EE -->
-        <dependency>
-            <groupId>javax.inject</groupId>
-            <artifactId>javax.inject</artifactId>
-            <version>1</version>
         </dependency>
     </dependencies>
 
