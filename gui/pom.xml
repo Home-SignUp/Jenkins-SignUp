@@ -4,22 +4,22 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <name>GUI</name>
+
     <parent>
         <groupId>com.addrbook</groupId>
         <artifactId>signup</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>4.2-SNAPSHOT</version>
     </parent>
     <groupId>com.addrbook</groupId>
     <artifactId>gui</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>${version}</version>
 
-    <name>GUI</name>
     <!--[ #1 Говорим что нужно собирать WAR-приложения (для деплоя/разворачивания на сервере приложений 'Tomcat') ]-->
     <packaging>war</packaging>
     <url>http://maven.apache.org</url>
     <!--[ #2 Говорим какими инструменами (и версией) будем собирать WAR-приложение ]-->
     <build>
-        <finalName>SignUpClient</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
