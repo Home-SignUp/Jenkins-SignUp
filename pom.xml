@@ -19,19 +19,19 @@
         <version>4.2-SNAPSHOT</version>
     </properties>
 
-    <!--[ http://overcram.com/questions/?qid=1051370 ]-->
-    <!--[ http://habrahabr.ru/post/244531/ ]-->
-    <!--( http://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-build-systems.html )-->
-    <dependencyManagement>
-        <dependencies>
-            <!-- Inherit defaults from Spring Boot -->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-parent</artifactId>
-                <version>1.0.1.RELEASE</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+    <!--&lt;!&ndash;[ http://overcram.com/questions/?qid=1051370 ]&ndash;&gt;-->
+    <!--&lt;!&ndash;[ http://habrahabr.ru/post/244531/ ]&ndash;&gt;-->
+    <!--&lt;!&ndash;( http://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-build-systems.html )&ndash;&gt;-->
+    <!--<dependencyManagement>-->
+        <!--<dependencies>-->
+            <!--&lt;!&ndash; Inherit defaults from Spring Boot &ndash;&gt;-->
+            <!--<dependency>-->
+                <!--<groupId>org.springframework.boot</groupId>-->
+                <!--<artifactId>spring-boot-starter-parent</artifactId>-->
+                <!--<version>1.0.1.RELEASE</version>-->
+            <!--</dependency>-->
+        <!--</dependencies>-->
+    <!--</dependencyManagement>-->
 
     <dependencies>
         <!-- ********** J2EE ********** -->

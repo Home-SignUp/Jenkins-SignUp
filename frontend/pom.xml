@@ -23,6 +23,20 @@
         <guava.version>16.0.1</guava.version>
     </properties>
 
+    <!--[ http://overcram.com/questions/?qid=1051370 ]-->
+    <!--[ http://habrahabr.ru/post/244531/ ]-->
+    <!--( http://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-build-systems.html )-->
+    <dependencyManagement>
+        <dependencies>
+            <!-- Inherit defaults from Spring Boot -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-parent</artifactId>
+                <version>1.0.1.RELEASE</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
         <!-- Spring Boot -->
         <dependency>
