@@ -20,8 +20,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -243,26 +243,27 @@ public class PersonController {
 //        return "Invalid Request:";
 //    }
 
-    // JSON convert exception
-    @ExceptionHandler(HttpMessageNotReadableException.class)
+    // JSON convert exception -> этот эксепшит вываливается когда имеем (совсем) другой параметр в теле запроса...
+    @ExceptionHandler(value = HttpMessageNotReadableException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
-    public String handleHttpMessageNotReadableException(HttpMessageNotReadableException ex) {
+    public String handleHttpMessageNotReadableException(HttpMessageNotReadableException ex, HttpServletResponse response) {
         return "json convert failure!";
     }
 
-    // JSON convert exception
-    @ExceptionHandler(NullPointerException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ResponseBody
-    public String handleHttpMessageNotReadableException(NullPointerException ex) {
-        return "json NullPointerException!";
-    }
+//    // JSON convert exception
+//    @ExceptionHandler(NullPointerException.class)
+//    @ResponseStatus(HttpStatus.BAD_REQUEST)
+//    @ResponseBody
+//    public String handleHttpMessageNotReadableException(NullPointerException ex) {
+//        return "json NullPointerException!";
+//    }
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
+    // ... -> этот эксепшит вываливается когда отсутствует какой-то из параметров в теле запроса...
+    @ExceptionHandler(value = MethodArgumentNotValidException.class)
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     @ResponseBody
-    public String handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
+    public String handleMethodArgumentNotValidException(MethodArgumentNotValidException ex, HttpServletResponse response) {
         BindingResult bindingResult = ex.getBindingResult();
         List<FieldError> errors = bindingResult.getFieldErrors();
         StringBuffer customMessage = new StringBuffer();
@@ -272,9 +273,9 @@ public class PersonController {
         return customMessage.toString();
     }
 
-    @ExceptionHandler(IOException.class)
-    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
-    public String handleIOException(MethodArgumentNotValidException ex) {
-        return "MethodArgumentNotValidException";
-    }
+//    @ExceptionHandler(IOException.class)
+//    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+//    public String handleIOException(MethodArgumentNotValidException ex) {
+//        return "MethodArgumentNotValidException";
+//    }
 }
