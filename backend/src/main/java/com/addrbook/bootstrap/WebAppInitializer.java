@@ -15,11 +15,11 @@ import javax.servlet.ServletRegistration;
 import java.util.Set;
 
 /**
- * This is the main bootstrap. Note the special interface, which is called on startup.
- * This declares the Spring contexts (root and mvc) and binds the dispatcher servlet.
- * 
- * @author Trey
- */
+* This is the main bootstrap. Note the special interface, which is called on startup.
+* This declares the Spring contexts (root and mvc) and binds the dispatcher servlet.
+*
+* @author Trey
+*/
 public class WebAppInitializer implements WebApplicationInitializer {
 
 	private static final Logger logger = LoggerFactory.getLogger(WebApplicationInitializer.class);

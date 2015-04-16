@@ -29,7 +29,7 @@ public class TestEndToEnd {
 
 	@Autowired private PersonService personService;
 	@Autowired private DataFactory dtoFactory;
-	
+
 	private MockMvc mockMvc;
 
 	@Before
@@ -88,7 +88,7 @@ public class TestEndToEnd {
 		spr.setUserName(person.getUserName());
 		spr.setFirstName(person.getFirstName());
 		spr.setLastName(person.getLastName());
-		
+
 		mockMvc.perform(post("/person")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(TestUtil.convertObjectToJsonBytes(spr))

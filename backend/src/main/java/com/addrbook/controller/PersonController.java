@@ -21,16 +21,15 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * REST layer for managing people.
- * 
- * @author Adapted from http://codetutr.com/2013/04/09/spring-mvc-easy-rest-based-json-services-with-responsebody/
- */
+* REST layer for managing people.
+*
+* @author Adapted from http://codetutr.com/2013/04/09/spring-mvc-easy-rest-based-json-services-with-responsebody/
+*/
 @Controller
 //@RestController
 @Validated
@@ -133,19 +132,7 @@ public class PersonController {
     @RequestMapping(value = "/products/{id}", method = RequestMethod.PUT, produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
-    public ProductActive getProductActiveId(@PathVariable("id") Integer id, @RequestBody @NotNull @Valid final Product product, BindingResult bindingResult) {
-
-//        if(product.getCategory() != null) System.out.println(product.getCategory());
-//        if(product.getDescription() != null) System.out.println(product.getDescription());
-//        if(product.getImage() != null) System.out.println(product.getImage());
-//        if(product.getMrp() != null) System.out.println(product.getMrp());
-//        if(product.getName() != null) System.out.println(product.getName());
-//        if(product.getPacking() != null) System.out.println(product.getPacking());
-//        if(product.getPrice() != null) System.out.println(product.getPrice());
-//        if(product.getSku() != null) System.out.println(product.getSku());
-//        if(product.getStatus() != null) System.out.println(product.getStatus());
-//        if(product.getStock() != null) System.out.println(product.getStock());
-
+    public ProductActive getProductActiveId(@PathVariable("id") Integer id, @RequestBody @Valid Product product) {
         ProductActive  active = new ProductActive();
         Product updateProduct = personDataFactory.createProduct(personService.getProductById(id));
         if( product.getName() != null
@@ -175,27 +162,6 @@ public class PersonController {
         personService.updateProduct(updateProduct);
 
         return active;
-
-//        updateProduct.setStatus(product.getStatus());
-//        personService.updateProduct(updateProduct);
-//        try {
-//            updateProduct.setCategory(product.getCategory());
-//            updateProduct.setDescription(product.getDescription());
-//            updateProduct.setImage(product.getImage());
-//            updateProduct.setMrp(product.getMrp());
-//            updateProduct.setName(product.getName());
-//            updateProduct.setPacking(product.getPacking());
-//            updateProduct.setPrice(product.getPrice());
-//            updateProduct.setSku(product.getSku());
-//            updateProduct.setStatus(product.getStatus());
-//            updateProduct.setStock(product.getStock());
-//            personService.updateProduct(updateProduct);
-//            active.setStatus("success");
-//            active.setMessage("Product information Full-Updated Successfully.");
-//        } catch (Exception e){
-//            active.setStatus("success");
-//            active.setMessage("Product information Status-Updated Successfully.");
-//        } finally {}
     }
 
     // http://elleinfonotes.blogspot.com/2013/01/spring-30-validation-and-errorhandling.html
@@ -253,7 +219,7 @@ public class PersonController {
 //
 //     return testsJson;
 //    }
-	
+
 	// --- Error handlers
 
 	@ExceptionHandler(PersonNotFoundException.class)

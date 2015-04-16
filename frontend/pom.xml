@@ -9,7 +9,7 @@
     <parent>
         <groupId>com.addrbook</groupId>
         <artifactId>signup</artifactId>
-        <version>2.4-SNAPSHOT</version>
+        <version>2.4.1-SNAPSHOT</version>
     </parent>
     <groupId>eu.kielczewski.example.spring</groupId>
     <artifactId>frontend</artifactId>
@@ -61,18 +61,19 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
             <version>${spring.version}</version>
         </dependency>
-        <!-- *** Hibernate validator **** -->
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>${hibernate.version}</version>
-        </dependency>
+        <!--&lt;!&ndash; *** Hibernate validator **** &ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.hibernate</groupId>-->
+            <!--<artifactId>hibernate-validator</artifactId>-->
+            <!--<version>${hibernate.version}</version>-->
+        <!--</dependency>-->
         <!-- *********** Guava ********** -->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
         </dependency>
+
         <!--&lt;!&ndash; ******* (Backend) API ****** &ndash;&gt;-->
         <!--<dependency>-->
             <!--<groupId>com.addrbook</groupId>-->

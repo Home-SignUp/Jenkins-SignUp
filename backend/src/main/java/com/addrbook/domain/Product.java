@@ -1,7 +1,6 @@
 package com.addrbook.domain;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 /**
  * Created by alexandr on 08.04.15.
@@ -9,28 +8,35 @@ import javax.validation.constraints.Size;
 public class Product {
     private Integer id;
     private Integer sku;
-    @Size(max = 64)
-    @NotNull(message = "Message name must not be blank!")
+//    @Size(max = 64)
+//    @NotNull(message = "Message name must not be blank!")
+    @NotNull
     private String name;
-    @Size(max = 64)
-    @NotNull(message = "Message price must not be blank!")
+//    @Size(max = 64)
+//    @NotNull(message = "Message price must not be blank!")
+    @NotNull
     private Double price;
     private Double mrp;
-    @Size(max = 64)
-    @NotNull(message = "Message description must not be blank!")
+//    @Size(max = 64)
+//    @NotNull(message = "Message description must not be blank!")
+    @NotNull
     private String description;
-    @Size(max = 64)
-    @NotNull(message = "Message packing must not be blank!")
+//    @Size(max = 64)
+//    @NotNull(message = "Message packing must not be blank!")
+    @NotNull
     private String packing;
     private String image;
-    @Size(max = 64)
-    @NotNull(message = "Message category must not be blank!")
+//    @Size(max = 64)
+//    @NotNull(message = "Message category must not be blank!")
+    @NotNull
     private Integer category;
-    @Size(max = 64)
-    @NotNull(message = "Message stock must not be blank!")
+//    @Size(max = 64)
+//    @NotNull(message = "Message stock must not be blank!")
+    @NotNull
     private Integer stock;
-    @Size(max = 64)
-    @NotNull(message = "Message status must not be blank!")
+//    @Size(max = 64)
+//    @NotNull(message = "Message status must not be blank!")
+    @NotNull
     private String status;
 
     public Product(){}

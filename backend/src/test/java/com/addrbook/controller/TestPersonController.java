@@ -29,10 +29,10 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
- * Unit tests the controller, including JSON serialization.
- * 
- * @author Trey
- */
+* Unit tests the controller, including JSON serialization.
+*
+* @author Trey
+*/
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { ControllerTestConfig.class })
 public class TestPersonController {
@@ -101,7 +101,7 @@ public class TestPersonController {
 		Person person = f.createTrey();
 		final Integer newId = person.getId();
 		person.setId(null);
-		
+
 		doAnswer(new Answer<Object>() {
 			public Object answer(InvocationOnMock invocation) throws Throwable {
 				Object[] args = invocation.getArguments();
@@ -115,7 +115,7 @@ public class TestPersonController {
 		spr.setUserName(person.getUserName());
 		spr.setFirstName(person.getFirstName());
 		spr.setLastName(person.getLastName());
-		
+
 		mockMvc.perform(post("/person")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(TestUtil.convertObjectToJsonBytes(spr))
@@ -125,6 +125,6 @@ public class TestPersonController {
 				.andExpect(content().string(newId.toString()))
 				.andReturn();
 	}
-	
+
 }
 
