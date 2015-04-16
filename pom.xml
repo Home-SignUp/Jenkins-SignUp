@@ -96,9 +96,9 @@
     </dependencies>
 
     <modules>
-        <module>frontend</module>
         <module>backend</module>
         <module>gui</module>
+        <module>frontend</module>
     </modules>
 
     <profiles>

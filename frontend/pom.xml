@@ -73,6 +73,12 @@
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
         </dependency>
+        <!--&lt;!&ndash; ******* (Backend) API ****** &ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>com.addrbook</groupId>-->
+            <!--<artifactId>backend</artifactId>-->
+            <!--<version>${version}</version>-->
+        <!--</dependency>-->
     </dependencies>
 
     <build>
