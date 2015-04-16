@@ -12,14 +12,12 @@ import com.addrbook.service.PersonService;
 import com.addrbook.util.DataFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -226,58 +224,32 @@ public class PersonController {
 		return e.getMessage();
 	}
 
-//    // valid exception
-//    @ExceptionHandler(MethodArgumentNotValidException.class)
-//    @ResponseStatus(HttpStatus.BAD_REQUEST)
-//    @ResponseBody
-//    public String handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
-//        BindingResult bindingResult = ex.getBindingResult();
-//        String errorMesssage = "Invalid Request:";
-//
-//        for (FieldError fieldError : bindingResult.getFieldErrors()) {
-//            errorMesssage += fieldError.getDefaultMessage() + ", ";
-//        }
-//        return "Invalid Request:";
-//    }
-
-    // JSON convert exception
-    @ExceptionHandler(HttpMessageNotReadableException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ResponseBody
-    public String handleHttpMessageNotReadableException(HttpMessageNotReadableException ex) {
-        return "json convert failure!";
-    }
-
-    // JSON convert exception
-    @ExceptionHandler(NullPointerException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ResponseBody
-    public String handleHttpMessageNotReadableException(NullPointerException ex) {
-        return "json NullPointerException!";
-    }
-
-//    @ExceptionHandler(MethodArgumentNotValidException.class)
-//    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
-//    @ResponseBody
-//    public String handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
-//        BindingResult bindingResult = ex.getBindingResult();
-//        List<FieldError> errors = bindingResult.getFieldErrors();
-//        StringBuffer customMessage = new StringBuffer();
-//        for (FieldError error : errors ) {
-//            customMessage.append(error.getObjectName() +"." + error.getField() +" "+ error.getDefaultMessage()+"\n");
-//        }
-//        return customMessage.toString();
-//    }
-//
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public void onValidationException(MethodArgumentNotValidException e, HttpServletResponse response) throws IOException {
-        String errorMessages = "retrieve error messages from e.getBindingResult()";
-        response.sendError(HttpServletResponse.SC_BAD_REQUEST, errorMessages);
-    }
-
-    @ExceptionHandler(IOException.class)
+    @ExceptionHandler(value = MethodArgumentNotValidException.class)
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
-    public String handleIOException(MethodArgumentNotValidException ex) {
+    @ResponseBody
+    public String handleValidation(MethodArgumentNotValidException exception, HttpServletResponse response) {
+//    public String handleValidation(MethodArgumentNotValidException exception) {
         return "MethodArgumentNotValidException";
     }
+//    @ExceptionHandler(MethodArgumentNotValidException.class)
+//    public void onValidationException(MethodArgumentNotValidException e, HttpServletResponse response) throws IOException {
+//        String errorMessages = "retrieve error messages from e.getBindingResult()";
+//        response.sendError(HttpServletResponse.SC_BAD_REQUEST, errorMessages);
+//    }
+
+//    // JSON convert exception
+//    @ExceptionHandler(HttpMessageNotReadableException.class)
+//    @ResponseStatus(HttpStatus.BAD_REQUEST)
+//    @ResponseBody
+//    public String handleHttpMessageNotReadableException(HttpMessageNotReadableException ex) {
+//        return "json convert failure!";
+//    }
+//
+//    // JSON convert exception
+//    @ExceptionHandler(NullPointerException.class)
+//    @ResponseStatus(HttpStatus.BAD_REQUEST)
+//    @ResponseBody
+//    public String handleHttpMessageNotReadableException(NullPointerException ex) {
+//        return "json NullPointerException!";
+//    }
 }
