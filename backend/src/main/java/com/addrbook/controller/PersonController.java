@@ -14,12 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -31,8 +29,7 @@ import java.util.List;
 * @author Adapted from http://codetutr.com/2013/04/09/spring-mvc-easy-rest-based-json-services-with-responsebody/
 */
 @Controller
-//@RestController
-@Validated
+//@Validated
 public class PersonController {
 
 	private PersonService personService;
@@ -259,17 +256,23 @@ public class PersonController {
         return "json NullPointerException!";
     }
 
+//    @ExceptionHandler(MethodArgumentNotValidException.class)
+//    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+//    @ResponseBody
+//    public String handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
+//        BindingResult bindingResult = ex.getBindingResult();
+//        List<FieldError> errors = bindingResult.getFieldErrors();
+//        StringBuffer customMessage = new StringBuffer();
+//        for (FieldError error : errors ) {
+//            customMessage.append(error.getObjectName() +"." + error.getField() +" "+ error.getDefaultMessage()+"\n");
+//        }
+//        return customMessage.toString();
+//    }
+//
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
-    @ResponseBody
-    public String handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
-        BindingResult bindingResult = ex.getBindingResult();
-        List<FieldError> errors = bindingResult.getFieldErrors();
-        StringBuffer customMessage = new StringBuffer();
-        for (FieldError error : errors ) {
-            customMessage.append(error.getObjectName() +"." + error.getField() +" "+ error.getDefaultMessage()+"\n");
-        }
-        return customMessage.toString();
+    public void onValidationException(MethodArgumentNotValidException e, HttpServletResponse response) throws IOException {
+        String errorMessages = "retrieve error messages from e.getBindingResult()";
+        response.sendError(HttpServletResponse.SC_BAD_REQUEST, errorMessages);
     }
 
     @ExceptionHandler(IOException.class)
