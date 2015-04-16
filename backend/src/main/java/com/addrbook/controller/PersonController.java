@@ -229,6 +229,7 @@ public class PersonController {
     @ResponseBody
     public String handleValidation(MethodArgumentNotValidException exception, HttpServletResponse response) {
 //    public String handleValidation(MethodArgumentNotValidException exception) {
+//        return exception.getMessage();
         return "MethodArgumentNotValidException";
     }
 //    @ExceptionHandler(MethodArgumentNotValidException.class)
