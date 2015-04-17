@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -37,6 +36,23 @@ public class PersonController {
 
 	private PersonService personService;
 	private DataFactory personDataFactory;
+
+    private class ProductActive{
+        private String status;
+        private String message;
+        public String getStatus(){
+            return status;
+        }
+        public String getMessage(){
+            return message;
+        }
+        public void setStatus(String status){
+            this.status = status;
+        }
+        public void setMessage(String message){
+            this.message = message;
+        }
+    }
 
 	@Autowired
 	public PersonController(PersonService personService, DataFactory personDataFactory) {
@@ -70,34 +86,6 @@ public class PersonController {
 		return person.getId();
 	}
 
-    class Test{
-        public Test(){}
-        public Test(int a, String b){
-            this.a = a;
-            this.b = b;
-        }
-
-        private int a = 10;
-        private String b = "MyTest";
-
-        public int getA() {
-            return a;
-        }
-        public String getB() {
-            return b;
-        }
-    }
-    class Tests{
-        private List<Test> tests;
-
-        public void setTests(List<Test> tests){
-            this.tests = tests;
-        }
-        public List<Test> getTests(){
-            return tests;
-        }
-    }
-
     @RequestMapping(value = "/persons", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public PersonJsonList getAllPersons(){
@@ -130,152 +118,76 @@ public class PersonController {
     // http://blog.zenika.com/index.php?post/2013/07/11/Documenting-a-REST-API-with-Swagger-and-Spring-MVC
     // * http://ryanjbaxter.com/2014/12/17/building-rest-apis-with-spring-boot/
     @RequestMapping(value = "/products/{id}", method = RequestMethod.PUT, produces = "application/json")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(value = HttpStatus.OK)
     @ResponseBody
-    public ProductActive getProductActiveId(@PathVariable("id") Integer id, @RequestBody @Valid Product product) {
+    public ProductActive getProductUpdateId(@PathVariable("id") Integer id, @RequestBody @Valid Product product) {
         ProductActive  active = new ProductActive();
         Product updateProduct = personDataFactory.createProduct(personService.getProductById(id));
-        if( product.getName() != null
-                && product.getPrice() != null
-                && product.getDescription() != null
-                && product.getPacking() != null
-                && product.getCategory() != null
-                && product.getStock() != null
-                && product.getStatus() != null ){
-            updateProduct.setCategory(product.getCategory());
-            updateProduct.setDescription(product.getDescription());
-            updateProduct.setImage(product.getImage());
-            updateProduct.setMrp(product.getMrp());
-            updateProduct.setName(product.getName());
-            updateProduct.setPacking(product.getPacking());
-            updateProduct.setPrice(product.getPrice());
-            updateProduct.setSku(product.getSku());
-            updateProduct.setStatus(product.getStatus());
-            updateProduct.setStock(product.getStock());
-            active.setStatus("success");
-            active.setMessage("Product information Full-Updated Successfully.");
-        } else {
-            updateProduct.setStatus(product.getStatus());
-            active.setStatus("success");
-            active.setMessage("Product information Status-Updated Successfully.");
-        }
+        updateProduct.setCategory(product.getCategory());
+        updateProduct.setDescription(product.getDescription());
+        updateProduct.setImage(product.getImage());
+        updateProduct.setMrp(product.getMrp());
+        updateProduct.setName(product.getName());
+        updateProduct.setPacking(product.getPacking());
+        updateProduct.setPrice(product.getPrice());
+        updateProduct.setSku(product.getSku());
+        updateProduct.setStatus(product.getStatus());
+        updateProduct.setStock(product.getStock());
+        active.setStatus("success");
+        active.setMessage("Product information Full-Updated Successfully.");
         personService.updateProduct(updateProduct);
-
         return active;
     }
 
-    // http://elleinfonotes.blogspot.com/2013/01/spring-30-validation-and-errorhandling.html
-    // http://blog.goyello.com/2011/12/16/enhancements-spring-mvc31/
-    // http://www.infoq.com/articles/boot-microservices
-    /// http://ryanjbaxter.com/2014/12/17/building-rest-apis-with-spring-boot/
-    // http://langmnm.iteye.com/blog/2078439
-    // http://www.codesandnotes.be/2014/12/18/validating-spring-rest-controllers-beans-using-the-bean-validation-api-and-writing-the-tests-for-it/
-    // http://www.petrikainulainen.net/programming/spring-framework/spring-from-the-trenches-adding-validation-to-a-rest-api/
-    // http://www.petrikainulainen.net/programming/jooq/using-jooq-with-spring-crud/
-    // http://www.captechconsulting.com/blogs/versioned-validated-and-secured-rest-services-with-spring-40
-    // http://www.petrikainulainen.net/programming/spring-framework/creating-a-rest-api-with-spring-boot-and-mongodb/
-    /// http://fruzenshtein.com/spring-rest-exception-handling-3/
-    // http://stackoverflow.com/questions/18613027/validator-for-methodargumentnotvalidexception-only-handles-constraint-of-same-ty
-    // http://elleinfonotes.blogspot.com/2013/01/spring-30-validation-and-errorhandling.html
-    // http://www.jayway.com/2012/09/23/improve-your-spring-rest-api-part-ii/
 
-    class ProductActive{
-        private String status;
-        private String message;
-
-        public String getStatus(){
-            return status;
-        }
-        public String getMessage(){
-            return message;
-        }
-        public void setStatus(String status){
-            this.status = status;
-        }
-        public void setMessage(String message){
-            this.message = message;
-        }
-    }
-
-
-    @RequestMapping(value = "/tests", method = RequestMethod.GET, produces = "application/json")
+    // ... -> этот эксепшит вываливается когда отсутствует какой-то из параметров в теле запроса...
+    @ExceptionHandler(value = MethodArgumentNotValidException.class)
+//    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+//    @ResponseStatus(value = HttpStatus.NOT_MODIFIED)
+    @ResponseStatus(value = HttpStatus.OK)
     @ResponseBody
-    public List<Test> getTest(){
-        List<Test> tests = new ArrayList<Test>();
-        tests.add(new Test(1, "MyTest1"));
-        tests.add(new Test(2, "MyTest2"));
-        tests.add(new Test(3, "MyTest3"));
+    public String handleMethodArgumentNotValidException(MethodArgumentNotValidException ex, HttpServletResponse response) {
+        BindingResult bindingResult = ex.getBindingResult();
 
-        return tests;
+        Product updateProduct = personDataFactory.createProduct(personService.getProductById( Integer.parseInt(bindingResult.getFieldValue("id").toString()) ));
+        updateProduct.setStatus( bindingResult.getFieldValue("status").toString());
+        personService.updateProduct(updateProduct);
+
+        List<FieldError> errors = bindingResult.getFieldErrors();
+        StringBuffer customMessage = new StringBuffer();
+        for( FieldError error : errors ){
+            customMessage.append(error.getObjectName() + "." + error.getField() + " " + error.getDefaultMessage() + "\n");
+        }
+        return customMessage.toString();
     }
-//    public Tests getTest(){
-//        List<Test> tests = new ArrayList<Test>();
-//        tests.add(new Test(1, "MyTest1"));
-//        tests.add(new Test(2, "MyTest2"));
-//        tests.add(new Test(3, "MyTest3"));
-//
-//        Tests testsJson = new Tests();
-//        testsJson.setTests(tests);
-//
-//     return testsJson;
-//    }
-
-	// --- Error handlers
-
-	@ExceptionHandler(PersonNotFoundException.class)
-	@ResponseStatus(HttpStatus.NOT_FOUND)
-	@ResponseBody
-	public String handlePersonNotFoundException(PersonNotFoundException e) {
-		return e.getMessage();
-	}
-
-//    // valid exception
-//    @ExceptionHandler(MethodArgumentNotValidException.class)
-//    @ResponseStatus(HttpStatus.BAD_REQUEST)
-//    @ResponseBody
-//    public String handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
-//        BindingResult bindingResult = ex.getBindingResult();
-//        String errorMesssage = "Invalid Request:";
-//
-//        for (FieldError fieldError : bindingResult.getFieldErrors()) {
-//            errorMesssage += fieldError.getDefaultMessage() + ", ";
-//        }
-//        return "Invalid Request:";
-//    }
 
     // JSON convert exception -> этот эксепшит вываливается когда имеем (совсем) другой параметр в теле запроса...
     @ExceptionHandler(value = HttpMessageNotReadableException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     @ResponseBody
     public String handleHttpMessageNotReadableException(HttpMessageNotReadableException ex, HttpServletResponse response) {
         return "json convert failure!";
     }
 
-//    // JSON convert exception
-//    @ExceptionHandler(NullPointerException.class)
+    // --- Error handlers (это мой класс, который обрабатывает исключение)
+    @ExceptionHandler(value = PersonNotFoundException.class)
+    @ResponseStatus(value = HttpStatus.NOT_FOUND)
+    @ResponseBody
+    public String handlePersonNotFoundException(PersonNotFoundException e) {
+        return e.getMessage();
+    }
+
+//    // NullPointerException
+//    @ExceptionHandler(value = NullPointerException.class)
 //    @ResponseStatus(HttpStatus.BAD_REQUEST)
 //    @ResponseBody
 //    public String handleHttpMessageNotReadableException(NullPointerException ex) {
-//        return "json NullPointerException!";
+//        return "NullPointerException!";
 //    }
-
-    // ... -> этот эксепшит вываливается когда отсутствует какой-то из параметров в теле запроса...
-    @ExceptionHandler(value = MethodArgumentNotValidException.class)
-    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
-    @ResponseBody
-    public String handleMethodArgumentNotValidException(MethodArgumentNotValidException ex, HttpServletResponse response) {
-        BindingResult bindingResult = ex.getBindingResult();
-        List<FieldError> errors = bindingResult.getFieldErrors();
-        StringBuffer customMessage = new StringBuffer();
-        for (FieldError error : errors ) {
-            customMessage.append(error.getObjectName() +"." + error.getField() +" "+ error.getDefaultMessage()+"\n");
-        }
-        return customMessage.toString();
-    }
-
-//    @ExceptionHandler(IOException.class)
+//    // IOException
+//    @ExceptionHandler(value = IOException.class)
 //    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
 //    public String handleIOException(MethodArgumentNotValidException ex) {
-//        return "MethodArgumentNotValidException";
+//        return "IOException";
 //    }
 }

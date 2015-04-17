@@ -11,7 +11,8 @@ angular.module('app')
     });
     $scope.changeProductStatus = function(product){
         product.status = (product.status=="Active" ? "Inactive" : "Active");
-        Data.put("products/"+product.id,{status:product.status});
+        //Data.put("products/"+product.id,{status:product.status});
+        Data.put("products/"+product.id,{id:product.id,status:product.status});
     };
     $scope.deleteProduct = function(product){
         if(confirm("Are you sure to remove the product")){
