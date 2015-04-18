@@ -109,8 +109,8 @@
 
     <modules>
         <module>backend</module>
-        <module>gui</module>
         <module>frontend</module>
+        <module>gui</module>
     </modules>
 
     <profiles>
