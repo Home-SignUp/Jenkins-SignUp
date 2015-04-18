@@ -4,7 +4,6 @@ import com.addrbook_frontend.service.CORSFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.WebApplicationInitializer;
-import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
@@ -26,15 +25,15 @@ public class WebAppInitializer implements WebApplicationInitializer {
 
 	public void onStartup(ServletContext servletContext) throws ServletException {
 
-		// Create the root appcontext
-		AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
-		rootContext.register(RootConfig.class);
-		// since we registered RootConfig instead of passing it to the constructor
-		rootContext.refresh();
-
-		// Manage the lifecycle of the root appcontext
-		servletContext.addListener(new ContextLoaderListener(rootContext));
-		servletContext.setInitParameter("defaultHtmlEscape", "true");
+//		// Create the root appcontext
+//		AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
+//		rootContext.register(RootConfig.class);
+//		// since we registered RootConfig instead of passing it to the constructor
+//		rootContext.refresh();
+//
+//		// Manage the lifecycle of the root appcontext
+//		servletContext.addListener(new ContextLoaderListener(rootContext));
+//		servletContext.setInitParameter("defaultHtmlEscape", "true");
 
 		// now the config for the Dispatcher servlet
 		AnnotationConfigWebApplicationContext mvcContext = new AnnotationConfigWebApplicationContext();

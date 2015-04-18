@@ -3,10 +3,10 @@ package com.addrbook_frontend.controller.fixture;
 import com.addrbook_backend.domain.Person;
 
 /**
- * Test fixture for unit tests.
- * 
- * @author Trey
- */
+* Test fixture for unit tests.
+*
+* @author Trey
+*/
 public class ControllerTestFixture {
 
 	/**
