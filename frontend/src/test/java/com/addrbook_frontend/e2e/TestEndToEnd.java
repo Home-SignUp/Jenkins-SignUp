@@ -1,6 +1,6 @@
 package com.addrbook_frontend.e2e;
 
-import com.addrbook_backend.bootstrap.RootConfig;
+import com.addrbook_frontend.bootstrap.RootConfig;
 import com.addrbook_frontend.controller.PersonController;
 import com.addrbook_frontend.controller.TestUtil;
 import com.addrbook_frontend.controller.fixture.ControllerTestFixture;
