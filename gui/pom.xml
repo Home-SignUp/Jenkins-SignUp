@@ -9,9 +9,9 @@
     <parent>
         <groupId>com.addrbook</groupId>
         <artifactId>signup</artifactId>
-        <version>2.5.3-SNAPSHOT</version>
+        <version>2.6.1-SNAPSHOT</version>
     </parent>
-    <groupId>com.gui</groupId>
+    <groupId>com.addrbook.gui</groupId>
     <artifactId>gui</artifactId>
     <version>${version}</version>
 

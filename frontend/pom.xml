@@ -9,9 +9,9 @@
     <parent>
         <groupId>com.addrbook</groupId>
         <artifactId>signup</artifactId>
-        <version>2.5.3-SNAPSHOT</version>
+        <version>2.6.1-SNAPSHOT</version>
     </parent>
-    <groupId>com.addrbook_frontend</groupId>
+    <groupId>com.addrbook.frontend</groupId>
     <artifactId>frontend</artifactId>
     <version>${version}</version>
 
@@ -85,7 +85,7 @@
 
         <!-- ******* (Backend) API ****** -->
         <dependency>
-        <groupId>com.addrbook_backend</groupId>
+        <groupId>com.addrbook.backend</groupId>
         <artifactId>backend</artifactId>
         <version>${version}</version>
         </dependency>
