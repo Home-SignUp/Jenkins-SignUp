@@ -1,10 +1,10 @@
 'use strict';
 
-/* HomeCtrl */
+/* SignupCtrl */
 
 angular.module('app')
 
-.controller('HomeCtrl', ['$rootScope', '$scope', '$routeParams', '$http',
+.controller('SignupCtrl', ['$rootScope', '$scope', '$routeParams', '$http',
 	function($rootScope, $scope, $routeParams, $http) {
         var that = this;
 
