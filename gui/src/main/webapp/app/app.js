@@ -15,6 +15,10 @@ app.config(['$routeProvider', '$httpProvider',
                 templateUrl: 'partials/customer.tpl',
                 controller: 'CustomersCrtl'
             })
+            .when('/c_ustomer', {
+                templateUrl: 'partials/c_ustomer.tpl',
+                controller: 'C_ustomersCrtl'
+            })
             .when('/products', {
                 templateUrl: 'partials/products.tpl',
                 controller: 'ProductsCtrl'
