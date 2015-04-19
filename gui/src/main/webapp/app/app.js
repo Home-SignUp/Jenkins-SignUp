@@ -15,18 +15,6 @@ app.config(['$routeProvider', '$httpProvider',
                 templateUrl: 'partials/users.tpl',
                 controller: 'UsersCtrl'
             })
-            .when('/p_roducts', {
-                templateUrl: 'partials/p_roducts.tpl',
-                controller: 'P_roductsCtrl'
-            })
-            .when('/products', {
-                templateUrl: 'partials/products.tpl',
-                controller: 'ProductsCtrl'
-            })
-            .when('/customer', {
-                templateUrl: 'partials/customer.tpl',
-                controller: 'CustomersCrtl'
-            })
             .when('/signup', {
                 templateUrl: 'partials/signup.tpl',
                 controller: 'SignupCtrl'

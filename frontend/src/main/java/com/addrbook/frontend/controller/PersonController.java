@@ -116,7 +116,8 @@ public class PersonController {
     // http://stackoverflow.com/questions/19468572/spring-mvc-why-not-able-to-use-requestbody-and-requestparam-together
     // http://stackoverflow.com/questions/20400233/spring-mvc-requestmapping-from-json
     // http://blog.zenika.com/index.php?post/2013/07/11/Documenting-a-REST-API-with-Swagger-and-Spring-MVC
-    // * http://ryanjbaxter.com/2014/12/17/building-rest-apis-with-spring-boot/
+    // (Building REST APIs With Spring Boot) http://ryanjbaxter.com/2014/12/17/building-rest-apis-with-spring-boot/
+    // * (java.util.concurrent) http://www.infoq.com/articles/boot-microservices
     @RequestMapping(value = "/products/{id}", method = RequestMethod.PUT, produces = "application/json")
     @ResponseStatus(value = HttpStatus.OK)
     @ResponseBody
