@@ -105,6 +105,13 @@ public class PersonController {
         return personService.getAllCustomers();
     }
 
+
+    @RequestMapping(value = "/products/{id}", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public Product getProductById(@PathVariable("id") Integer id) {
+        return personDataFactory.createProduct(personService.getProductById(id));
+    }
+
     @RequestMapping(value = "/products", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public ProductJson getAllProducts(){

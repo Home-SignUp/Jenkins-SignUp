@@ -78,6 +78,8 @@ angular.module('app')
 })
 
 
+/* userEditCtrl */
+
 .controller('userEditCtrl', function ($scope, $modalInstance, item, Data) {
 
   $scope.product = angular.copy(item);

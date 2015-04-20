@@ -1,27 +1,40 @@
 <div ng-controller="RegisterCtrl as register">
-    <form class="form-horizontal" role="form" ng-submit="register.createPerson()" >
+    <form class="form-horizontal" role="form" ng-submit="register.createProduct()" >
         <div class="form-group">
             <label class="col-sm-2 control-label">Create a new user:</label>
         </div>
         <div class="form-group">
-            <label for="userName" class="col-sm-2 control-label">Name</label>
+            <label for="name" class="col-sm-2 control-label">NAME</label>
             <div class="col-sm-4">
-                <input class="form-control" id="userName" placeholder="Name" ng-model="register.userName" ng-required="true">
-                <!--<span ng-show="userRequired">{{userRequired}}</span>-->
+                <input class="form-control" id="name" placeholder="NAME" ng-model="register.name" ng-required="true">
+                <!--<span ng-show="register.nameRequired">{{register.nameRequired}}</span>-->
             </div>
         </div>
         <div class="form-group">
-            <label for="firstName" class="col-sm-2 control-label">First Name</label>
+            <label for="description" class="col-sm-2 control-label">DESCRIPTION</label>
             <div class="col-sm-4">
-                <input class="form-control" id="firstName" placeholder="First Name" ng-model="register.firstName">
-                <span ng-show="register.firstRequired">{{register.firstRequired}}</span>
+                <textarea class="form-control" name="description" placeholder="DESCRIPTION" ng-model="register.description" ng-required="true">{{register.description}}</textarea>
             </div>
         </div>
         <div class="form-group">
-            <label for="lastName" class="col-sm-2 control-label">Last Name</label>
+            <label for="price" class="col-sm-2 control-label">PRICE</label>
             <div class="col-sm-4">
-                <input class="form-control" id="lastName" placeholder="Last Name" ng-model="register.lastName">
-                <span ng-show="register.lastRequired">{{register.lastRequired}}</span>
+                <input class="form-control" id="price" placeholder="PRICE" ng-model="register.price">
+                <span ng-show="register.priceRequired">{{register.priceRequired}}</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="stock" class="col-sm-2 control-label">STOCK</label>
+            <div class="col-sm-4">
+                <input class="form-control" id="stock" placeholder="STOCK" ng-model="register.stock">
+                <span ng-show="register.stockRequired">{{register.stockRequired}}</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="packing" class="col-sm-2 control-label">PACKING</label>
+            <div class="col-sm-4">
+                <input class="form-control" id="packing" placeholder="PACKING" ng-model="register.packing">
+                <span ng-show="register.packingRequired">{{register.packingRequired}}</span>
             </div>
         </div>
         <div class="form-group">
@@ -38,18 +51,18 @@
     <hr />
 
     <div>
-        <form class="form-horizontal" role="form" ng-submit="register.searchPerson()">
+        <form class="form-horizontal" role="form" ng-submit="register.searchProduct()">
             <div class="form-group">
-                <label class="col-sm-2 control-label">Find a user:</label>
+                <label class="col-sm-2 control-label">Check a user by:</label>
             </div>
             <div class="form-group">
-                <label for="searchPersonId" class="col-sm-2 control-label">by Id</label>
+                <label for="searchProductId" class="col-sm-2 control-label">ID</label>
                 <div class="col-sm-4">
-                    <input class="form-control" id="searchPersonId" placeholder="Id" ng-model="register.searchPersonId" ng-required="true" />
+                    <input class="form-control" id="searchProductId" placeholder="ID" ng-model="register.searchProductId" ng-required="true" />
                 </div>
             </div>
         </form>
 
-        <div class="searchOutput">{{register.person | json}}</div>
+        <div class="searchOutput">{{register.product | json}}</div>
     </div>
 </div>
