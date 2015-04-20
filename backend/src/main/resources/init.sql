@@ -35,6 +35,41 @@ INSERT INTO products (id, sku, name, price, mrp, description, packing, image, ca
 
 
 
+DROP TABLE IF EXISTS tomcat_users;
+CREATE TABLE tomcat_users (
+  user_name varchar(20) not null primary key,
+  user_pass varchar(32) NOT NULL,
+  user_fio varchar(50) DEFAULT NULL,
+  user_ldap varchar(16) DEFAULT NULL,
+  email varchar(50) DEFAULT NULL,
+  group_name varchar(20) DEFAULT NULL,
+  ip varchar(16) DEFAULT NULL,
+  regdate date DEFAULT NULL,
+  update_ip varchar(16) DEFAULT NULL,
+  update_regdate date DEFAULT NULL
+);
+
+DROP TABLE IF EXISTS tomcat_roles;
+CREATE TABLE tomcat_roles (
+  role_name varchar(20) not null primary key,
+  role_description varchar(256) NULL
+);
+
+DROP TABLE IF EXISTS tomcat_users_roles;
+CREATE TABLE tomcat_users_roles (
+  user_name varchar(20) NOT NULL,
+  role_name varchar(20) NOT NULL,
+  PRIMARY KEY (user_name, role_name)
+);
+
+DROP TABLE IF EXISTS tomcat_users_group;
+CREATE TABLE tomcat_users_group (
+  group_name varchar(20) not null primary key,
+  group_description varchar(256) NULL,
+  color varchar(7) DEFAULT '#BBBBBB'
+);
+
+
 
 -- DROP TABLE IF EXISTS tomcat_users;
 -- CREATE TABLE tomcat_users (
