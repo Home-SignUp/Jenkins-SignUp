@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Random;
 
 /**
 * REST layer for managing people.
@@ -108,6 +109,37 @@ public class PersonController {
     @ResponseBody
     public ProductJson getAllProducts(){
         return personDataFactory.createProduct("success", "Data selected from database", personService.getAllProducts());
+    }
+
+    @RequestMapping(value = "/products", method = RequestMethod.POST, produces = "application/json")
+    @ResponseBody
+    public Integer createProduct(@RequestBody Product request) {
+        Random    random = new Random();
+        Integer      sku = random.nextInt(9999) + 99;
+        double       mrp = 99 + (999 - 99) * random.nextDouble();
+        Integer category = random.nextInt(200) + 100;
+
+        Product product = new Product();
+        product.setCategory(category);
+        product.setDescription(request.getDescription());
+//        product.setImage(request.getImage());
+        product.setMrp(mrp);
+        product.setName(request.getName());
+        product.setPacking(request.getPacking());
+        product.setPrice(request.getPrice());
+        product.setSku(sku);
+        product.setStatus(request.getStatus());
+        product.setStock(request.getStock());
+        personService.saveProduct(product);
+        return product.getId();
+    }
+
+    // http://www.dineshonjava.com/2012/12/using-namedparameterjdbctemplate-in.html#.VTTGPxf7t0w
+    @RequestMapping(value = "/products/{id}", method = RequestMethod.DELETE, produces = "application/json")
+    @ResponseBody
+    public boolean deleteProduct(@PathVariable("id") Integer id) {
+        personService.deleteProduct(id);
+        return true;
     }
 
     // (mvn -P=systest test) http://habrahabr.ru/post/146984/

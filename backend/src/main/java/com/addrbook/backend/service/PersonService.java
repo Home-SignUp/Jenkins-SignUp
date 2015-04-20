@@ -40,6 +40,10 @@ public interface PersonService {
 //	 */
 	public void updatePerson(Person person);
 
-    public void updateProduct(Product person);
+    public void saveProduct(Product p);
+
+    public void updateProduct(Product p);
+
+    public void deleteProduct(Integer id);
 
 }

@@ -105,7 +105,7 @@ angular.module('app')
                     }
                 });
             }else{
-                product.status = 'Active';
+                product.status = 'Inactive';
                 Data.post('products', product).then(function (result) {
                     if(result.status != 'error'){
                         var x = angular.copy(product);

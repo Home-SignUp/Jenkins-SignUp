@@ -1,15 +1,17 @@
 package com.addrbook.backend.dao;
 
-import com.addrbook.backend.domain.Product;
-import com.addrbook.backend.exception.PersonNotFoundException;
 import com.addrbook.backend.domain.Customer;
 import com.addrbook.backend.domain.Person;
+import com.addrbook.backend.domain.Product;
+import com.addrbook.backend.exception.PersonNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
@@ -105,6 +107,27 @@ public class PersonDaoImpl implements PersonDao {
         if (numRowsAffected == 0) {
             throw new PersonNotFoundException("No product found for id: " + product.getId());
         }
+    }
+
+    public void insert(Product product) {
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        logger.debug("inserting product into database");
+
+        jdbcTemplate.update(
+                "insert into products (status, name, description, price, stock, packing, sku, mrp, category) values (:status, :name, :description, :price, :stock, :packing, :sku, :mrp, :category)",
+                new BeanPropertySqlParameterSource(product), keyHolder);
+
+        Integer newId = keyHolder.getKey().intValue();
+
+        // populate the id
+        product.setId(newId);
+    }
+
+    public void delete(Integer id) {
+        String SQL = "DELETE FROM products WHERE id = :id";
+        SqlParameterSource namedParameters = new MapSqlParameterSource("id", Integer.valueOf(id));
+        jdbcTemplate.update(SQL, namedParameters);
+        System.out.println("Deleted product into database with ID = " + id);
     }
 
 	public void insert(Person person) {

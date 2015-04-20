@@ -30,19 +30,23 @@ public interface PersonDao {
 
     public List<Product> getAllProducts();
 
-    void update(Product p);
+    public void insert(Product p);
+
+    public void update(Product p);
+
+    public void delete(Integer id);
 
 	/**
 	 * Inserts a person record using the non-id properties.
 	 * The id property is populated with the generated id.
 	 * @param person 
 	 */
-	void insert(Person person);
+    public void insert(Person person);
 
 	/**
 	 * Updates the person record with p.getId().
 	 * @param p
 	 */
-	void update(Person p);
+    public void update(Person p);
 
 }

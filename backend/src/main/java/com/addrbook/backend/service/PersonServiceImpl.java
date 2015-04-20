@@ -1,10 +1,10 @@
 package com.addrbook.backend.service;
 
 import com.addrbook.backend.dao.PersonDao;
-import com.addrbook.backend.domain.Product;
 import com.addrbook.backend.dao.PersonDaoImpl;
 import com.addrbook.backend.domain.Customer;
 import com.addrbook.backend.domain.Person;
+import com.addrbook.backend.domain.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -58,5 +58,14 @@ public class PersonServiceImpl implements PersonService {
 
     public void updateProduct(Product p) {
         personDao.update(p);
+    }
+
+    @Transactional
+    public void saveProduct(Product p) {
+        personDao.insert(p);
+    }
+
+    public void deleteProduct(Integer id) {
+        personDao.delete(id);
     }
 }
