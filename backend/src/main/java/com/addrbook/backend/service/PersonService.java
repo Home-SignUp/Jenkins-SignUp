@@ -1,7 +1,5 @@
 package com.addrbook.backend.service;
 
-import com.addrbook.backend.domain.Customer;
-import com.addrbook.backend.domain.Person;
 import com.addrbook.backend.domain.Product;
 
 import java.util.List;
@@ -15,33 +13,21 @@ public interface PersonService {
 
 	/**
 	 * @param id
-	 * @return Returns the person with the given id.
+	 * @return Returns the product with the given id.
 	 */
-	public Person getPersonById(Integer id);
-
-    public List<Person> getAllPersons();
-
-    public Customer getCustomer();
-
-    public List<Customer> getAllCustomers();
-
     public Product getProductById(Integer id);
 
     public List<Product> getAllProducts();
 
 	/**
 	 * Creates a new Person and populates the <code>id</code> property with the generated id.
-	 * @param person All non-id properties are used to create the new person.
+	 * @param p All non-id properties are used to create the new person.
 	 */
-	public void savePerson(Person person);
-	
-//	/**
-//	 * @param person The person to be updated.
-//	 */
-	public void updatePerson(Person person);
-
     public void saveProduct(Product p);
-
+	
+	/**
+	 * @param p The person to be updated.
+	 */
     public void updateProduct(Product p);
 
     public void deleteProduct(Integer id);

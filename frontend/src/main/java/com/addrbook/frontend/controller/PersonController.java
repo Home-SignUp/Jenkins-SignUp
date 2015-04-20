@@ -1,13 +1,8 @@
 package com.addrbook.frontend.controller;
 
-import com.addrbook.backend.domain.Customer;
-import com.addrbook.backend.domain.Person;
 import com.addrbook.backend.domain.Product;
 import com.addrbook.backend.exception.PersonNotFoundException;
-import com.addrbook.backend.json.PersonJson;
-import com.addrbook.backend.json.PersonJsonList;
 import com.addrbook.backend.json.ProductJson;
-import com.addrbook.backend.json.save.SavePersonRequest;
 import com.addrbook.backend.service.PersonService;
 import com.addrbook.backend.util.DataFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,47 +60,6 @@ public class PersonController {
 	 * @param id
 	 * @return Returns the person with the given id.
 	 */
-	@RequestMapping(value = "/person/{id}", method = RequestMethod.GET)
-	@ResponseBody
-	public PersonJson getPersonById(@PathVariable("id") Integer id) {
-		return personDataFactory.createPerson(personService.getPersonById(id));
-	}
-
-	/**
-	 * Creates a new person.
-	 * @param request
-	 * @return Returns the id for the new person.
-	 */
-	@RequestMapping(value = "/person", method = RequestMethod.POST)
-	@ResponseBody
-	public Integer createPerson(@RequestBody SavePersonRequest request) {
-		Person person = new Person();
-		person.setFirstName(request.getFirstName());
-		person.setLastName(request.getLastName());
-		person.setUserName(request.getUserName());
-		personService.savePerson(person);
-		return person.getId();
-	}
-
-    @RequestMapping(value = "/persons", method = RequestMethod.GET, produces = "application/json")
-    @ResponseBody
-    public PersonJsonList getAllPersons(){
-        return personDataFactory.createPerson(personService.getAllPersons());
-    }
-
-    @RequestMapping(value = "/customer", method = RequestMethod.GET, produces = "application/json")
-    @ResponseBody
-    public Customer getCustomer(){
-        return personService.getCustomer();
-    }
-
-    @RequestMapping(value = "/customers", method = RequestMethod.GET, produces = "application/json")
-    @ResponseBody
-    public List<Customer> getAllCustomers(){
-        return personService.getAllCustomers();
-    }
-
-
     @RequestMapping(value = "/products/{id}", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public Product getProductById(@PathVariable("id") Integer id) {
@@ -118,6 +72,11 @@ public class PersonController {
         return personDataFactory.createProduct("success", "Data selected from database", personService.getAllProducts());
     }
 
+    /**
+     * Creates a new person.
+     * @param request
+     * @return Returns the id for the new person.
+     */
     @RequestMapping(value = "/products", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
     public Integer createProduct(@RequestBody Product request) {
