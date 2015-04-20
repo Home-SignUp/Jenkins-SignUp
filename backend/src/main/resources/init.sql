@@ -32,3 +32,40 @@ INSERT INTO products (id, sku, name, price, mrp, description, packing, image, ca
 (918, 4273, 'Biotique Bio Henna Fresh Powder Hair Color   ', 199, 199, 'Powder', '90 g ', 'biotique-bio-henna-fresh-powder-hair-color-90-g.png', 250, 50, 'Active'),
 (943, 7904, 'Brylcreem Anti Dandruff Aqua Oxy Hair Gel   ', 400, 40, 'Hair Gel', '50 g ', 'brylcreem-brylcreem-anti-dandruff-aqua-oxy-hair-gel-50-g.png', 260, 15, 'Active'),
 (949, 5848, 'Ayur Natural Rajasthani Heena Mehendi   ', 11, 25, 'Mehendi.', '100 gm', 'ayur-natural-rajasthani-heena-mehendi-100-g.png', 270, 150, 'Active');
+
+
+
+
+-- DROP TABLE IF EXISTS tomcat_users;
+-- CREATE TABLE tomcat_users (
+--   user_name varchar(20) NOT NULL PRIMARY KEY,
+--   user_pass varchar(32) NOT NULL,
+--   user_fio varchar(50) DEFAULT NULL,
+--   user_ldap varchar(16) DEFAULT NULL,
+--   email varchar(50) DEFAULT NULL,
+--   group_name varchar(20) DEFAULT NULL,
+--   ip varchar(16) DEFAULT NULL,
+--   regdate date DEFAULT NULL,
+--   update_ip varchar(16) DEFAULT NULL,
+--   update_regdate date DEFAULT NULL,
+--   CONSTRAINT tomcat_users_foreign_key_1 FOREIGN KEY (group_name) REFERENCES tomcat_users_group (group_name)
+-- ) DEFAULT CHARSET=utf8;
+-- DROP TABLE IF EXISTS tomcat_roles;
+-- CREATE TABLE tomcat_roles (
+--   role_name varchar(20) NOT NULL PRIMARY KEY,
+--   role_description varchar(256) NULL
+-- ) DEFAULT CHARSET=utf8;
+-- DROP TABLE IF EXISTS tomcat_users_roles;
+-- CREATE TABLE tomcat_users_roles (
+--   user_name varchar(20) NOT NULL,
+--   role_name varchar(20) NOT NULL,
+--   PRIMARY KEY (user_name, role_name),
+--   CONSTRAINT tomcat_users_roles_foreign_key_1 FOREIGN KEY (user_name) REFERENCES tomcat_users (user_name),
+--   CONSTRAINT tomcat_users_roles_foreign_key_2 FOREIGN KEY (role_name) REFERENCES tomcat_roles (role_name)
+-- ) DEFAULT CHARSET=utf8;
+-- DROP TABLE IF EXISTS tomcat_users_group;
+-- CREATE TABLE tomcat_users_group (
+--   group_name varchar(20) NOT NULL PRIMARY KEY,
+--   group_description varchar(256) NULL,
+--   color varchar(7) DEFAULT '#BBBBBB'
+-- ) DEFAULT CHARSET=utf8;

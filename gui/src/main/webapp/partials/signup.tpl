@@ -10,33 +10,6 @@
                 <!--<span ng-show="signup.nameRequired">{{signup.nameRequired}}</span>-->
             </div>
         </div>
-        <!--<div class="form-group">
-            <label for="description" class="col-sm-2 control-label">DESCRIPTION</label>
-            <div class="col-sm-4">
-                <textarea class="form-control" name="description" placeholder="DESCRIPTION" ng-model="signup.description" ng-required="true">{{signup.description}}</textarea>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="price" class="col-sm-2 control-label">PRICE</label>
-            <div class="col-sm-4">
-                <input class="form-control" id="price" placeholder="PRICE" ng-model="signup.price">
-                <span ng-show="signup.priceRequired">{{signup.priceRequired}}</span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="stock" class="col-sm-2 control-label">STOCK</label>
-            <div class="col-sm-4">
-                <input class="form-control" id="stock" placeholder="STOCK" ng-model="signup.stock">
-                <span ng-show="signup.stockRequired">{{signup.stockRequired}}</span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="packing" class="col-sm-2 control-label">PACKING</label>
-            <div class="col-sm-4">
-                <input class="form-control" id="packing" placeholder="PACKING" ng-model="signup.packing">
-                <span ng-show="signup.packingRequired">{{signup.packingRequired}}</span>
-            </div>
-        </div>-->
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <input type="submit" class="btn btn-success" />
