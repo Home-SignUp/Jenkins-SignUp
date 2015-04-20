@@ -48,7 +48,7 @@
         </p>
     </form>
 
-    <hr />
+    <!--<hr />
 
     <div>
         <form class="form-horizontal" role="form" ng-submit="register.searchProduct()">
@@ -64,5 +64,5 @@
         </form>
 
         <div class="searchOutput">{{register.product | json}}</div>
-    </div>
+    </div>-->
 </div>

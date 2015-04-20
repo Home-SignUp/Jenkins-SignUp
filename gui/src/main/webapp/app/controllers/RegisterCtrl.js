@@ -48,16 +48,16 @@ angular.module('app')
 			});
 		};
 
-        that.searchProduct = function() {
-			//$http.get('server/api/person/' + that.searchPersonId)
-            $http.get('http://localhost:8081/server/api/products/' + that.searchProductId)
-			.success(function(data, status, headers, config) {
-				console.log('data = ' , data);
-                    that.product = data;
-			})
-			.error(function(data, status, headers, config) {
-				console.log('error: data = ' , data);
-			});
-		};
+        //that.searchProduct = function() {
+		//	//$http.get('server/api/person/' + that.searchPersonId)
+         //   $http.get('http://localhost:8081/server/api/products/' + that.searchProductId)
+		//	.success(function(data, status, headers, config) {
+		//		console.log('data = ' , data);
+         //           that.product = data;
+		//	})
+		//	.error(function(data, status, headers, config) {
+		//		console.log('error: data = ' , data);
+		//	});
+		//};
 	}
 ]);
