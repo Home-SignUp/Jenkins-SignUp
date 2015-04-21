@@ -145,4 +145,5 @@ public class Product {
                 ", status='" + status + '\'' +
                 '}';
     }
+
 }

@@ -30,7 +30,8 @@ import java.util.Random;
 @Validated
 public class PersonController {
 
-    // (Stateless Spring Security Part 2: Stateless Authentication) http://www.javacodegeeks.com/2014/10/stateless-spring-security-part-2-stateless-authentication.html
+    //   (Stateless Spring Security Part 2: Stateless Authentication) http://www.javacodegeeks.com/2014/10/stateless-spring-security-part-2-stateless-authentication.html
+    // * (Асинхронная обработка данных в web-приложениях на Java) https://www.youtube.com/watch?v=08Kf6pa4TAY
 
 	private PersonService personService;
 	private DataFactory personDataFactory;

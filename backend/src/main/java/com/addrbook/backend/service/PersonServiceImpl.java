@@ -3,6 +3,7 @@ package com.addrbook.backend.service;
 import com.addrbook.backend.dao.PersonDao;
 import com.addrbook.backend.dao.PersonDaoImpl;
 import com.addrbook.backend.domain.Product;
+import com.addrbook.backend.domain.TomcatUsers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -40,5 +41,27 @@ public class PersonServiceImpl implements PersonService {
 
     public void deleteProduct(Integer id) {
         personDao.delete(id);
+    }
+
+
+    public TomcatUsers getUserById(String userName) {
+        return personDao.findUserById(userName);
+    }
+
+    public List<TomcatUsers> getAllUsers() {
+        return personDao.getAllUsers();
+    }
+
+    public void updateUser(TomcatUsers u) {
+        personDao.update(u);
+    }
+
+    @Transactional
+    public void saveUser(TomcatUsers u) {
+        personDao.insert(u);
+    }
+
+    public void deleteUser(String userName) {
+        personDao.delete(userName);
     }
 }
