@@ -9,7 +9,7 @@ import java.util.Date;
 public class TomcatUsers {
 
     public TomcatUsers(){}
-    public TomcatUsers(String userName,String userPass,String userFio,String userLdap,String email,String groupName,String ip,String updateIp,Date regdate,Date updateRegdate){
+    public TomcatUsers(String userName,String userPass,String userFio,String userLdap,String email,String groupName,String ip,String updateIp,Date regdate,Date updateRegdate,String status){
         this.userName = userName;
         this.userPass = userPass;
         this.userFio = userFio;
@@ -20,25 +20,28 @@ public class TomcatUsers {
         this.updateIp = updateIp;
         this.regdate = regdate;
         this.updateRegdate = updateRegdate;
+        this.status = status;
     }
-    public TomcatUsers(TomcatUsers tomcatUsers){
-        this.userName = tomcatUsers.userName;
-        this.userPass = tomcatUsers.userPass;
-        this.userFio = tomcatUsers.userFio;
-        this.userLdap = tomcatUsers.userLdap;
-        this.email = tomcatUsers.email;
-        this.groupName = tomcatUsers.groupName;
-        this.ip = tomcatUsers.ip;
-        this.updateIp = tomcatUsers.updateIp;
-        this.regdate = tomcatUsers.regdate;
-        this.updateRegdate = tomcatUsers.updateRegdate;
+    public TomcatUsers(TomcatUsers users){
+        this.userName = users.userName;
+        this.userPass = users.userPass;
+        this.userFio = users.userFio;
+        this.userLdap = users.userLdap;
+        this.email = users.email;
+        this.groupName = users.groupName;
+        this.ip = users.ip;
+        this.updateIp = users.updateIp;
+        this.regdate = users.regdate;
+        this.updateRegdate = users.updateRegdate;
+        this.status = users.status;
     }
 
-    @NotNull(message = "Message 'userName' must not be blank!")
+//    @NotNull(message = "Message 'userName' must not be blank!")
     private String userName;
-//    @NotNull(message = "Message 'userPass' must not be blank!")
+    @NotNull(message = "Message 'userPass' must not be blank!")
     private String userPass;
     private String userFio;
+//    @NotNull(message = "Message 'userLdap' must not be blank!")
     private String userLdap;
     private String email;
     private String groupName;
@@ -46,6 +49,8 @@ public class TomcatUsers {
     private String updateIp;
     private Date   regdate;
     private Date   updateRegdate;
+    @NotNull(message = "Message 'status' must not be blank!")
+    private String status;
 
 
     public String getUserName(){
@@ -78,6 +83,9 @@ public class TomcatUsers {
     public Date getUpdateRegdate(){
         return updateRegdate;
     }
+    public String getStatus(){
+        return status;
+    }
 
     public void setUserName(String userName){
         this.userName = userName;
@@ -109,6 +117,9 @@ public class TomcatUsers {
     public void setUpdateRegdate(Date updateRegdate){
         this.updateRegdate = updateRegdate;
     }
+    public void setStatus(String status){
+        this.status = status;
+    }
 
 
     @Override
@@ -124,6 +135,7 @@ public class TomcatUsers {
                 ", updateIp='" + updateIp + '\'' +
                 ", regdate=" + regdate +
                 ", updateRegdate=" + updateRegdate +
+                ", status='" + status + '\'' +
                 '}';
     }
 }

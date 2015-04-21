@@ -3,7 +3,7 @@ package com.addrbook.backend.util;
 import com.addrbook.backend.domain.Product;
 import com.addrbook.backend.domain.TomcatUsers;
 import com.addrbook.backend.json.ProductJson;
-import com.addrbook.backend.json.TomcatUsersJson;
+import com.addrbook.backend.json.UserJson;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -45,7 +45,7 @@ public class DataFactory {
      * @param domain
      * @return
      */
-    public TomcatUsers createTomcatUsers(TomcatUsers domain) {
+    public TomcatUsers createUser(TomcatUsers domain) {
         return new TomcatUsers(domain);
     }
 
@@ -56,8 +56,8 @@ public class DataFactory {
      * @param domains
      * @return
      */
-    public TomcatUsersJson createTomcatUsers(String status, String message, List<TomcatUsers> domains) {
-        TomcatUsersJson lJson = new TomcatUsersJson();
+    public UserJson createUser(String status, String message, List<TomcatUsers> domains) {
+        UserJson lJson = new UserJson();
         lJson.setStatus(status);
         lJson.setMessage(message);
         lJson.setData(domains);

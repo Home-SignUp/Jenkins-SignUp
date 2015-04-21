@@ -102,7 +102,7 @@ public class PersonDaoImpl implements PersonDao {
 
     public void update(TomcatUsers user) {
         int numRowsAffected = jdbcTemplate.update(
-                "update tomcat_users set user_name = :userName, user_pass = :userPass, user_fio = :userFio, user_ldap = :userLdap, email = :email, group_name = :groupName, ip = :ip, update_ip = :updateIp, regdate = :regdate, update_regdate = :updateRegdate where user_name = :userName",
+                "update tomcat_users set user_pass = :userPass, user_fio = :userFio, email = :email, group_name = :groupName, update_ip = :updateIp, update_regdate = :updateRegdate, status = :status where user_name = :userName",
                 new BeanPropertySqlParameterSource(user));
 
         if (numRowsAffected == 0) {
@@ -125,17 +125,14 @@ public class PersonDaoImpl implements PersonDao {
     }
 
     public void insert(TomcatUsers user) {
-        KeyHolder keyHolder = new GeneratedKeyHolder();
         logger.debug("inserting user into database");
 
         jdbcTemplate.update(
-                "insert into tomcat_users (user_name, user_pass, user_fio, user_ldap, email, group_name, ip, update_ip, regdate, update_regdate) values (:userName, :userPass, :userFio, :userLdap, :email, :groupName, :ip, :updateIp, :regdate, :updateRegdate)",
-                new BeanPropertySqlParameterSource(user), keyHolder);
-
-        String newUserName = String.valueOf( keyHolder.getKey().intValue() );
+                "insert into tomcat_users (user_name, user_pass, user_fio, user_ldap, email, group_name, ip, regdate, status) values (:userName, :userPass, :userFio, :userLdap, :email, :groupName, :ip, :regdate, :status)",
+                new BeanPropertySqlParameterSource(user));
 
         // populate the userName
-        user.setUserName(newUserName);
+        user.setUserName(user.getUserName());
     }
 
     public void delete(Integer id) {
@@ -172,18 +169,19 @@ public class PersonDaoImpl implements PersonDao {
 
     private static class UserRowMapper implements RowMapper<TomcatUsers> {
         public TomcatUsers mapRow(ResultSet res, int rowNum) throws SQLException {
-            TomcatUsers tu = new TomcatUsers();
-            tu.setUserName( res.getString("user_name") );
-            tu.setUserPass( res.getString("user_pass") );
-            tu.setUserFio( res.getString("user_fio") );
-            tu.setUserLdap( res.getString("user_ldap") );
-            tu.setEmail( res.getString("email") );
-            tu.setGroupName( res.getString("group_name") );
-            tu.setIp( res.getString("ip") );
-            tu.setUpdateIp( res.getString("update_ip") );
-            tu.setRegdate( res.getDate("regdate") );
-            tu.setUpdateRegdate( res.getDate("update_regdate"));
-            return  tu;
+            TomcatUsers u = new TomcatUsers();
+            u.setUserName( res.getString("user_name") );
+            u.setUserPass( res.getString("user_pass") );
+            u.setUserFio( res.getString("user_fio") );
+            u.setUserLdap( res.getString("user_ldap") );
+            u.setEmail( res.getString("email") );
+            u.setGroupName( res.getString("group_name") );
+            u.setIp( res.getString("ip") );
+            u.setUpdateIp( res.getString("update_ip") );
+            u.setRegdate( res.getDate("regdate") );
+            u.setUpdateRegdate( res.getDate("update_regdate"));
+            u.setStatus(res.getString("status"));
+            return  u;
         }
     }
 

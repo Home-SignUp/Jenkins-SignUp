@@ -69,11 +69,27 @@ public class PersonController {
         return personDataFactory.createProduct(personService.getProductById(id));
     }
 
+//    /**
+//     * @param name
+//     * @return Returns the person with the given id.
+//     */
+//    @RequestMapping(value = "/users/{name}", method = RequestMethod.GET, produces = "application/json")
+//    @ResponseBody
+//    public TomcatUsers getUserById(@PathVariable("name") String name) {
+//        return personDataFactory.createUser(personService.getUserById(name));
+//    }
+
     @RequestMapping(value = "/products", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public ProductJson getAllProducts(){
         return personDataFactory.createProduct("success", "Data selected from database", personService.getAllProducts());
     }
+
+//    @RequestMapping(value = "/users", method = RequestMethod.GET, produces = "application/json")
+//    @ResponseBody
+//    public UserJson getAllUsers(){
+//        return personDataFactory.createUser("success", "Data selected from database", personService.getAllUsers());
+//    }
 
     /**
      * Creates a new person.
@@ -102,6 +118,28 @@ public class PersonController {
         personService.saveProduct(product);
         return product.getId();
     }
+
+//    /**
+//     * Creates a new user.
+//     * @param request
+//     * @return Returns the id for the new person.
+//     */
+//    @RequestMapping(value = "/users", method = RequestMethod.POST, produces = "application/json")
+//    @ResponseBody
+//    public String createUser(@RequestBody TomcatUsers request) {
+//        TomcatUsers user = new TomcatUsers();
+//        user.setUserName(request.getUserName());
+//        user.setUserPass(request.getUserPass());
+//        user.setUserFio(request.getUserFio());
+//        user.setUserLdap(request.getUserLdap());
+//        user.setEmail(request.getEmail());
+//        user.setGroupName(request.getGroupName());
+//        user.setIp("10.13.71.153");
+//        user.setRegdate(new Date());
+//        user.setStatus("Inactive");
+//        personService.saveUser(user);
+//        return user.getUserName();
+//    }
 
     // http://www.dineshonjava.com/2012/12/using-namedparameterjdbctemplate-in.html#.VTTGPxf7t0w
     @RequestMapping(value = "/products/{id}", method = RequestMethod.DELETE, produces = "application/json")
@@ -140,6 +178,25 @@ public class PersonController {
         personService.updateProduct(updateProduct);
         return active;
     }
+
+//    @RequestMapping(value = "/users/{name}", method = RequestMethod.PUT, produces = "application/json")
+//    @ResponseStatus(value = HttpStatus.OK)
+//    @ResponseBody
+//    public ProductActive getUserUpdateId(@PathVariable("name") String name, @RequestBody @Valid TomcatUsers user) {
+//        ProductActive  active = new ProductActive();
+//        TomcatUsers updateUser = personDataFactory.createUser(personService.getUserById(name));
+//        updateUser.setUserPass(user.getUserPass());
+//        updateUser.setUserFio(user.getUserFio());
+//        updateUser.setEmail(user.getEmail());
+//        updateUser.setGroupName(user.getGroupName());
+//        updateUser.setUpdateIp(user.getUpdateIp());
+//        updateUser.setUpdateRegdate(user.getUpdateRegdate());
+//        updateUser.setStatus(user.getStatus());
+//        active.setStatus("success");
+//        active.setMessage("User information Full-Updated Successfully.");
+//        personService.updateUser(updateUser);
+//        return active;
+//    }
 
 
     // ... -> этот эксепшит вываливается когда отсутствует какой-то из параметров в теле запроса...

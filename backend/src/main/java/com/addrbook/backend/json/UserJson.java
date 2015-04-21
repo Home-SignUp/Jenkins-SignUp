@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by alexandr on 21.04.15.
  */
-public class TomcatUsersJson {
+public class UserJson {
 
     private String status;
     private String  message;
