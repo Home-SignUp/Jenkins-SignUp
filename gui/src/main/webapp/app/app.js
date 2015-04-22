@@ -7,14 +7,14 @@ var app = angular.module('app', ['ngRoute', 'ui.bootstrap', 'ngAnimate'])
 app.config(['$routeProvider', '$httpProvider',
 	function($routeProvider, $httpProvider) {
 		$routeProvider
-            //.when('/register', {
-            //    templateUrl: 'partials/register.tpl',
-            //    controller: 'RegisterCtrl'
-            //})
-            //.when('/users', {
-            //    templateUrl: 'partials/users.tpl',
-            //    controller: 'UsersCtrl'
-            //})
+            .when('/register', {
+                templateUrl: 'partials/register.tpl',
+                controller: 'RegisterCtrl'
+            })
+            .when('/users', {
+                templateUrl: 'partials/users.tpl',
+                controller: 'UsersCtrl'
+            })
             .when('/register-product', {
                 templateUrl: 'partials/registerProduct.tpl',
                 controller: 'RegisterProductCtrl'
@@ -28,7 +28,7 @@ app.config(['$routeProvider', '$httpProvider',
                 controller: 'SignupCtrl'
             })
             .otherwise({
-				redirectTo: '/register-product'
+				redirectTo: '/register'
 			});
         $httpProvider.defaults.useXDomain = true;
         delete $httpProvider.defaults.headers.common['X-Requested-With'];

@@ -5,15 +5,15 @@
 angular.module('app')
 
 .controller('UsersCtrl', function ($scope, $modal, $filter, $http, $timeout, Data) {
-    $scope.product = {};
+    $scope.user = {};
 
 
-    Data.get('products').then(function(data){
-        $scope.products = data.data;
+    Data.get('users').then(function(data){
+        $scope.users = data.data;
         $scope.currentPage   = 1;                // current page
         $scope.entryLimit    = 5;                // max no of items to display in a page
-        $scope.filteredItems = $scope.products.length; // Initially for no filter
-        $scope.totalItems    = $scope.products.length;
+        $scope.filteredItems = $scope.users.length; // Initially for no filter
+        $scope.totalItems    = $scope.users.length;
     });
     $scope.setPage = function (pageNo) {
         $scope.currentPage = pageNo;
@@ -28,49 +28,55 @@ angular.module('app')
         $scope.reverse = !$scope.reverse;
     };
 
-    $scope.changeProductStatus = function(product){
-        product.status = (product.status=="Active" ? "Inactive" : "Active");
-        //Data.put("products/"+product.id,{status:product.status});
-        Data.put("products/"+product.id,{id:product.id,status:product.status});
+    $scope.changeUserStatus = function(user){
+        user.status = (user.status=="Active" ? "Inactive" : "Active");
+        //Data.put("users/"+user.userName,{status:user.status});
+        Data.put("users/"+user.userName,{userName:user.userName,status:user.status});
     };
-    $scope.deleteProduct = function(product){
-        if(confirm("Are you sure to remove the product")){
-            Data.delete("products/"+product.id).then(function(result){
-                $scope.products = _.without($scope.products, _.findWhere($scope.products, {id:product.id}));
+    $scope.deleteUser = function(user){
+        if(confirm("Are you sure to remove the user")){
+            Data.delete("users/"+user.userName).then(function(result){
+                $scope.users = _.without($scope.users, _.findWhere($scope.users, {userName:user.userName}));
             });
         }
     };
-    $scope.open = function (p,size) {
+    $scope.open = function (u,size) {
         var modalInstance = $modal.open({
           templateUrl: 'partials/userEdit.tpl',
           controller: 'userEditCtrl',
           size: size,
           resolve: {
             item: function () {
-              return p;
+              return u;
             }
           }
         });
         modalInstance.result.then(function(selectedObject) {
             if(selectedObject.save == "insert"){
-                $scope.products.push(selectedObject);
-                $scope.products = $filter('orderBy')($scope.products, 'id', 'reverse');
+                $scope.users.push(selectedObject);
+                $scope.users = $filter('orderBy')($scope.users, 'userName', 'reverse');
             }else if(selectedObject.save == "update"){
-                p.description = selectedObject.description;
-                p.price = selectedObject.price;
-                p.stock = selectedObject.stock;
-                p.packing = selectedObject.packing;
+                //u.description = selectedObject.description; //groupName
+                //u.price = selectedObject.price; //userFio
+                //u.stock = selectedObject.stock; //userLdap
+                //u.packing = selectedObject.packing; //email
+                u.userFio = selectedObject.userFio;
+                u.email = selectedObject.email;
+                u.groupName = selectedObject.groupName;
             }
         });
     };
     
  $scope.columns = [
-                    {text:"ID",predicate:"id",sortable:true,dataType:"number"},
-                    {text:"Name",predicate:"name",sortable:true},
-                    {text:"Price",predicate:"price",sortable:true},
-                    {text:"Stock",predicate:"stock",sortable:true},
-                    {text:"Packing",predicate:"packing",reverse:true,sortable:true,dataType:"number"},
-                    {text:"Description",predicate:"description",sortable:true},
+                    {text:"IP Register",predicate:"ip",sortable:true},
+                    {text:"Date Register",predicate:"regdate",sortable:true},
+                    {text:"Username",predicate:"userName",sortable:true}, //{text:"UserName",predicate:"userName",sortable:true,dataType:"number"},
+                    {text:"Full Name",predicate:"userFio",sortable:true},
+                    {text:"LDAP",predicate:"userLdap",sortable:true},
+                    {text:"E-mail",predicate:"email",reverse:true,sortable:true}, //{text:"Email",predicate:"email",reverse:true,sortable:true,dataType:"number"},
+                    {text:"Group",predicate:"groupName",sortable:true},
+                    {text:"IP Update",predicate:"updateIp",sortable:true},
+                    {text:"Date Update",predicate:"updateRegdate",sortable:true},
                     {text:"Status",predicate:"status",sortable:true},
                     {text:"Action",predicate:"",sortable:false}
                 ];
@@ -82,24 +88,24 @@ angular.module('app')
 
 .controller('userEditCtrl', function ($scope, $modalInstance, item, Data) {
 
-  $scope.product = angular.copy(item);
+  $scope.user = angular.copy(item);
         
         $scope.cancel = function () {
             $modalInstance.dismiss('Close');
         };
-        $scope.title = (item.id > 0) ? 'Edit Product' : 'Add Product';
-        $scope.buttonText = (item.id > 0) ? 'Update Product' : 'Add New Product';
+        $scope.title = (item.userName > 0) ? 'Edit User' : 'Add User';
+        $scope.buttonText = (item.userName > 0) ? 'Update User' : 'Add New User';
 
         var original = item;
         $scope.isClean = function() {
-            return angular.equals(original, $scope.product);
+            return angular.equals(original, $scope.user);
         }
-        $scope.saveProduct = function (product) {
-            product.uid = $scope.uid;
-            if(product.id > 0){
-                Data.put('products/'+product.id, product).then(function (result) {
+        $scope.saveUser = function (user) {
+            user.uuserName = $scope.uuserName;
+            if(user.userName > 0){
+                Data.put('users/'+user.userName, user).then(function (result) {
                     if(result.status != 'error'){
-                        var x = angular.copy(product);
+                        var x = angular.copy(user);
                         x.save = 'update';
                         $modalInstance.close(x);
                     }else{
@@ -107,10 +113,10 @@ angular.module('app')
                     }
                 });
             }else{
-                product.status = 'Inactive';
-                Data.post('products', product).then(function (result) {
+                user.status = 'Inactive';
+                Data.post('users', user).then(function (result) {
                     if(result.status != 'error'){
-                        var x = angular.copy(product);
+                        var x = angular.copy(user);
                         x.save = 'insert';
                         x.id = result.data;
                         $modalInstance.close(x);

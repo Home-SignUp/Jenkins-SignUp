@@ -1,5 +1,5 @@
     <hr/>
-    <button type="button" class="btn btn-danger fa fa-plus" ng-click="open(product);">&nbsp;Add New User</button>
+    <button type="button" class="btn btn-danger fa fa-plus" ng-click="open(user);">&nbsp;Add New User</button>
 
     <div class="table-responsive">
         <div class="panel panel-primary">
@@ -28,32 +28,38 @@
             </div>
           <div class="panel-body">
             <table class="table table-striped">
-                <tr ng-show="products.length==0"><td style="vertical-align:middle;"><i class="fa fa-ban fa-3x"></i>&nbsp;No data found</td></tr>
-                <tr ng-hide="products.length>-1"><td style="vertical-align:middle;"><i class="fa fa-cog fa-3x fa-spin"></i>&nbsp;Loading</td></tr>
+                <tr ng-show="users.length==0"><td style="vertical-align:middle;"><i class="fa fa-ban fa-3x"></i>&nbsp;No data found</td></tr>
+                <tr ng-hide="users.length>-1"><td style="vertical-align:middle;"><i class="fa fa-cog fa-3x fa-spin"></i>&nbsp;Loading</td></tr>
                 <tr>
-                    <th>ID&nbsp;<a ng-click="sort_by('id');"><i class="glyphicon glyphicon-sort"></i></a></th>
-                    <th>Name&nbsp;<a ng-click="sort_by('name');"><i class="glyphicon glyphicon-sort"></i></a></th>
-                    <th>Price&nbsp;<a ng-click="sort_by('price');"><i class="glyphicon glyphicon-sort"></i></a></th>
-                    <th>Stock&nbsp;<a ng-click="sort_by('stock');"><i class="glyphicon glyphicon-sort"></i></a></th>
-                    <th>Packing&nbsp;<a ng-click="sort_by('packing');"><i class="glyphicon glyphicon-sort"></i></a></th>
-                    <th>Description&nbsp;<a ng-click="sort_by('description');"><i class="glyphicon glyphicon-sort"></i></a></th>
+                    <th>IP Register&nbsp;<a ng-click="sort_by('ip');"><i class="glyphicon glyphicon-sort"></i></a></th>
+                    <th>Date Register&nbsp;<a ng-click="sort_by('regdate');"><i class="glyphicon glyphicon-sort"></i></a></th>
+                    <th>Username&nbsp;<a ng-click="sort_by('userName');"><i class="glyphicon glyphicon-sort"></i></a></th>
+                    <th>Full Name&nbsp;<a ng-click="sort_by('userFio');"><i class="glyphicon glyphicon-sort"></i></a></th>
+                    <th>LDAP&nbsp;<a ng-click="sort_by('userLdap');"><i class="glyphicon glyphicon-sort"></i></a></th>
+                    <th>E-mail&nbsp;<a ng-click="sort_by('email');"><i class="glyphicon glyphicon-sort"></i></a></th>
+                    <th>Group&nbsp;<a ng-click="sort_by('groupName');"><i class="glyphicon glyphicon-sort"></i></a></th>
+                    <th>IP Update&nbsp;<a ng-click="sort_by('updateIp');"><i class="glyphicon glyphicon-sort"></i></a></th>
+                    <th>Date Update&nbsp;<a ng-click="sort_by('updateRegdate');"><i class="glyphicon glyphicon-sort"></i></a></th>
                     <th>Status&nbsp;<a ng-click="sort_by('status');"><i class="glyphicon glyphicon-sort"></i></a></th>
                     <th>Action</th>
                 </tr>
-                <tr ng-repeat="data in filtered = (products | filter:search | orderBy : predicate :reverse) | startFrom:(currentPage-1) * entryLimit | limitTo:entryLimit" animate-on-change='data.packing + data.stock + data.price + data.description' ng-animate=" 'animate'">
-                    <td>{{data.id}}</td>
-                    <td>{{data.name}}</td>
-                    <td>{{data.price}}</td>
-                    <td>{{data.stock}}</td>
-                    <td>{{data.packing}}</td>
-                    <td>{{data.description}}</td>
+                <tr ng-repeat="data in filtered = (users | filter:search | orderBy : predicate :reverse) | startFrom:(currentPage-1) * entryLimit | limitTo:entryLimit" animate-on-change='data.userName + data.userFio + data.userLdap + data.email + data.groupName + data.ip' ng-animate=" 'animate'">
+                    <td>{{data.ip}}</td>
+                    <td>{{data.regdate}}</td>
+                    <td>{{data.userName}}</td>
+                    <td>{{data.userFio}}</td>
+                    <td>{{data.userLdap}}</td>
+                    <td>{{data.email}}</td>
+                    <td>{{data.groupName}}</td>
+                    <td>{{data.updateIp}}</td>
+                    <td>{{data.updateRegdate}}</td>
                     <td>
-                        <button class="btn" ng-class="{Active:'btn-success', Inactive:''}[data.status]" ng-click="changeProductStatus(data);">{{data.status}}</button>
+                        <button class="btn" ng-class="{Active:'btn-success', Inactive:''}[data.status]" ng-click="changeUserStatus(data);">{{data.status}}</button>
                     </td>
                     <td style="width:100px">
                         <div class="btn-group">
                             <button type="button" class="btn btn-default fa fa-edit" ng-click="open(data);"></button>
-                            <button type="button" class="btn btn-danger fa fa-trash-o" ng-click="deleteProduct(data);"></button>
+                            <button type="button" class="btn btn-danger fa fa-trash-o" ng-click="deleteUser(data);"></button>
                         </div>
                     </td>
                 </tr>

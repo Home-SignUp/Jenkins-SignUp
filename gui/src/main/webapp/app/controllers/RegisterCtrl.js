@@ -8,8 +8,8 @@ angular.module('app')
 	function($rootScope, $scope, $routeParams, $http) {
         var that = this;
 
-        that.createProduct = function() {
-			console.log('BEGIN createProduct');
+        that.createUser = function() {
+			console.log('BEGIN createUser');
 
             if(!that.name){
                 that.nameRequired = 'Name Required';
@@ -47,17 +47,5 @@ angular.module('app')
 				console.log('error: data = ' , data);
 			});
 		};
-
-        //that.searchProduct = function() {
-		//	//$http.get('server/api/person/' + that.searchPersonId)
-         //   $http.get('http://localhost:8081/server/api/products/' + that.searchProductId)
-		//	.success(function(data, status, headers, config) {
-		//		console.log('data = ' , data);
-         //           that.product = data;
-		//	})
-		//	.error(function(data, status, headers, config) {
-		//		console.log('error: data = ' , data);
-		//	});
-		//};
 	}
 ]);

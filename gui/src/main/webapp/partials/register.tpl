@@ -1,5 +1,5 @@
 <div ng-controller="RegisterCtrl as register">
-    <form class="form-horizontal" role="form" ng-submit="register.createProduct()" >
+    <form class="form-horizontal" role="form" ng-submit="register.createUser()" >
         <div class="form-group">
             <label class="col-sm-2 control-label">Create a new user:</label>
         </div>
@@ -47,22 +47,4 @@
             User created with id: {{register.newUserId}}
         </p>
     </form>
-
-    <!--<hr />
-
-    <div>
-        <form class="form-horizontal" role="form" ng-submit="register.searchProduct()">
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Check a user by:</label>
-            </div>
-            <div class="form-group">
-                <label for="searchProductId" class="col-sm-2 control-label">ID</label>
-                <div class="col-sm-4">
-                    <input class="form-control" id="searchProductId" placeholder="ID" ng-model="register.searchProductId" ng-required="true" />
-                </div>
-            </div>
-        </form>
-
-        <div class="searchOutput">{{register.product | json}}</div>
-    </div>-->
 </div>
