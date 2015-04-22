@@ -1,5 +1,5 @@
     <hr/>
-    <button type="button" class="btn btn-danger fa fa-plus" ng-click="open(user);">&nbsp;Add New User</button>
+    <!--<button type="button" class="btn btn-danger fa fa-plus" ng-click="open(user);">&nbsp;Add New User</button>-->
 
     <div class="table-responsive">
         <div class="panel panel-primary">

@@ -31,7 +31,7 @@ angular.module('app')
     $scope.changeUserStatus = function(user){
         user.status = (user.status=="Active" ? "Inactive" : "Active");
         //Data.put("users/"+user.userName,{status:user.status});
-        Data.put("users/"+user.userName,{userName:user.userName,status:user.status});
+        Data.put("users/"+user.userName,{userPass:user.userPass,status:user.status});
     };
     $scope.deleteUser = function(user){
         if(confirm("Are you sure to remove the user")){
@@ -102,7 +102,7 @@ angular.module('app')
         }
         $scope.saveUser = function (user) {
             user.uuserName = $scope.uuserName;
-            if(user.userName > 0){
+            if(user.userName != null){ //if(user.userName > 0){
                 Data.put('users/'+user.userName, user).then(function (result) {
                     if(result.status != 'error'){
                         var x = angular.copy(user);

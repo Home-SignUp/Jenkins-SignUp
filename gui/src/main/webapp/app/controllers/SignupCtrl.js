@@ -8,33 +8,33 @@ angular.module('app')
 	function($rootScope, $scope, $routeParams, $http) {
         var that = this;
 
-        that.createProduct = function() {
-			console.log('BEGIN createProduct');
+        that.createUser = function() {
+			console.log('BEGIN createUser');
 
-            if(!that.name){
+            if(!that.userName){
                 that.nameRequired = 'Name Required';
             }
 
 			//$http.post('server/api/person', {
-            $http.post('http://localhost:8081/server/api/products', {
-					"name": that.name
+            $http.post('http://localhost:8081/server/api/users', {
+					"userName": that.userName
 			})
 			.success(function(data, status, headers, config) {
 				console.log('data = ' , data);
-                    that.name = '';
-                    that.newUserId = data;
+                    that.userName = '';
+                    that.newUserName = data;
 			})
 			.error(function(data, status, headers, config) {
 				console.log('error: data = ' , data);
 			});
 		};
 
-        that.searchProduct = function() {
+        that.searchUser = function() {
 			//$http.get('server/api/person/' + that.searchPersonId)
-            $http.get('http://localhost:8081/server/api/products/' + that.searchProductId)
+            $http.get('http://localhost:8081/server/api/users/' + that.searchUserName)
 			.success(function(data, status, headers, config) {
 				console.log('data = ' , data);
-                    that.product = data;
+                    that.user = data;
 			})
 			.error(function(data, status, headers, config) {
 				console.log('error: data = ' , data);

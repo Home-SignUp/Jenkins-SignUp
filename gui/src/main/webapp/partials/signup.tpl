@@ -4,9 +4,9 @@
             <label class="col-sm-2 control-label">Signup user:</label>
         </div>
         <div class="form-group">
-            <label for="name" class="col-sm-2 control-label">NAME</label>
+            <label for="name" class="col-sm-2 control-label">USERNAME</label>
             <div class="col-sm-4">
-                <input class="form-control" id="name" placeholder="NAME" ng-model="signup.name" ng-required="true">
+                <input class="form-control" id="userName" placeholder="USERNAME" ng-model="signup.userName" ng-required="true">
                 <!--<span ng-show="signup.nameRequired">{{signup.nameRequired}}</span>-->
             </div>
         </div>
@@ -16,26 +16,26 @@
             </div>
         </div>
 
-        <p ng-show="signup.newUserId">
-            User created with id: {{signup.newUserId}}
+        <p ng-show="signup.newUserName">
+            User created with userName: {{signup.newUserName}}
         </p>
     </form>
 
     <hr />
 
     <div>
-        <form class="form-horizontal" role="form" ng-submit="signup.searchProduct()">
+        <form class="form-horizontal" role="form" ng-submit="signup.searchUser()">
             <div class="form-group">
                 <label class="col-sm-2 control-label">Check a user by:</label>
             </div>
             <div class="form-group">
-                <label for="searchProductId" class="col-sm-2 control-label">ID</label>
+                <label for="searchUserName" class="col-sm-2 control-label">USERNAME</label>
                 <div class="col-sm-4">
-                    <input class="form-control" id="searchProductId" placeholder="ID" ng-model="signup.searchProductId" ng-required="true" />
+                    <input class="form-control" id="searchUserName" placeholder="USERNAME" ng-model="signup.searchUserName" ng-required="true" />
                 </div>
             </div>
         </form>
 
-        <div class="searchOutput">{{signup.product | json}}</div>
+        <div class="searchOutput">{{signup.user | json}}</div>
     </div>
 </div>

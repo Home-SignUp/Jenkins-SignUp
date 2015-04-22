@@ -11,37 +11,45 @@ angular.module('app')
         that.createUser = function() {
 			console.log('BEGIN createUser');
 
-            if(!that.name){
-                that.nameRequired = 'Name Required';
+            if(!that.userName){
+                that.nameRequired = 'userName Required';
             }
-            if(!that.price){
-                that.priceRequired = 'Price Required';
+            if(!that.userPass){
+                that.passRequired = 'userPass Required';
             }
-            if(!that.stock){
-                that.stockRequired = 'Stock Required';
+            if(!that.userLdap){
+                that.ldapRequired = 'userLdap Required';
             }
-            if(!that.packing){
-                that.packingRequired = 'Packing Required';
+            if(!that.userFio){
+                that.fioRequired = 'userFio Required';
+            }
+            if(!that.email){
+                that.emailRequired = 'email Required';
+            }
+            if(!that.groupName){
+                that.groupRequired = 'groupName Required';
             }
 
 			//$http.post('server/api/person', {
-            $http.post('http://localhost:8081/server/api/products', {
-					"name": that.name
-                    ,"description": that.description
-					,"price": that.price
-					,"stock": that.stock
-                    ,"packing": that.packing
+            $http.post('http://localhost:8081/server/api/users', {
+					"userName": that.userName
+                    ,"userPass": that.userPass
+					,"userLdap": that.userLdap
+					,"userFio": that.userFio
+                    ,"email": that.email
+                    ,"groupName": that.groupName
                     ,"status": 'Inactive'
 			})
 			.success(function(data, status, headers, config) {
 				console.log('data = ' , data);
-                    that.name = '';
-                    that.description = '';
-                    that.price = '';
-                    that.stock = '';
-                    that.packing = '';
+                    that.userName = '';
+                    that.userPass = '';
+                    that.userLdap = '';
+                    that.userFio = '';
+                    that.email = '';
+                    that.groupName = '';
                     that.status = '';
-                    that.newUserId = data;
+                    that.newUserName = data;
 			})
 			.error(function(data, status, headers, config) {
 				console.log('error: data = ' , data);
