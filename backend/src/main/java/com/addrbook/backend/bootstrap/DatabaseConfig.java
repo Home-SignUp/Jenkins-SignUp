@@ -17,6 +17,15 @@ import javax.sql.DataSource;
  * Environment pair allows externalized settings.
  * 
  * @author Trey
+ *
+ * https://github.com/voahar/spring/blob/master/src/main/java/fr/soat/mvc/config/DbConfig.java
+ * http://hadoop43.blogspot.com/2015/03/hibernate-spring-transaction-doesn-work.html
+ * http://www.mkyong.com/spring/maven-spring-jdbc-example/
+ * http://alvinalexander.com/java/spring-mysql-java-basicdatasource-connection-example
+ * http://docs.cloudfoundry.org/buildpacks/java/spring-service-bindings.html
+ ** (Use MySQL database in a Spring Boot web application through Hibernate) http://blog.netgloo.com/2014/08/17/use-mysql-database-in-a-spring-boot-web-application-through-hibernate/
+ ** http://mvnrepository.com/artifact/mysql/mysql-connector-java/5.1.6
+ *
  */
 @Configuration
 @EnableTransactionManagement
