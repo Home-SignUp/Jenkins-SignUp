@@ -8,6 +8,25 @@ angular.module('app')
 	function($rootScope, $scope, $routeParams, $http) {
         var that = this;
 
+        that.groups = [
+            {value:'admin', type:'System', text:'admin', notAnOption:true},
+            {value:'Biplane-Admin', type:'Biplane', text:'Biplane-Admin'},
+            {value:'Biplane-Buh', type:'Biplane', text:'Biplane-Buh'},
+            {value:'Biplane-Cashier', type:'Biplane', text:'Biplane-Cashier'},
+            {value:'Biplane-Dept', type:'Biplane', text:'Biplane-Dept'},
+            {value:'Biplane-WebCashier', type:'Biplane-Web', text:'Biplane-WebCashier'},
+            {value:'Irbis', type:'Irbis', text:'Irbis'},
+            {value:'jenkins', type:'jenkins', text:'jenkins'},
+            {value:'Oktopus', type:'Oktopus', text:'Oktopus'},
+            {value:'Reports', type:'Reports', text:'Reports'},
+            {value:'Test', type:'Test', text:'Test'},
+            {value:'Tickets', type:'Tickets', text:'Tickets'},
+            {value:'Vitrina', type:'Vitrina', text:'Vitrina'}
+        ];
+        that.groupSelect = [
+            { groupValue:that.groupName }
+        ];
+
         that.createUser = function() {
 			console.log('BEGIN createUser');
 
@@ -37,7 +56,8 @@ angular.module('app')
 					,"userLdap": that.userLdap
 					,"userFio": that.userFio
                     ,"email": that.email
-                    ,"groupName": that.groupName
+                    //,"groupName": that.groupName
+                    ,"groupName": that.groupName.value
                     ,"status": 'Inactive'
 			})
 			.success(function(data, status, headers, config) {
