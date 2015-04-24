@@ -8,7 +8,7 @@ angular.module('app')
 	function($rootScope, $scope, $routeParams, $http) {
         var that = this;
 
-        that.groups = [
+        $scope.groups = [
             {value:'admin', type:'System', text:'admin', notAnOption:true},
             {value:'Biplane-Admin', type:'Biplane', text:'Biplane-Admin'},
             {value:'Biplane-Buh', type:'Biplane', text:'Biplane-Buh'},
@@ -22,9 +22,6 @@ angular.module('app')
             {value:'Test', type:'Test', text:'Test'},
             {value:'Tickets', type:'Tickets', text:'Tickets'},
             {value:'Vitrina', type:'Vitrina', text:'Vitrina'}
-        ];
-        that.groupSelect = [
-            { groupValue:that.groupName }
         ];
 
         that.createUser = function() {
@@ -56,8 +53,7 @@ angular.module('app')
 					,"userLdap": that.userLdap
 					,"userFio": that.userFio
                     ,"email": that.email
-                    //,"groupName": that.groupName
-                    ,"groupName": that.groupName.value
+                    ,"groupName": that.groupName.value //,"groupName": that.groupName
                     ,"status": 'Inactive'
 			})
 			.success(function(data, status, headers, config) {
@@ -67,7 +63,7 @@ angular.module('app')
                     that.userLdap = '';
                     that.userFio = '';
                     that.email = '';
-                    that.groupName = '';
+                    that.groupName.value = ''; //that.groupName = '';
                     that.status = '';
                     that.newUserName = data;
 			})

@@ -100,15 +100,13 @@ angular.module('app')
             {value:'Tickets', type:'Tickets', text:'Tickets'},
             {value:'Vitrina', type:'Vitrina', text:'Vitrina'}
         ];
-        $scope.groupSelect = [
-            { groupValue:$scope.user.groupName }
-        ];
+        $scope.groupSelect = $scope.user.groupName;
 
-        $scope.cancel = function () {
+            $scope.cancel = function () {
             $modalInstance.dismiss('Close');
         };
-        $scope.title = (item.userName > 0) ? 'Edit User' : 'Add User';
-        $scope.buttonText = (item.userName > 0) ? 'Update User' : 'Add New User';
+        $scope.title = (item.userName != null) ? 'Edit User' : 'Add User'; //$scope.title = (item.userName > 0) ? 'Edit User' : 'Add User';
+        $scope.buttonText = (item.userName != null) ? 'Update User' : 'Add New User'; //$scope.buttonText = (item.userName > 0) ? 'Update User' : 'Add New User';
 
         var original = item;
         $scope.isClean = function() {

@@ -16,10 +16,10 @@
                 <input type="text" name="userFio" class="form-control" placeholder="FULL NAME" ng-model="user.userFio"/>
             </form-element>-->
             <form-element label="FULL NAME" mod="user">
-                <div class="form-group" ng-class="{ 'has-error' : user_form.username.$invalid && !user_form.username.$pristine }">
+                <div class="form-group" ng-class="{ 'has-error' : user_form.userFio.$invalid && !user_form.userFio.$pristine }">
                     <input type="text" name="userFio" class="form-control" ng-model="user.userFio" ng-minlength="3" ng-maxlength="40">
-                    <p ng-show="user_form.userFio.$error.minlength" class="help-block">Username is too short.</p>
-                    <p ng-show="user_form.userFio.$error.maxlength" class="help-block">Username is too long.</p>
+                    <p ng-show="user_form.userFio.$error.minlength" class="help-block">userFio is too short.</p>
+                    <p ng-show="user_form.userFio.$error.maxlength" class="help-block">userFio is too long.</p>
                 </div>
             </form-element>
 
@@ -51,8 +51,7 @@
                 <select class="form-control"
                         name="groupName"
                         ng-model="user.groupName"
-                        ng-repeat="select in groupSelect"
-                        ng-init="user.groupName = {value: select.groupValue}"
+                        ng-init="user.groupName = {value: groupSelect}"
                         ng-change="select.groupValue = user.groupName.value"
                         ng-options="group.text group by group.type for group in groups track by group.value">
                     <option value="">-- undefined --</option>
