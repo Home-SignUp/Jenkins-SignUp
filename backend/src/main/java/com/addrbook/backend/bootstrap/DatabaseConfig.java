@@ -11,6 +11,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
+import java.util.Properties;
 
 /**
  * Database configuration. Note the 'Import' annotation in RootConfig that activates this. PropertySource and
@@ -38,10 +39,19 @@ public class DatabaseConfig {
 	@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName(env.getProperty("jdbc.driver"));
-		dataSource.setUrl(env.getProperty("jdbc.url"));
-		dataSource.setUsername(env.getProperty("jdbc.username"));
-		dataSource.setPassword(env.getProperty("jdbc.password"));
+        // (символы превращаются в знаки вопроса (????)) http://otvety.google.ru/otvety/thread?tid=366242fda39990ad
+        Properties properties = new Properties();
+        properties.setProperty("user", env.getProperty("jdbc.username"));
+        properties.setProperty("password", env.getProperty("jdbc.password"));
+        properties.setProperty("useUnicode", env.getProperty("jdbc.useUnicode"));
+        properties.setProperty("characterEncoding", env.getProperty("jdbc.characterEncoding"));
+        dataSource.setConnectionProperties(properties);
+        // (символы превращаются в знаки вопроса (????))
+        dataSource.setDriverClassName(env.getProperty("jdbc.driver"));
+        dataSource.setUrl(env.getProperty("jdbc.url"));
+//		dataSource.setUsername(env.getProperty("jdbc.username"));
+//		dataSource.setPassword(env.getProperty("jdbc.password"));
+
 
 //		DataSource dataSource = new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.HSQL)
 //				.addScript("classpath:init.sql").build();

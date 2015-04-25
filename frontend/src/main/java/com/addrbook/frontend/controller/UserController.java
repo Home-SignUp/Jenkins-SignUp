@@ -82,6 +82,10 @@ public class UserController {
     @RequestMapping(value = "/users", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
     public String createUser(@RequestBody TomcatUsers request) {
+//        Random random = new Random();
+//        Integer      sku = random.nextInt(9999) + 99;
+//        double       mrp = 99 + (999 - 99) * random.nextDouble();
+//        Integer category = random.nextInt(200) + 100;
         TomcatUsers user = new TomcatUsers();
         user.setUserName(request.getUserName());
         user.setUserPass(request.getUserPass());

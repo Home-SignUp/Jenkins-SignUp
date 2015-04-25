@@ -32,8 +32,7 @@ public class WebAppInitializer implements WebApplicationInitializer {
         corsFilter.addMappingForUrlPatterns(null, false, "/*");
 
         // The main Spring MVC servlet.
-		ServletRegistration.Dynamic dispatcher = servletContext.addServlet("dispatcher", new DispatcherServlet(
-				mvcContext));
+		ServletRegistration.Dynamic dispatcher = servletContext.addServlet("dispatcher", new DispatcherServlet(mvcContext));
 		dispatcher.setLoadOnStartup(1);
 		Set<String> mappingConflicts = dispatcher.addMapping("/api/*");
 
