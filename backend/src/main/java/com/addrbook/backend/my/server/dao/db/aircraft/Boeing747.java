@@ -1,6 +1,6 @@
-package com.addrbook.backend.my.server.db.dao.impl.aircraft;
+package com.addrbook.backend.my.server.dao.db.aircraft;
 
-import com.addrbook.backend.my.server.db.dao.*;
+import com.addrbook.backend.my.server.dao.Aircraft;
 
 public class Boeing747 implements Aircraft{
 

@@ -1,6 +1,6 @@
-package com.addrbook.backend.my.server.db.dao.impl.car;
+package com.addrbook.backend.my.server.dao.db.car;
 
-import com.addrbook.backend.my.server.db.dao.Car;
+import com.addrbook.backend.my.server.dao.Car;
 
 public class Niva implements Car {
 

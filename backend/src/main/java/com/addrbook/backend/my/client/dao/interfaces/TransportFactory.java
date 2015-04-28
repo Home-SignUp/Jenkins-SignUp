@@ -1,6 +1,6 @@
 package com.addrbook.backend.my.client.dao.interfaces;
 
-import com.addrbook.backend.my.server.db.dao.Aircraft;
+import com.addrbook.backend.my.server.dao.Aircraft;
 
 // фабрика по созданию транспортных средств
 public interface TransportFactory {

@@ -1,4 +1,4 @@
-package com.addrbook.backend.my.server.db.dao;
+package com.addrbook.backend.my.server.dao;
 
 // можно использовать абстрактный класс, если нужно задать реализацию метода по-умолчанию
 public interface Car {

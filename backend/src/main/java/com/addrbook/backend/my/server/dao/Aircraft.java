@@ -1,4 +1,4 @@
-package com.addrbook.backend.my.server.db.dao;
+package com.addrbook.backend.my.server.dao;
 
 public interface Aircraft {
 
