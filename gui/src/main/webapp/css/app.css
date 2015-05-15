@@ -28,3 +28,34 @@
   content: "";
   padding: 0;
 }
+
+
+
+body {
+    background-color: #eee;
+}
+
+button{
+    border-radius: 4px !important;
+}
+
+.btn {
+    font-size: 11.5px;
+}
+
+/*body {*/
+    /*background: url("../img/bg.png") repeat scroll 0 0 rgba(0, 0, 0, 0);*/
+    /*font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;*/
+    /*font-weight: 300;*/
+    /*text-align: left;*/
+    /*text-decoration: none;*/
+/*}*/
+/*body {*/
+    /*color: #333;*/
+    /*font: 12px/18px Arial,Tahoma,Verdana,sans-serif;*/
+/*}*/
+/** {*/
+    /*border: 0 none;*/
+    /*margin: 0;*/
+    /*padding: 0;*/
+/*}*/
