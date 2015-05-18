@@ -10,10 +10,8 @@ angular
 //.controller('ApplicationCtrl', function($scope, $location, $UserService) {
 ApplicationCtrl.$inject = ['UserService', '$rootScope', '$scope', '$location'];
 function ApplicationCtrl(UserService, $rootScope, $scope, $location) {
-    //var vm = this;
-
-    $scope.user = null; //vm.user = null;
-    $scope.allUsers = []; //vm.allUsers = [];
+    $scope.user = null;
+    $scope.allUsers = [];
 
     $rootScope.$on('$locationChangeStart', function (event, next, current) {
         var loggedIn = $rootScope.globals.currentUser;
@@ -23,32 +21,39 @@ function ApplicationCtrl(UserService, $rootScope, $scope, $location) {
     });
 
     $scope.isLogin = function() {
-        if($scope.user == null){ //if(vm.user == null){
+        if($scope.user == null){
             return false; //Just as a test to make sure it works
         } else {
             return true;
         }
     }
     $scope.isLogout = function() {
-        if($scope.user == null){ //if(vm.user == null){
+        if($scope.user == null){
             return true;
         } else {
             return false;
         }
     }
 
-    //$scope.UserRole = $scope.user.data.groupName; //$scope.UserRole = "Admin";
-    $scope.IsJenkins = function(){
-        return $scope.UserRole == "jenkins";
-    }
-    $scope.IsAdmin = function(){
-        return $scope.UserRole == "admin"; //return $scope.UserRole == "Admin";
-    }
     $scope.IsUser = function(){
-        return $scope.UserRole == "StandardUser";
+        return $scope.UserRole == "Biplane-Buh"
+            || $scope.UserRole == "Biplane-Cashier"
+            || $scope.UserRole == "Biplane-Dept"
+            || $scope.UserRole == "Biplane-WebCashier"
+            || $scope.UserRole == "Irbis"
+            || $scope.UserRole == "jenkins"
+            || $scope.UserRole == "Oktopus"
+            || $scope.UserRole == "Reports"
+            || $scope.UserRole == "Tickets"
+            || $scope.UserRole == "Vitrina"
+            || $scope.UserRole == "undefined";
     }
     $scope.IsManager = function(){
-        return $scope.UserRole == "Manager";
+        return $scope.UserRole == "Biplane-Admin"
+            || $scope.UserRole == "Test";
+    }
+    $scope.IsAdmin = function(){
+        return $scope.UserRole == "admin";
     }
 
     function initController() {

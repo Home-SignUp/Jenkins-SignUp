@@ -35,12 +35,15 @@
         <div class="blog-masthead">
             <div class="container">
                 <nav class="blog-nav">
-                    <a ng-show="IsJenkins()" ng-controller="ApplicationCtrl" class="blog-nav-item" href="#/profile" ng-class="{active: isActive('/profile')}">Profile</a>
+                    <a ng-show="IsAdmin()" ng-controller="ApplicationCtrl" class="blog-nav-item" href="#/r_egister" ng-class="{active: isActive('/r_egister')}">R_egister</a>
+                    <a ng-show="IsUser()" ng-controller="ApplicationCtrl" class="blog-nav-item" href="#/profile" ng-class="{active: isActive('/profile')}">Profile</a>
+                    <a ng-show="IsManager()" ng-controller="ApplicationCtrl" class="blog-nav-item" href="#/profile" ng-class="{active: isActive('/profile')}">Profile</a>
                     <a ng-show="IsAdmin()" ng-controller="ApplicationCtrl" class="blog-nav-item" href="#/profile" ng-class="{active: isActive('/profile')}">Profile</a>
-                    <a ng-show="IsJenkins()" ng-controller="ApplicationCtrl" class="blog-nav-item" href="#/upload" ng-class="{active: isActive('/upload')}">Upload</a>
+                    <a ng-show="IsUser()" ng-controller="ApplicationCtrl" class="blog-nav-item" href="#/upload" ng-class="{active: isActive('/upload')}">Upload</a>
+                    <a ng-show="IsManager()" ng-controller="ApplicationCtrl" class="blog-nav-item" href="#/upload" ng-class="{active: isActive('/upload')}">Upload</a>
                     <a ng-show="IsAdmin()" ng-controller="ApplicationCtrl" class="blog-nav-item" href="#/upload" ng-class="{active: isActive('/upload')}">Upload</a>
+                    <a ng-show="IsManager()" ng-controller="ApplicationCtrl" class="blog-nav-item" href="#/users" ng-class="{active: isActive('/users')}">Users</a>
                     <a ng-show="IsAdmin()" ng-controller="ApplicationCtrl" class="blog-nav-item" href="#/users" ng-class="{active: isActive('/users')}">Users</a>
-                    <!--<a ng-if="isLogout()" class="blog-nav-item" href="#/r_egister" ng-class="{active: isActive('/r_egister')}">R_egister</a>-->
                     <a class="blog-nav-item" href="#/search" ng-class="{active: isActive('/search')}">Search</a>
                     <a ng-if="isLogout()" class="btn btn-sm btn-danger nav-button-margin pull-right" href="#/login"> <i class="glyphicon glyphicon-user"></i>&nbsp;LogIn</a>
                     <a ng-if="isLogin()" class="btn btn-sm btn-danger nav-button-margin pull-right" href="#/login"> <i class="glyphicon glyphicon-share"></i>&nbsp;LogOut</a>
@@ -48,11 +51,6 @@
             </div>
         </div>
         <!--<div class="somediv" show-for-role="ROLE_A,ROLE_B">aaaaaa</div>-->
-        <div ng-show="IsJenkins()" ng-controller="ApplicationCtrl" >...jenkins nav...</div>
-        <div ng-show="IsAdmin()" ng-controller="ApplicationCtrl" >...admin nav...</div>
-        <div ng-show="IsUser()" ng-controller="ApplicationCtrl" >...user nav...</div>
-        <div ng-show="IsManager()" ng-controller="ApplicationCtrl" >...manager nav...</div>
-        <!--Hi <b>{{user.userFio}}</b>-->
 
         <!--[ http://plnkr.co/edit/isxmRkZ2EHkrxESkxpmO?p=info ]-->
         <!--[ https://www.youtube.com/watch?v=08Kf6pa4TAY ]-->
