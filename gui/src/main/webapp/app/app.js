@@ -14,7 +14,7 @@ function config($routeProvider, $locationProvider, $httpProvider) {
 		$routeProvider
             .when('/', {
                 controller: 'HomeController',
-                templateUrl: 'home/home.view.html',
+                templateUrl: 'partials/profile.tpl',
                 controllerAs: 'vm'
             })
 
@@ -33,22 +33,27 @@ function config($routeProvider, $locationProvider, $httpProvider) {
 
             .when('/l_ogin', {
                 controller: 'LoginController',
-                templateUrl: 'login/login.view.html',
+                templateUrl: 'partials/l_ogin.tpl',
                 controllerAs: 'vm'
             })
             .when('/r_egister', {
                 controller: 'RegisterController',
-                templateUrl: 'register/register.view.html',
+                templateUrl: 'partials/r_egister.tpl',
                 controllerAs: 'vm'
             })
             .when('/profile', {
                 controller: 'HomeController',
-                templateUrl: 'home/home.view.html',
+                templateUrl: 'partials/profile.tpl',
                 controllerAs: 'vm'
             })
 
+            .when('/upload', {
+                templateUrl: 'partials/upload.tpl',
+                controller: 'UploadController'
+            })
+
             .otherwise({
-				redirectTo: '/r_egister'
+				redirectTo: '/register'
 			});
         $httpProvider.defaults.useXDomain = true;
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
@@ -71,7 +76,7 @@ function run($rootScope, $location, $cookieStore, $http) {
             var restrictedPage = $.inArray($location.path(), ['/l_ogin', '/r_egister', '/register', '/signup']) === -1;
             var loggedIn = $rootScope.globals.currentUser;
             if (restrictedPage && !loggedIn) {
-                $location.path('/r_egister');
+                $location.path('/register');
             }
         });
     }

@@ -4,8 +4,8 @@
 
 angular.module('app')
 
-.controller('RegisterCtrl', ['$rootScope', '$scope', '$routeParams', '$http',
-	function($rootScope, $scope, $routeParams, $http) {
+.controller('RegisterCtrl', ['$location', '$rootScope', '$scope', '$routeParams', '$http',
+	function($location, $rootScope, $scope, $routeParams, $http) {
         var that = this;
 
         $scope.groups = [
@@ -47,9 +47,10 @@ angular.module('app')
             }
 
 			//$http.post('server/api/person', {
+            var hashUserPass = md5(that.userPass);
             $http.post('http://localhost:8081/server/api/users', {
 					"userName": that.userName
-                    ,"userPass": that.userPass
+                    ,"userPass": hashUserPass
 					,"userLdap": that.userLdap
 					,"userFio": that.userFio
                     ,"email": that.email
@@ -57,15 +58,16 @@ angular.module('app')
                     ,"status": 'Inactive'
 			})
 			.success(function(data, status, headers, config) {
-				console.log('data = ' , data);
-                    that.userName = '';
-                    that.userPass = '';
-                    that.userLdap = '';
-                    that.userFio = '';
-                    that.email = '';
-                    that.groupName.value = ''; //that.groupName = '';
-                    that.status = '';
-                    that.newUserName = data;
+				//console.log('data = ' , data);
+                 //   that.userName = '';
+                 //   that.userPass = '';
+                 //   that.userLdap = '';
+                 //   that.userFio = '';
+                 //   that.email = '';
+                 //   that.groupName.value = ''; //that.groupName = '';
+                 //   that.status = '';
+                 //   that.newUserName = data;
+                 $location.path('/l_ogin');
 			})
 			.error(function(data, status, headers, config) {
 				console.log('error: data = ' , data);

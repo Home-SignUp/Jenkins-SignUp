@@ -26,9 +26,12 @@
                 var response;
                 UserService.GetByUsername(username)
                     .then(function (user) {
+//                        alert(user.toSource());
+                        var hashPassword = md5(password);
                         //$http.post('userValidator')
                         //    .success(function(data, status, headers, config) {
-                                if (user !== null && user.password === password) {
+//                        if (user !== null && user.password === password) {
+                        if (user.data !== null && user.data.userPass === hashPassword) {
                                     response = { success: true };
                                 } else {
                                     response = { success: false, message: 'Username or password is incorrect' };
@@ -38,7 +41,6 @@
                             //.error(function(data, status, headers, config) {
                             //    callback({ success: false, message: 'Bad Request?' });
                             //});
-                        //
                         callback(response);
                     });
             }, 1000);

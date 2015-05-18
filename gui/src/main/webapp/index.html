@@ -1,17 +1,32 @@
-<!doctype html>
-<html ng-app="app" lang="en" >
+<!DOCTYPE html>
+<html id="ng-app" ng-app="app"> <!-- id="ng-app" IE<8 -->
     <head>
         <link href="favicon.ico" type="image/vnd.microsoft.icon" rel="shortcut icon">
         <meta charset="utf-8">
         <title>Sign up [Jenkins]</title>
         <meta name="Description" content="Product Manager Web Application created with AngularJS and PHP">
         <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+        <!--<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>-->
         <link rel="stylesheet" href="css/custom.css" type="text/css" />
         <link rel="stylesheet" href="css/app.css">
         <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
         <style type="text/css">
+            .my-drop-zone { border: dotted 3px lightgray; }
+            .nv-file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
+            .another-file-over-class { border: dotted 3px green; }
 
+            html, body { height: 100%; }
+
+            canvas {
+                background-color: #f3f3f3;
+                -webkit-box-shadow: 3px 3px 3px 0 #e3e3e3;
+                -moz-box-shadow: 3px 3px 3px 0 #e3e3e3;
+                box-shadow: 3px 3px 3px 0 #e3e3e3;
+                border: 1px solid #c3c3c3;
+                height: 100px;
+                margin: 6px 0 0 6px;
+            }
         </style>
     </head>
 
@@ -20,20 +35,25 @@
         <div class="blog-masthead">
             <div class="container">
                 <nav class="blog-nav">
-                    <a ng-if="isLogin()" class="blog-nav-item" href="#/profile" ng-class="{active: isActive('/profile')}">Profile</a>
-                    <a ng-if="isLogin()" class="blog-nav-item" href="#/users" ng-class="{active: isActive('/users')}">Users</a>
-                    <a ng-if="isLogout()" class="blog-nav-item" href="#/register" ng-class="{active: isActive('/register')}">Register</a>
-                    <a ng-if="isLogout()" class="btn btn-sm btn-danger nav-button-margin pull-right" href="#/r_egister"> <i class="glyphicon glyphicon-user"></i>&nbsp;Register</a>
-                    <a ng-if="isLogin()" class="btn btn-sm btn-danger nav-button-margin pull-right" href="#/l_ogin"> <i class="glyphicon glyphicon-share"></i>&nbsp;Logout</a>
-                    <a class="btn btn-sm btn-danger nav-button-margin pull-right" href="#/signup"> <i class="glyphicon glyphicon-info-sign"></i>&nbsp;SignUp</a>
+                    <!--<a ng-if="isLogin()" class="blog-nav-item" href="#/profile" ng-class="{active: isActive('/profile')}">Profile</a>-->
+                    <a ng-show="IsJenkins()" ng-controller="ApplicationCtrl" class="blog-nav-item" href="#/profile" ng-class="{active: isActive('/profile')}">Profile</a>
+                    <a ng-show="IsAdmin()" ng-controller="ApplicationCtrl" class="blog-nav-item" href="#/profile" ng-class="{active: isActive('/profile')}">Profile</a>
+                    <a ng-show="IsJenkins()" ng-controller="ApplicationCtrl" class="blog-nav-item" href="#/upload" ng-class="{active: isActive('/upload')}">Upload</a>
+                    <a ng-show="IsAdmin()" ng-controller="ApplicationCtrl" class="blog-nav-item" href="#/upload" ng-class="{active: isActive('/upload')}">Upload</a>
+                    <a ng-show="IsAdmin()" ng-controller="ApplicationCtrl" class="blog-nav-item" href="#/users" ng-class="{active: isActive('/users')}">Users</a>
+                    <a ng-if="isLogout()" class="blog-nav-item" href="#/r_egister" ng-class="{active: isActive('/r_egister')}">R_egister</a>
+                    <a class="blog-nav-item" href="#/signup" ng-class="{active: isActive('/signup')}">Search</a>
+                    <a ng-if="isLogout()" class="btn btn-sm btn-danger nav-button-margin pull-right" href="#/l_ogin"> <i class="glyphicon glyphicon-user"></i>&nbsp;LogIn</a>
+                    <a ng-if="isLogin()" class="btn btn-sm btn-danger nav-button-margin pull-right" href="#/l_ogin"> <i class="glyphicon glyphicon-share"></i>&nbsp;LogOut</a>
                 </nav>
             </div>
         </div>
-
         <!--<div class="somediv" show-for-role="ROLE_A,ROLE_B">aaaaaa</div>-->
-        <!--<div ng-show="IsAdmin()" ng-controller="ApplicationCtrl" >...admin nav...</div>-->
-        <!--<div ng-show="IsUser()" ng-controller="ApplicationCtrl" >...user nav...</div>-->
-        <!--<div ng-show="IsManager()" ng-controller="ApplicationCtrl" >...manager nav...</div>-->
+        <div ng-show="IsJenkins()" ng-controller="ApplicationCtrl" >...jenkins nav...</div>
+        <div ng-show="IsAdmin()" ng-controller="ApplicationCtrl" >...admin nav...</div>
+        <div ng-show="IsUser()" ng-controller="ApplicationCtrl" >...user nav...</div>
+        <div ng-show="IsManager()" ng-controller="ApplicationCtrl" >...manager nav...</div>
+        <!--Hi <b>{{user.userFio}}</b>-->
 
         <!--[ http://plnkr.co/edit/isxmRkZ2EHkrxESkxpmO?p=info ]-->
         <!--[ https://www.youtube.com/watch?v=08Kf6pa4TAY ]-->
@@ -53,12 +73,8 @@
         </div>
 
         <div class="credits text-center">
-            <p>
-                <a href="http://jasonwatmore.com/post/2015/03/10/AngularJS-User-Registration-and-Login-Example.aspx">AngularJS User Registration and Login Example</a>
-            </p>
-            <p>
-                <a href="http://jasonwatmore.com">JasonWatmore.com</a>
-            </p>
+            <p><a href="https://github.com/Home-SignUp/Jenkins-SignUp">Jenkins-SignUp</a></p>
+            <p><a href="http://kmets.moikrug.ru/">Александр К.</a></p>
         </div>
 
         <!-- Libraries -->
@@ -68,8 +84,15 @@
         <script src="//code.angularjs.org/1.2.20/angular-route.js"></script>
         <script src="js/angular-animate.min.js"></script>
         <script src="//code.angularjs.org/1.2.13/angular-cookies.js"></script>
+        <!-- Fix for old browsers -->
+        <!--<script src="http://nervgh.github.io/js/es5-shim.min.js"></script>-->
+        <!--<script src="http://nervgh.github.io/js/es5-sham.min.js"></script>-->
+        <!--<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>-->
+        <script src="js/console-sham.js"></script>
+        <script src="js/angular-file-upload.js"></script>
 
         <!-- Some Bootstrap Helper Libraries -->
+        <script src="js/md5.min.js"></script>
         <!--<script src="js/jquery.min.js"></script>-->
         <script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
@@ -84,16 +107,19 @@
         <script src="app/services/filter.js"></script>
         <script src="app/services/data.js"></script>
         <script src="app/services/directives.js"></script>
-        <script src="app-services/authentication.service.js"></script>
-        <script src="app-services/flash.service.js"></script>
+        <script src="app/services/directives2.js"></script>
+        <script src="app/services/authentication.service.js"></script>
+        <script src="app/services/flash.service.js"></script>
         <!-- Fake user service for demo that uses local storage -->
-        <script src="app-services/user.service.local-storage.js"></script>
+        <!--<script src="app/services/user.service.local-storage.js"></script>-->
+        <script src="app/services/user.service.js"></script>
         <script src="app/controllers/RegisterCtrl.js"></script>
         <script src="app/controllers/UsersCtrl.js"></script>
         <script src="app/controllers/SignupCtrl.js"></script>
         <script src="app/controllers/ApplicationCtrl.js"></script>
-        <script src="home/home.controller.js"></script>
-        <script src="login/login.controller.js"></script>
-        <script src="register/register.controller.js"></script>
+        <script src="app/controllers/R_egisterCtrl.js"></script>
+        <script src="app/controllers/L_oginCtrl.js"></script>
+        <script src="app/controllers/ProfileCtrl.js"></script>
+        <!--<script src="app/controllers/UploadCtrl.js"></script>-->
     </body>
 </html>
