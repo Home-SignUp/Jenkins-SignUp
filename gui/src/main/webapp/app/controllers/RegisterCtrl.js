@@ -3,10 +3,29 @@
 /* RegisterCtrl */
 
 angular.module('app')
+    //.controller('RegisterCtrl', RegisterCtrl);
 
 .controller('RegisterCtrl', ['$location', '$rootScope', '$scope', '$routeParams', '$http',
 	function($location, $rootScope, $scope, $routeParams, $http) {
+//RegisterCtrl.$inject = ['UserService', '$location', '$rootScope', '$scope', '$routeParams', '$http', 'FlashService'];
+//    function RegisterCtrl(UserService, $location, $rootScope, $scope, $routeParams, $http, FlashService) {
         var that = this;
+
+        //that.register = register;
+        //
+        //function register() {
+        //    that.dataLoading = true;
+        //    UserService.Create(that.user)
+        //        .then(function (response) {
+        //            if (response.success) {
+        //                FlashService.Success('Registration successful', true);
+        //                $location.path('/login');
+        //            } else {
+        //                FlashService.Error(response.message);
+        //                that.dataLoading = false;
+        //            }
+        //        });
+        //}
 
         $scope.groups = [
             {value:'admin', type:'System', text:'admin', notAnOption:true},
@@ -67,7 +86,7 @@ angular.module('app')
                  //   that.groupName.value = ''; //that.groupName = '';
                  //   that.status = '';
                  //   that.newUserName = data;
-                 $location.path('/l_ogin');
+                 $location.path('/login');
 			})
 			.error(function(data, status, headers, config) {
 				console.log('error: data = ' , data);

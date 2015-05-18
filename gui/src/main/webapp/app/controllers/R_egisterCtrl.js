@@ -17,7 +17,7 @@
                 .then(function (response) {
                     if (response.success) {
                         FlashService.Success('Registration successful', true);
-                        $location.path('/l_ogin');
+                        $location.path('/login');
                     } else {
                         FlashService.Error(response.message);
                         vm.dataLoading = false;
