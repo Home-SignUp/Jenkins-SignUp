@@ -48,13 +48,13 @@ angular.module('app')
 
 			//$http.post('server/api/person', {
             var hashUserPass = md5(that.userPass);
-            $http.post('http://localhost:8081/server/api/users', {
+            $http.post('https://10.13.71.153:8443/server/api/users', { //$http.post('https://localhost:8443/server/api/users', {
 					"userName": that.userName
                     ,"userPass": hashUserPass
 					,"userLdap": that.userLdap
 					,"userFio": that.userFio
                     ,"email": that.email
-                    ,"groupName": that.groupName.value //,"groupName": that.groupName
+                    ,"groupName": that.groupName.value
                     ,"status": 'Inactive'
 			})
 			.success(function(data, status, headers, config) {

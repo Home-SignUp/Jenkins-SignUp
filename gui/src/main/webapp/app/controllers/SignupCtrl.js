@@ -16,7 +16,7 @@ angular.module('app')
             }
 
 			//$http.post('server/api/person', {
-            $http.post('http://localhost:8081/server/api/users', {
+            $http.post('https://10.13.71.153:8443/server/api/users', { //$http.post('http://localhost:8081/server/api/users', {
 					"userName": that.userName
 			})
 			.success(function(data, status, headers, config) {
@@ -31,7 +31,7 @@ angular.module('app')
 
         that.searchUser = function() {
 			//$http.get('server/api/person/' + that.searchPersonId)
-            $http.get('http://localhost:8081/server/api/users/' + that.searchUserName)
+            $http.get('https://10.13.71.153:8443/server/api/users/' + that.searchUserName) //$http.get('http://localhost:8081/server/api/users/' + that.searchUserName)
 			.success(function(data, status, headers, config) {
 				console.log('data = ' , data);
                     that.user = data;
