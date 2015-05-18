@@ -1,4 +1,6 @@
-<div ng-controller="SignupCtrl as signup">
+<!--<div ng-controller="SearchCtrl as signup">-->
+<div class="col-md-8 col-md-offset-2 jumbotron" ng-controller="SearchCtrl as signup">
+    <!--
     <form class="form-horizontal" role="form" ng-submit="signup.createProduct()" >
         <div class="form-group">
             <label class="col-sm-2 control-label">Signup user:</label>
@@ -7,7 +9,6 @@
             <label for="name" class="col-sm-2 control-label">USERNAME</label>
             <div class="col-sm-4">
                 <input class="form-control" id="userName" placeholder="USERNAME" ng-model="signup.userName" ng-required="true">
-                <!--<span ng-show="signup.nameRequired">{{signup.nameRequired}}</span>-->
             </div>
         </div>
         <div class="form-group">
@@ -22,6 +23,7 @@
     </form>
 
     <hr />
+    -->
 
     <div>
         <form class="form-horizontal" role="form" ng-submit="signup.searchUser()">

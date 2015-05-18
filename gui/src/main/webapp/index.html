@@ -41,7 +41,7 @@
                     <a ng-show="IsAdmin()" ng-controller="ApplicationCtrl" class="blog-nav-item" href="#/upload" ng-class="{active: isActive('/upload')}">Upload</a>
                     <a ng-show="IsAdmin()" ng-controller="ApplicationCtrl" class="blog-nav-item" href="#/users" ng-class="{active: isActive('/users')}">Users</a>
                     <!--<a ng-if="isLogout()" class="blog-nav-item" href="#/r_egister" ng-class="{active: isActive('/r_egister')}">R_egister</a>-->
-                    <a class="blog-nav-item" href="#/signup" ng-class="{active: isActive('/signup')}">Search</a>
+                    <a class="blog-nav-item" href="#/search" ng-class="{active: isActive('/search')}">Search</a>
                     <a ng-if="isLogout()" class="btn btn-sm btn-danger nav-button-margin pull-right" href="#/login"> <i class="glyphicon glyphicon-user"></i>&nbsp;LogIn</a>
                     <a ng-if="isLogin()" class="btn btn-sm btn-danger nav-button-margin pull-right" href="#/login"> <i class="glyphicon glyphicon-share"></i>&nbsp;LogOut</a>
                 </nav>
@@ -114,7 +114,7 @@
         <script src="app/services/user.service.js"></script>
         <script src="app/controllers/RegisterCtrl.js"></script>
         <script src="app/controllers/UsersCtrl.js"></script>
-        <script src="app/controllers/SignupCtrl.js"></script>
+        <script src="app/controllers/SearchCtrl.js"></script>
         <script src="app/controllers/ApplicationCtrl.js"></script>
         <script src="app/controllers/R_egisterCtrl.js"></script>
         <script src="app/controllers/LoginCtrl.js"></script>

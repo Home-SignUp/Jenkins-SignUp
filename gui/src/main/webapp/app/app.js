@@ -26,9 +26,9 @@ function config($routeProvider, $locationProvider, $httpProvider) {
                 templateUrl: 'partials/users.tpl',
                 controller: 'UsersCtrl'
             })
-            .when('/signup', {
-                templateUrl: 'partials/signup.tpl',
-                controller: 'SignupCtrl'
+            .when('/search', {
+                templateUrl: 'partials/search.tpl',
+                controller: 'SearchCtrl'
             })
 
             .when('/login', {
@@ -73,7 +73,7 @@ function run($rootScope, $location, $cookieStore, $http) {
 
         $rootScope.$on('$locationChangeStart', function (event, next, current) {
             // redirect to login page if not logged in and trying to access a restricted page
-            var restrictedPage = $.inArray($location.path(), ['/login', '/register', '/r_egister', '/signup']) === -1;
+            var restrictedPage = $.inArray($location.path(), ['/login', '/register', '/r_egister', '/search']) === -1;
             var loggedIn = $rootScope.globals.currentUser;
             if (restrictedPage && !loggedIn) {
                 $location.path('/register');
