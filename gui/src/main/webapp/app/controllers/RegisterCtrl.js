@@ -65,9 +65,9 @@ angular.module('app')
                 that.groupRequired = 'groupName Required';
             }
 
-			//$http.post('server/api/person', {
             var hashUserPass = md5(that.userPass);
-            $http.post('https://10.13.71.153:8443/server/api/users', { //$http.post('https://localhost:8443/server/api/users', {
+            $http.post('https://127.0.0.1:8443/server/api/users', { //$http.post('server/api/person', {
+            //$http.post('https://10.13.71.153:8443/server/api/users', {
 					"userName": that.userName
                     ,"userPass": hashUserPass
 					,"userLdap": that.userLdap
@@ -77,15 +77,6 @@ angular.module('app')
                     ,"status": 'Inactive'
 			})
 			.success(function(data, status, headers, config) {
-				//console.log('data = ' , data);
-                 //   that.userName = '';
-                 //   that.userPass = '';
-                 //   that.userLdap = '';
-                 //   that.userFio = '';
-                 //   that.email = '';
-                 //   that.groupName.value = ''; //that.groupName = '';
-                 //   that.status = '';
-                 //   that.newUserName = data;
                  $location.path('/login');
 			})
 			.error(function(data, status, headers, config) {

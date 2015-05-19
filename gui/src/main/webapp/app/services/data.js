@@ -1,9 +1,8 @@
 app.factory("Data", ['$http', '$location',
     function ($http, $q, $location) {
 
-        //var serviceBase = 'api/v1/';
-        //var serviceBase = 'http://127.0.0.1/angularjs/lesson-products/api/v1/';
-        var serviceBase = 'https://10.13.71.153:8443/server/api/'; //var serviceBase = 'https://localhost:8443/server/api/'; //var serviceBase = 'http://localhost:8081/server/api/';
+        var serviceBase = 'https://127.0.0.1:8443/server/api/'; //var serviceBase = 'api/v1/';
+        //var serviceBase = 'https://10.13.71.153:8443/server/api/';
 
         var obj = {};
 
